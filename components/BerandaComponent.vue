@@ -2,10 +2,9 @@
 <div>
   <br>
   <v-card
-    class="mx-auto mt-5"
+    class="mx-auto mt-5 rounded-card"
     max-width="1000"
-    elevation="0"
-    shaped
+    elevation="2"
   ><br>
   <v-card
   class="mx-auto"
@@ -17,11 +16,10 @@
   </v-card>
   <p></p>
   <v-card
-  class="mx-auto"
+  class="mx-auto rounded-cards"
   max-width="900"
   elevation="0"
   color="#4EC49A"
-  shaped
   >
     <v-card-actions>
       <v-list-item class="grow">
@@ -51,6 +49,7 @@
           width="150"
           alt=""
           src="/icon-pulsa.png"
+          @click="pulsa"
         ></v-img>
       </v-col>
 
@@ -59,6 +58,7 @@
           width="150"
           alt=""
           src="/icon-paketData.png"
+          @click="paketData"
         ></v-img>
       </v-col>
 
@@ -67,6 +67,7 @@
           width="150"
           alt=""
           src="/icon-game.png"
+          @click="voucherGames"
         ></v-img>
       </v-col>
       <v-col>
@@ -86,9 +87,26 @@ export default {
 
         }
       },
+      methods: {
+        pulsa(){
+          this.$router.push("/pulsa")
+        },
+        paketData(){
+          this.$router.push("/paket-data")
+        },
+        voucherGames(){
+          this.$router.push("/voucher-games")
+        },
+      }
 }
 </script>
 
-<style>
+<style scoped>
 
+.rounded-card{
+  border-radius: 50px;
+}
+.rounded-cards{
+  border-radius: 15px;
+}
 </style>

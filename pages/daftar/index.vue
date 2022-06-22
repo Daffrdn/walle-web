@@ -1,14 +1,14 @@
 <template>
 <div class="bg">
     <br>
-    <LoginForm/>
+    <SignupForm/>
     <br>
 </div>
 </template>
 
 <script>
 export default{
-    name: 'LoginPages',
+    name: 'SignupPages',
     data(){
         return {
         
@@ -18,5 +18,8 @@ export default{
 
 </script>
 
-<style>
+<style scoped>
+h3 {
+  color: #4EC49A,
+}
 </style>

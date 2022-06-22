@@ -1,9 +1,8 @@
 <template>
 <v-card
-    class="mx-auto mt-5"
+    class="mx-auto mt-5 rounded-card"
     max-width="1200"
-    elevation="1"
-    shaped
+    elevation="2"
   ><br>
   <v-card
   class="mx-auto mt-3"
@@ -15,44 +14,54 @@
             mdi-chevron-left
             </v-icon>
         </v-btn>
-            <h2>Daftar</h2>
+            <h3>Login</h3>
     </v-card-title>
+    <div class="d-flex justify-center">
+      <img src="../static/1 51.png">
+    </div><br>
   </v-card>
   <v-card
   class="mx-auto"
   max-width="1000"
   elevation="0"
   >
-  <h3 color="#4EC49A">Login</h3>
+  <Notification v-if="error" :message="error"/>
+  <form method="post" @submit.prevent="login">
     <v-text-field
-        label="Email"
-        single-line
-        outlined
-        class="mt-3"
+      v-model="email"
+      label="Email"
+      type="Email"
+      single-line
+      outlined
+      required
+      class="mt-3 input"
+      color="#4EC49A"
+      ></v-text-field>
+      <v-text-field
+      v-model="password"
+      label="Password"
+      single-line
+      outlined
+      required
+      class="input mt-4"
+      color="#4EC49A"
+      :type="show1 ? 'text' : 'password'"
+      :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
+      @click:append="show1 = !show1"
+      ></v-text-field>
+      <NuxtLink to="/lupa-password">
+      <h4 class="d-flex flex-row-reverse">Lupa Password ?</h4>
+      </NuxtLink>
+      <v-btn 
+        block 
+        dark 
+        x-large 
+        class="mt-5" 
         color="#4EC49A"
-        ></v-text-field>
-        <v-text-field
-        label="Password"
-        single-line
-        outlined
-        class="mt-4"
-        color="#4EC49A"
-        :type="show1 ? 'text' : 'password'"
-        :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
-        @click:append="show1 = !show1"
-        ></v-text-field>
-        <NuxtLink to="/lupa-password">
-        <h4 class="d-flex flex-row-reverse greenaccent-2--text">Lupa Password ?</h4>
-        </NuxtLink>
-        <v-btn 
-            block 
-            dark 
-            x-large 
-            class="mt-5" 
-            color="#4EC49A"
-            @click="login"> Masuk </v-btn><br>
-        <span class="mt-3 d-flex justify-center grey--text">Atau</span><br>
-        
+        type="submit"
+      > Masuk </v-btn><br>
+      <span class="mt-3 d-flex justify-center grey--text" >Atau</span><br>
+  </form>
         <v-btn 
             block 
             dark 
@@ -61,29 +70,68 @@
             outlined color="#4EC49A"
             @click="registration"> Daftar </v-btn>
   </v-card>
-  <br><br><br>
+  <br><br>
 </v-card>
 </template>
 
 <script>
+import Notification from './Notification'
+
 export default {
+  components: {
+    Notification,
+  },
     data: () => ({
       show1: false,
+      email: '',
+      password: '',
+      // userInfo: this.$store.state.userDetails,
+      error: ''
     }),
     methods: {
       registration() {
-        this.$router.push('/signup')
-      },
-      login() {
-        this.$router.push('/beranda')
+        this.$router.push('/daftar')
       },
       back() {
         this.$router.push('/')
+      },
+      // login() {
+      //   this.$router.push('/login/verifikasi')
+      // },
+      async login() {
+        //   const data = {
+        //   email: this.email,
+        //   password: this.password,
+        // }
+        // await this.$axios.post('/user/login', data)
+        // .then((res) => {
+        //   const userData = res.data
+        //     userData.user = userData
+        //   this.$store.commit('setUserDetails', userData.user)
+        // })
+        // this.$router.push('/beranda')
+        // .catch((e) => {
+        //   this.error = e.response.data.message
+        // })
+      try {
+        await this.$axios.post('/user/login', {
+          email: this.email,
+          password: this.password
+        })
+        this.$router.push('/beranda')
+      } catch (e) {
+        this.error = e.response.data.message
       }
-    }
+    },
   }
+}
 </script>
 
-<style>
-
+<style scoped>
+h4 {
+  color: #4EC49A;
+}
+.rounded-card{
+  border-radius:50px;
+}
 </style>

@@ -7,7 +7,7 @@
         height="650"
         hide-delimiter-background
         show-arrows-on-hover
-        class="mx-auto"
+        class="d-flex justify-center"
         align="center"
       >
         <v-carousel-item
@@ -91,11 +91,7 @@ html {
   background-color: #F8FEFC;
 }
 
-h1, h2 , h5, h4, p, h3, h2, {
-  color: #4EC49A;
-}
-
-span {
-  color: #27624D;
+.rounded-card{
+  border-radius:50px;
 }
 </style>
