@@ -31,7 +31,7 @@
     <br>
     <Notification v-if="error" :message="error"/>
     <form method="post" @submit.prevent="verifikasi">
-      <CodeInput v-model="code" type="input" :loading="false" class="input mx-auto" color="#4EC49A"/>
+      <CodeInput v-model="code" type="input" :loading="false" class="input mx-auto" color="#4EC49A" @change="onChange" @complete="onComplete" />
       <v-card-text align="center"><br>
         <p>Kode Verifikasi telah dikirim melalui <br>
         Email ke <span>rizkicc20318@gmail.com</span> </p>
@@ -56,27 +56,34 @@ export default {
     },
     data: () => ({
       code: '',
+      email: '',
+      error: null,
     }),
     methods: {
+        onChange(v) {
+            // eslint-disable-next-line no-console
+            console.warn("onChange ", v);
+        },
+        onComplete(v) {
+            this.code = v
+        },
         back() {
         this.$router.push('/login')
         },
+        // verifikasi() {
+        // this.$router.push('/lupa-password/success-new-password')
+        // },
         async verifikasi() {
           try {
             await this.$axios.post('/user/reset/update', {
               kode: this.code,
+              email: this.email,
             })
-          this.$router.push('/lupa-password/new-password')
+          this.$router.push('/lupa-password/success-new-password')
           } catch (e) {
             this.error = e.response.data.message
           }
         },
-        // onChange(v) {
-        //     console.log("onChange ", v);
-        // },
-        // onComplete(v) {
-        //     console.log("onComplete ", v);
-        // },
     }
   }
 </script>

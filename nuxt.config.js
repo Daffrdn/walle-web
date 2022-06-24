@@ -40,7 +40,6 @@ plugins: [{ src: '~/plugins/persistedState.client.js' }],
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
-    '@nuxtjs/auth-next'
   ],
 
 
@@ -53,11 +52,11 @@ plugins: [{ src: '~/plugins/persistedState.client.js' }],
   // auth: {
   //   strategies: {
   //     local: {
-  //       endpoints: {
-  //         login: { url: '/user/login', method: 'post', propertyName: 'token' },
-  //         user: false,
-  //         logout: false
-  //       }
+  //       // endpoints: {
+  //       //   login: { url: '/user/login', method: 'post', propertyName: 'token' },
+  //       //   user: false,
+  //       //   logout: false
+  //       // }
   //     }
   //   }
   // },

@@ -112,6 +112,7 @@ export default {
     phoneRules: [(v) => !!v || "Nomor telepon tidak boleh kosong"],
     vuePhone: {
         phone: "",
+        indo: "0",
         props: {
           clearable: true,
           fetchCountry: true,
@@ -124,7 +125,7 @@ export default {
             example: "Example:"
           }
         }
-      }
+      },
   }),
     computed: {
     passwordConfirmationRule() {
@@ -136,15 +137,15 @@ export default {
       this.$router.push('/login')
     },
     // register(){
-    //   this.$router.push('/daftar/verifikasi')
-    // },
+    //     this.$router.push('/daftar/verifikasi')
+    //   },
     async register() {
       try {
         await this.$axios.post('/user', {
           name: this.username,
           email: this.email,
           password: this.password,
-          phonenumber: this.vuePhone.phone,
+          phonenumber: this.vuePhone.indo + this.vuePhone.phone,
           roleid : 2,
         })
 

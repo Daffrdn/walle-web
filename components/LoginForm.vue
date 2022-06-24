@@ -85,8 +85,7 @@ export default {
       show1: false,
       email: '',
       password: '',
-      // userInfo: this.$store.state.userDetails,
-      error: ''
+      error: null
     }),
     methods: {
       registration() {
@@ -120,7 +119,7 @@ export default {
         })
         this.$router.push('/beranda')
       } catch (e) {
-        this.error = e.response.data.message
+        this.error = e.response.data.pesan
       }
     },
   }

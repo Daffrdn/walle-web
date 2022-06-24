@@ -55,7 +55,7 @@ export default {
         CodeInput
     },
     data: () => ({
-      email: '',
+      email: 'geozoom24@gmail.com',
       code: '',
     }),
     methods: {

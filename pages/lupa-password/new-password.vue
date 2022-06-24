@@ -92,7 +92,7 @@ export default {
             await this.$axios.post('/user/reset/update', {
               password: this.passwordBaru,
             })
-          this.$router.push('/lupa-password/succes-new-password')
+          this.$router.push('/lupa-password/verifikasi')
           } catch (e) {
             this.error = e.response.data.message
           }
