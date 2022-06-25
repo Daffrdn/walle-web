@@ -76,6 +76,7 @@
 export default {
     name: 'NewPasswwordpage',
     data: () => ({
+        error: null,
         show1: false,
         show2: false,
         passwordBaru: "",
@@ -85,18 +86,22 @@ export default {
     }),
     methods: {
       back() {
-        this.$router.push('/lupa-password/verifikasi')
+        this.$router.push('/lupa-password')
       },
-      async newPassword() {
-          try {
-            await this.$axios.post('/user/reset/update', {
-              password: this.passwordBaru,
-            })
-          this.$router.push('/lupa-password/verifikasi')
-          } catch (e) {
-            this.error = e.response.data.message
-          }
-        },
+      newPassword(){
+        this.$store.commit('add_password', this.passwordBaru)
+        this.$router.push('/lupa-password/verifikasi')
+      }
+      // async newPassword() {
+      //     try {
+      //       await this.$axios.post('/user/reset/update', {
+      //         password: this.passwordBaru,
+      //       })
+      //     this.$router.push('/lupa-password/verifikasi')
+      //     } catch (e) {
+      //       this.error = e.response.data.message
+      //     }
+      // },
     }
 }
 </script>

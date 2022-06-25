@@ -34,7 +34,7 @@
       <CodeInput type="input" :loading="false" class="input mx-auto" color="#4EC49A" @change="onChange" @complete="onComplete" />
       <v-card-text align="center"><br>
         <p>Kode Verifikasi telah dikirim melalui <br>
-        Email ke <span>rizkicc20318@gmail.com</span> </p>
+        Email ke <span v-text="$store.state.emails"></span> </p>
       </v-card-text>
       <a class="d-flex justify-center">Kirim Ulang</a><br>
       <v-btn dark type="submit" class="mx-auto d-flex justify-center" color="#4EC49A">Konfirmasi</v-btn>
@@ -55,13 +55,13 @@ export default {
         CodeInput
     },
     data: () => ({
-      email: 'geozoom24@gmail.com',
       code: '',
+      error: null
     }),
     methods: {
         onChange(v) {
           // eslint-disable-next-line no-console
-          console.warn("onChange ", v);
+          console.warn("onChange", v);
         },
         onComplete(v) {
           this.code = v;
@@ -72,7 +72,7 @@ export default {
         async verifikasi() {
           try {
             await this.$axios.post('/user/verifikasi', {
-              email: this.email,
+              email: this.$store.state.emails,
               code: this.code,
             })
 
@@ -81,7 +81,7 @@ export default {
             this.error = e.response.data.message
           }
         },
-    }
+    },
   }
 </script>
 

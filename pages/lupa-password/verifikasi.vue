@@ -34,7 +34,7 @@
       <CodeInput v-model="code" type="input" :loading="false" class="input mx-auto" color="#4EC49A" @change="onChange" @complete="onComplete" />
       <v-card-text align="center"><br>
         <p>Kode Verifikasi telah dikirim melalui <br>
-        Email ke <span>rizkicc20318@gmail.com</span> </p>
+        Email ke <span v-text="$store.state.emails"></span> </p>
       </v-card-text>
       <a class="d-flex justify-center">Kirim Ulang</a><br>
       <v-btn dark type="submit" class="mx-auto d-flex justify-center" color="#4EC49A">Selanjutkan</v-btn>
@@ -56,7 +56,6 @@ export default {
     },
     data: () => ({
       code: '',
-      email: '',
       error: null,
     }),
     methods: {
@@ -76,8 +75,9 @@ export default {
         async verifikasi() {
           try {
             await this.$axios.post('/user/reset/update', {
+              email: this.$store.state.emails,
               kode: this.code,
-              email: this.email,
+              password: this.$store.state.passwords,
             })
           this.$router.push('/lupa-password/success-new-password')
           } catch (e) {

@@ -32,13 +32,10 @@
     </v-navigation-drawer>
     <v-app-bar :clipped-left="clipped" fixed app color="white" elevation="1">
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <v-btn icon @click.stop="miniVariant = !miniVariant">
-        <v-icon>mdi-{{ `chevron-${miniVariant ? 'right' : 'left'}` }}</v-icon>
-      </v-btn>
       <v-btn icon @click.stop="clipped = !clipped">
-        <v-icon>mdi-application</v-icon>
+        <v-icon>mdi-{{ `chevron-${clipped ? 'down' : 'left'}` }}</v-icon>
       </v-btn>
-      <v-toolbar-title v-text="title" />
+      <v-toolbar-title v-text="items.title" />
       <v-spacer />
     </v-app-bar>
     <v-main>
@@ -73,8 +70,6 @@ export default {
           to: '/akun',
         },
       ],
-      miniVariant: false,
-      title: 'Beranda',
     }
   },
 }

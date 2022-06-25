@@ -69,14 +69,16 @@ export default {
       error: null,
     }),
     methods: {
+      // verifikasi(){
+      //   this.$store.commit('add_email', this.email);
+      //   this.$router.push('/lupa-password/new-password')
+      // },
       async verifikasi() {
       try {
         await this.$axios.post('/user/reset', {
           email: this.email,
         })
-        // await this.$axios.post('/user/reset/update', {
-        //   email: this.email,
-        // })
+        this.$store.commit('add_email', this.email)
         this.$router.push('/lupa-password/new-password')
       } catch (e) {
         this.error = e.response.data.message
