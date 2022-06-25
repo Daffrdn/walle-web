@@ -136,25 +136,25 @@ export default {
     back(){
       this.$router.push('/login')
     },
-    register(){
-      this.$store.commit('add_email', this.email);
-      this.$router.push('/daftar/verifikasi')
-    },
-    // async register() {
-    //   try {
-    //     await this.$axios.post('/user', {
-    //       name: this.username,
-    //       email: this.email,
-    //       password: this.password,
-    //       phonenumber: this.vuePhone.indo + this.vuePhone.phone,
-    //       roleid : 2,
-    //     })
-    //     this.$store.commit('add_email', this.email)
-    //     this.$router.push('/daftar/verifikasi')
-    //   } catch (e) {
-    //     this.error = e.response.data.message
-    //   }
+    // register(){
+    //   this.$store.commit('add_email', this.email);
+    //   this.$router.push('/daftar/verifikasi')
     // },
+    async register() {
+      try {
+        await this.$axios.post('/user', {
+          name: this.username,
+          email: this.email,
+          password: this.password,
+          phonenumber: this.vuePhone.indo + this.vuePhone.phone,
+          roleid : 2,
+        })
+        this.$store.commit('add_email', this.email)
+        this.$router.push('/daftar/verifikasi')
+      } catch (e) {
+        this.error = e.response.data.message
+      }
+    },
   },
 }
 </script>
