@@ -12,14 +12,14 @@
 export default {
   name: 'DefaultLayout',
   data() {
-    return {
-    }
+    return {}
   },
 }
 </script>
 
 <style>
-body, html {
+body,
+html {
   padding: 0;
   margin: 0;
   width: 100%;
@@ -37,6 +37,10 @@ html {
   bottom: 0;
   right: 0;
   background-color: #f8fefc;
+}
+
+* {
+  font-family: 'Poppins', sans-serif;
 }
 
 .bg-admin {
