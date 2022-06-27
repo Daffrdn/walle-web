@@ -106,6 +106,7 @@ h2 {
 
 span {
   color: #27624d;
+}
 .rounded-card{
   border-radius:50px;
 }
