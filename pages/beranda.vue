@@ -12,6 +12,7 @@
 export default {
   name: 'BerandaPages',
   layout: "user",
+  // middleware: 'auth',
 
 }
 </script>

@@ -72,7 +72,33 @@
         counter
         @click:append="show2 = !show2"
       ></v-text-field>
-      <VuePhoneNumberInput  v-model="vuePhone.phone" v-bind="vuePhone.props" required/>
+      <!-- <VuePhoneNumberInput  v-model="vuePhone.phone" v-bind="vuePhone.props" required height="300"/> -->
+      <v-row>
+        <v-col cols="12" sm="2">
+          <v-card class="country-img pa-2" height="56px" outlined>
+            <v-row>
+              <v-col sm="6" class="ml-4 pr-0">
+                <v-img height="40" contain src="/Bendera.png" label="+62" />
+              </v-col>
+              <v-col class="mt-2 pl-0">
+                <span>+62</span>
+              </v-col>
+            </v-row>
+          </v-card>
+        </v-col>
+        <v-col cols="12" sm="10">
+          <v-text-field
+            v-model="phone"
+            type="text"
+            label=" Nomor Telepon"
+            color="black"
+            single-line
+            required
+            outlined
+            class="phone-input"
+          />
+        </v-col>
+      </v-row>
       <br>
         <!-- <v-overflow-btn :items="dropdown_country" label="Country" outlined color="#4EC49A"></v-overflow-btn>
         <v-text-field label="No. Hp" single-line outlined max-width="40px" color="#4EC49A"></v-text-field> -->
@@ -87,13 +113,13 @@
 </template>
 
 <script>
-import VuePhoneNumberInput from 'vue-phone-number-input';
-import 'vue-phone-number-input/dist/vue-phone-number-input.css';
+// import VuePhoneNumberInput from 'vue-phone-number-input';
+// import 'vue-phone-number-input/dist/vue-phone-number-input.css';
 import Notification from './Notification.vue'
 
 export default {
   components:{
-    VuePhoneNumberInput,
+    // VuePhoneNumberInput,
     Notification,
   },
     data: () => ({
@@ -110,22 +136,24 @@ export default {
     nameRules: [(v) => !!v || "Lengkapi namamu dulu ya"],
     emailRules: [(v) => !!v || "Lengkapi emailmu dulu "],
     phoneRules: [(v) => !!v || "Nomor telepon tidak boleh kosong"],
-    vuePhone: {
-        phone: "",
-        indo: "0",
-        props: {
-          clearable: true,
-          fetchCountry: true,
-          preferredCountries: ["US", "GB"],
-          noExample: false,
-          translations: {
-            countrySelectorLabel: "Country code",
-            countrySelectorError: "Error",
-            phoneNumberLabel: "Enter your phone",
-            example: "Example:"
-          }
-        }
-      },
+    phone: '',
+    indo: '0'
+    // vuePhone: {
+    //     phone: "",
+    //     indo: "0",
+    //     props: {
+    //       clearable: true,
+    //       fetchCountry: true,
+    //       preferredCountries: ["US", "GB"],
+    //       noExample: false,
+    //       translations: {
+    //         countrySelectorLabel: "Country code",
+    //         countrySelectorError: "Error",
+    //         phoneNumberLabel: "Enter your phone",
+    //         example: "Example:"
+    //       }
+    //     }
+    //   },
   }),
     computed: {
     passwordConfirmationRule() {
@@ -146,13 +174,13 @@ export default {
           name: this.username,
           email: this.email,
           password: this.password,
-          phonenumber: this.vuePhone.indo + this.vuePhone.phone,
+          phonenumber: this.indo + this.phone,
           roleid : 2,
         })
         this.$store.commit('add_email', this.email)
         this.$router.push('/daftar/verifikasi')
       } catch (e) {
-        this.error = e.response.data.message
+        this.error = e.response.data.pesan
       }
     },
   },
@@ -165,5 +193,17 @@ h3 {
 }
 .rounded-card{
   border-radius:50px;
+}
+  .country-img {
+  border: 1px solid rgba(78, 196, 154, 0.4);
+  border-radius: 10px;
+}
+.v-text-field--outlined >>> fieldset {
+  border: 1px solid rgba(78, 196, 154, 0.4);
+  border-radius: 10px;
+}
+
+span {
+  font-size: 16px;
 }
 </style>

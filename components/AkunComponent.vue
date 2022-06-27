@@ -20,6 +20,16 @@
       Edit
       <v-icon>mdi-pencil-box-outline</v-icon>
       </v-btn>
+      <v-btn
+      text
+      color="#4EC49A"
+      x-large
+      class="mx-auto d-flex justify-center"
+      @click="logout"
+      >
+      Log out
+      <v-icon>mdi-user</v-icon>
+      </v-btn>
     </v-card-text>
     <br><br>
   </v-card>

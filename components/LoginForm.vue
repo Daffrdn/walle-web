@@ -95,33 +95,22 @@ export default {
         this.$router.push('/')
       },
       // login() {
-      //   this.$router.push('/login/verifikasi')
-      // },
-      async login() {
-        //   const data = {
-        //   email: this.email,
-        //   password: this.password,
-        // }
-        // await this.$axios.post('/user/login', data)
-        // .then((res) => {
-        //   const userData = res.data
-        //     userData.user = userData
-        //   this.$store.commit('setUserDetails', userData.user)
-        // })
-        // this.$router.push('/beranda')
-        // .catch((e) => {
-        //   this.error = e.response.data.message
-        // })
-      try {
-        await this.$axios.post('/user/login', {
-          email: this.email,
-          password: this.password
-        })
-        this.$router.push('/beranda')
-      } catch (e) {
-        this.error = e.response.data.pesan
-      }
-    },
+      //     this.$store.dispatch('authentication/fetchLogin',{
+      //       email: this.email,
+      //       password: this.password,
+      //     })
+      //   } 
+        async login() {
+        try {
+          await this.$axios.post('/user/login', {
+            email: this.email,
+            password: this.password
+          })
+            this.$router.push('/beranda')
+          } catch(e) {
+            this.error = e.response.data.pesan
+          }
+        },
   }
 }
 </script>

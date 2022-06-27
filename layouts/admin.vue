@@ -43,15 +43,14 @@
           <v-list-item
             v-for="(admin, i) in admins"
             :key="i"
-            :to="i.to"
+            :to="admin.to"
             router
-            link
             exact
           >
-            <v-list-item-title v-text="admin.title"></v-list-item-title>
+            <v-list-item-title class="white--text" v-text="admin.title"></v-list-item-title>
 
             <v-list-item-icon>
-              <v-icon v-text="admin.icon"></v-icon>
+              <v-icon></v-icon>
             </v-list-item-icon>
           </v-list-item>
         </v-list-group>
@@ -97,10 +96,12 @@ export default {
       drawer: false,
       admins: [
         {
-         title: "Tambah Produk"
+         title: "Tambah Saldo",
+         to: "/admin/tambah-saldo"
         },
         {
-         title: "Tambah Stok",
+         title: "Tambah Produk",
+         to: "/admin/tambah-produk"
         }
       ],
       miniVariant: false,

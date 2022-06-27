@@ -13,6 +13,7 @@
 export default {
   name: 'RiwayatPages',
   layout: 'user',
+  // middleware: 'auth',
 }
 </script>
 

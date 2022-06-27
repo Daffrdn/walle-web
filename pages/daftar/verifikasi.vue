@@ -31,7 +31,14 @@
     <br>
     <Notification v-if="error" :message="error"/>
     <form method="post" @submit.prevent="verifikasi">
-      <CodeInput type="input" :loading="false" class="input mx-auto" color="#4EC49A" @change="onChange" @complete="onComplete" />
+    <v-otp-input
+      v-model="otp"
+      height="100px"
+      color="#4EC49A"
+      type="number"
+      length="6"
+    ></v-otp-input>
+      <!-- <CodeInput type="input" :loading="false" class="input mx-auto" color="#4EC49A" @change="onChange" @complete="onComplete" /> -->
       <v-card-text align="center"><br>
         <p>Kode Verifikasi telah dikirim melalui <br>
         Email ke <span v-text="$store.state.emails"></span> </p>
@@ -47,25 +54,25 @@
 </template>
 
 <script>
-import CodeInput from "vue-verification-code-input";
+// import CodeInput from "vue-verification-code-input";
 
 export default {
     name: 'VerifikasiPages',
     components: {
-        CodeInput
+        // CodeInput
     },
     data: () => ({
-      code: '',
-      error: null
+      error: null,
+      otp: '',
     }),
     methods: {
-        onChange(v) {
-          // eslint-disable-next-line no-console
-          console.warn("onChange", v);
-        },
-        onComplete(v) {
-          this.code = v;
-        },
+        // onChange(v) {
+        //   // eslint-disable-next-line no-console
+        //   console.warn("onChange", v);
+        // },
+        // onComplete(v) {
+        //   this.code = v;
+        // },
         back() {
         this.$router.push('/login')
         },
@@ -73,12 +80,12 @@ export default {
           try {
             await this.$axios.post('/user/verifikasi', {
               email: this.$store.state.emails,
-              code: this.code,
+              code: this.otp,
             })
 
             this.$router.push('/beranda')
           } catch (e) {
-            this.error = e.response.data.message
+            this.error = e.response.data.pesan
           }
         },
     },
@@ -86,6 +93,14 @@ export default {
 </script>
 
 <style scoped>
+.v-otp-input >>> input {
+  font-size: 24px;
+  color: #4ec49a;
+}
+
+.v-otp-input >>> fieldset {
+  border-color: rgba(78, 196, 154, 0.4);
+}
 .rounded-card{
   border-radius:50px;
 }
