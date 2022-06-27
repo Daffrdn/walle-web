@@ -12,14 +12,14 @@
 export default {
   name: 'DefaultLayout',
   data() {
-    return {
-    }
+    return {}
   },
 }
 </script>
 
 <style>
-body, html {
+body,
+html {
   padding: 0;
   margin: 0;
   width: 100%;
@@ -31,20 +31,14 @@ html {
 }
 
 .bg {
-  width: 100%;
-  height: 100%;
   position: absolute;
   top: 0;
   left: 0;
-  background-size: cover;
-  background-color: #F8FEFC;
+  bottom: 0;
+  right: 0;
+  background-color: #f8fefc;
 }
-
-h1,h2,h5,h4,p {
-  color: #4EC49A;
-}
-
-h2,span,h3 {
-  color: #27624D;
+* {
+  font-family: 'Poppins', sans-serif;
 }
 </style>

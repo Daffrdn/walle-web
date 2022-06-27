@@ -1,0 +1,123 @@
+<template>
+  <v-card class="container">
+    <v-row class="d-flex justify-center mx-auto">
+      <span class="title">Pembayaran Berhasil</span>
+    </v-row>
+    <div class="detail-wrapper">
+      <v-row class="d-flex justify-sm-space-between ma-0">
+        <span class="sub">No. Invoice </span>
+        <span class="sub-value">INV/05312022/PLS/0000001</span>
+      </v-row>
+      <v-row class="d-flex justify-sm-space-between ma-0 middle">
+        <span class="sub">Tanggal Transaksi </span>
+        <span class="sub-value">05 - 31 - 2022</span>
+      </v-row>
+      <v-row class="d-flex justify-sm-space-between ma-0">
+        <span class="sub">Jam </span>
+        <span class="sub-value">08 : 50 WIB </span>
+      </v-row>
+      <!-- LINE 1-->
+      <div class="line"></div>
+      <!-- LINE 1-->
+      <span class="sub-title">Detail Layanan</span>
+      <v-row class="d-flex justify-sm-space-between ma-0 mt-4">
+        <span class="sub">Layanan </span>
+        <span class="sub-value">Pulsa Indosat ( 1.000 )</span>
+      </v-row>
+      <v-row class="d-flex justify-sm-space-between ma-0 middle">
+        <span class="sub">Harga </span>
+        <span class="sub-value">Rp. 1.500</span>
+      </v-row>
+      <v-row class="d-flex justify-sm-space-between ma-0">
+        <span class="sub">No. Hp </span>
+        <span class="sub-value">0895 1537 0909</span>
+      </v-row>
+      <!-- LINE 2-->
+      <div class="line"></div>
+      <!-- LINE 2-->
+      <span class="sub-title">Total Pembayaran</span>
+      <v-row class="d-flex justify-sm-space-between ma-0 mt-4">
+        <span class="sub">Metode Pembayaran</span>
+        <span class="sub-value">Gopay</span>
+      </v-row>
+      <v-row class="d-flex justify-sm-space-between ma-0 middle">
+        <span class="sub">Total Pembayaran</span>
+        <span class="sub-value">Rp. 1.500</span>
+      </v-row>
+    </div>
+
+    <!-- button -->
+    <span class="d-flex justify-center"
+      ><v-btn x-large color="rgba(78, 196, 154, 1)" width="80%" class="buy"
+        >Beli Lagi</v-btn
+      ></span
+    >
+  </v-card>
+</template>
+
+<script>
+export default {
+  data() {
+    return {}
+  },
+}
+</script>
+
+<style scoped>
+.container {
+  width: 80%;
+  background-color: white;
+  margin: 2% auto;
+  box-shadow: 0px 4px 20px rgba(78, 196, 154, 0.05) !important;
+  border-radius: 50px;
+  padding-bottom: 50px;
+}
+.title {
+  color: rgba(78, 196, 154, 1);
+  font-weight: 700 !important;
+  font-size: 40px !important;
+  margin: 30px 0 40px 0;
+}
+.detail-wrapper {
+  width: 80%;
+  margin: 0 auto;
+  font-size: 24px;
+}
+
+.middle {
+  margin: 15px 0 !important;
+}
+.line {
+  width: 100%;
+  margin: 30px 0;
+  height: 2px;
+  background-color: #d9d9d9;
+}
+
+.sub-title {
+  color: rgba(78, 196, 154, 1);
+  font-size: 30px;
+  font-weight: bold;
+}
+.buy {
+  text-transform: none;
+  border-radius: 10px !important;
+  color: white;
+  box-shadow: none !important;
+  font-weight: bold;
+  margin-top: 10px;
+}
+@media only screen and (max-width: 920px) {
+  .sub {
+    font-weight: bold;
+  }
+  .sub-value {
+    margin-left: 5px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .title {
+    font-size: 30px !important;
+  }
+}
+</style>
