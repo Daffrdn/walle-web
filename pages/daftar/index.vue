@@ -2,6 +2,7 @@
 <div class="bg">
     <br>
     <SignupForm/>
+    <br>
 </div>
 </template>
 
@@ -17,5 +18,8 @@ export default{
 
 </script>
 
-<style>
+<style scoped>
+h3 {
+  color: #4EC49A,
+}
 </style>
