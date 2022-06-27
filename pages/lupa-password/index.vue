@@ -2,10 +2,9 @@
 <div class="bg">
 <br>
 <v-card
-    class="mx-auto mt-5"
+    class="mx-auto mt-5 rounded-card"
     max-width="1200"
-    elevation="1"
-    shaped
+    elevation="2"
   ><br>
   <v-card
   class="mx-auto mt-3"
@@ -25,42 +24,66 @@
   max-width="1000"
   elevation="0"
   >
-  <br>
+  <br><br><br>
+  <Notification v-if="error" :message="error"/>
+  <form method="post" @submit.prevent="verifikasi">
   <h3 color="#4EC49A">Email</h3>
     <v-text-field
-        label="Masukkan Email"
-        single-line
-        outlined
-        class="mt-3"
+      v-model="email"
+      label="Masukkan Email"
+      single-line
+      outlined
+      required
+      type="email"
+      class="mt-3"
+      color="#4EC49A"
+      ></v-text-field>
+      <v-btn 
+        block 
+        dark 
+        x-large 
+        type="submit"
+        class="mt-5" 
         color="#4EC49A"
-        ></v-text-field>
-        <v-btn 
-            block 
-            dark 
-            x-large 
-            class="mt-5" 
-            color="#4EC49A"
-            @click="next"> 
-        Selanjutnya
-        </v-btn>
+        > 
+      Selanjutnya
+      </v-btn>
     <br>
+  </form>
   </v-card>
   <br><br><br><br>
   <br><br><br><br>
-  <br><br>
 </v-card>
 </div>
 </template>
 
 <script>
+import Notification from '~/components/Notification'
 export default {
     name: 'LupaPasswwordpage',
+    components:{
+      Notification,
+    },
     data: () => ({
+      email: "",
+      error: null,
     }),
     methods: {
-      next() {
-        this.$router.push('/lupa-password/verifikasi')
-      },
+      // verifikasi(){
+      //   this.$store.commit('add_email', this.email);
+      //   this.$router.push('/lupa-password/new-password')
+      // },
+      async verifikasi() {
+      try {
+        await this.$axios.post('/user/reset', {
+          email: this.email,
+        })
+        this.$store.commit('add_email', this.email)
+        this.$router.push('/lupa-password/new-password')
+      } catch (e) {
+        this.error = e.response.data.message
+      }
+    },
       back() {
         this.$router.push('/login')
       }
@@ -68,6 +91,8 @@ export default {
   }
 </script>
 
-<style>
-
+<style scoped>
+.rounded-card{
+  border-radius:50px;
+}
 </style>

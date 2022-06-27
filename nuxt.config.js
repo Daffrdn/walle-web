@@ -20,8 +20,8 @@ export default {
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [],
 
-  // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [],
+// Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
+plugins: [{ src: '~/plugins/persistedState.client.js' }],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -29,7 +29,7 @@ export default {
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
     // https://go.nuxtjs.dev/eslint
-    '@nuxtjs/eslint-module',
+    // '@nuxtjs/eslint-module',
     // https://go.nuxtjs.dev/vuetify
     '@nuxtjs/vuetify',
   ],
@@ -42,11 +42,25 @@ export default {
     '@nuxtjs/pwa',
   ],
 
+
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: '/',
+    baseURL: 'http://178.128.124.201/',
   },
+
+  // auth: {
+  //   strategies: {
+  //     local: {
+  //       // endpoints: {
+  //       //   login: { url: '/user/login', method: 'post', propertyName: 'token' },
+  //       //   user: false,
+  //       //   logout: false
+  //       // }
+  //     }
+  //   }
+  // },
+  
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
@@ -54,6 +68,8 @@ export default {
       lang: 'en',
     },
   },
+
+  
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
@@ -73,6 +89,7 @@ export default {
       },
     },
   },
+
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
