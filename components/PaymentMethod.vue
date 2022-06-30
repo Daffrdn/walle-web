@@ -1,68 +1,62 @@
 <template>
   <v-card class="container">
-    <v-card-title class="title">
-      <v-btn icon>
-        <v-icon x-large color="rgba(59, 23, 36, 1)"> mdi-chevron-left </v-icon>
-      </v-btn>
-      <h2 class="pembayaran">Pembayaran</h2>
-    </v-card-title>
-    <div class="detail-wrapper">
-      <h2 class="sub-title mb-6">Detail Pembayaran</h2>
-      <div class="detail-cost">
-        <v-row class="d-flex justify-space-between ma-0">
-          <span>Nama Produk</span>
-          <span>aa</span>
-        </v-row>
-        <v-row class="d-flex justify-space-between ma-0 middle">
-          <span>Harga</span>
-          <span>Rpaa</span>
-        </v-row>
-        <v-row class="d-flex justify-space-between ma-0">
-          <span>Biaya Admin</span>
-          <span>Gratis</span>
-        </v-row>
-        <div class="line"></div>
-        <!-- Payment -->
-        <span class="sub-title">Pilih Metode Pembayaran</span>
-        <form action="" class="form mt-3">
-          <div class="inputGroup">
-            <input id="gopay" name="method" type="radio" />
-            <label for="gopay">
-              <img
-                src="/payment/gopay.png"
-                width="30px"
-                class="justify-center"
-                alt="gopay"
-              />
-
-              <span class="ml-2">GOPAY</span></label
-            >
-          </div>
-          <div class="inputGroup">
-            <input id="ovo" name="method" type="radio" />
-            <label for="ovo">
-              <img
-                src="/payment/ovo.png"
-                width="35px"
-                class="justify-center"
-                alt="ovo"
-              />
-              <span class="ml-2">OVO</span></label
-            >
-          </div>
-        </form>
-        <!-- End of Payment -->
-
-        <div class="wrapper-total">
-          <v-row class="total-row d-flex align-center justify-space-between">
-            <span>
-              <span class="font-weight-regular total-bayar">Total Bayar</span>
-              <p class="total font-weight-bold ma-0 mt-1">20.000</p>
-            </span>
-            <v-btn color="#4EC49A" class="pay-button mb-1" x-large
-              >Bayar Sekarang</v-btn
-            >
+    <div class="wrapper">
+      <v-card-title class="title">
+        <v-btn icon @click="back">
+          <v-icon x-large color="rgba(59, 23, 36, 1)">
+            mdi-chevron-left
+          </v-icon>
+        </v-btn>
+        <h2 class="pembayaran">Pembayaran</h2>
+      </v-card-title>
+      <div class="detail-wrapper">
+        <h2 class="sub-title mb-6">Detail Pembayaran</h2>
+        <div class="detail-cost">
+          <v-row class="d-flex justify-space-between ma-0">
+            <span>Nama Produk</span>
+            <span>aa</span>
           </v-row>
+          <v-row class="d-flex justify-space-between ma-0 middle">
+            <span>Harga</span>
+            <span>Rpaa</span>
+          </v-row>
+          <v-row class="d-flex justify-space-between ma-0">
+            <span>Biaya Admin</span>
+            <span>Gratis</span>
+          </v-row>
+          <div class="line"></div>
+          <!-- Payment -->
+          <span class="sub-title">Pilih Metode Pembayaran</span>
+          <form action="" class="form mt-3">
+            <div class="inputGroup">
+              <input id="gopay" name="method" type="radio" />
+              <label for="gopay">
+                <img src="/payment/gopay.png" width="30px" alt="gopay" />
+
+                <span class="ml-2 payment">GOPAY</span></label
+              >
+            </div>
+            <div class="inputGroup">
+              <input id="ovo" name="method" type="radio" />
+              <label for="ovo">
+                <img src="/payment/ovo.png" width="35px" alt="ovo" />
+                <span class="ml-2 payment">OVO</span></label
+              >
+            </div>
+          </form>
+          <!-- End of Payment -->
+
+          <div class="wrapper-total">
+            <v-row class="total-row d-flex align-center justify-space-between">
+              <span>
+                <span class="font-weight-regular total-bayar">Total Bayar</span>
+                <p class="total font-weight-bold ma-0 mt-1">20.000</p>
+              </span>
+              <v-btn color="#4EC49A" class="pay-button mb-1" x-large
+                >Bayar Sekarang</v-btn
+              >
+            </v-row>
+          </div>
         </div>
       </div>
     </div>
@@ -85,7 +79,11 @@ export default {
       return this.$store.state
     },
   },
-  methods: {},
+  methods: {
+    back() {
+      this.$router.push('/')
+    },
+  },
 }
 </script>
 
@@ -95,7 +93,7 @@ export default {
 }
 /* form */
 .inputGroup {
-  background-color: #fff;
+  background-color: #ffff;
   display: block;
   margin: 10px 0;
   position: relative;
@@ -110,19 +108,23 @@ label img {
 
 .detail-cost span {
   font-weight: 400;
-  font-size: 24px;
+  font-size: 16px;
 }
 label {
   padding: 18px 30px;
   display: block;
   text-align: left;
-  color: #737373;
   cursor: pointer;
   position: relative;
   z-index: 2;
   transition: color 200ms ease-in;
   border-radius: 10px;
   overflow: hidden;
+}
+.payment {
+  color: #434343;
+  float: left;
+  margin-top: 6px;
 }
 label:before {
   width: 100%;
@@ -192,23 +194,28 @@ input {
 }
 /* end of form */
 .container {
-  width: 80%;
+  width: 90%;
   background-color: white;
   margin: 2% auto;
   box-shadow: 0px 4px 20px rgba(78, 196, 154, 0.05) !important;
-  border-radius: 50px;
+  border-radius: 10px;
   padding-bottom: 100px;
 }
+.wrapper {
+  margin: 0px 10% 4%;
+}
 .title {
-  margin: 10px 5% 40px;
+  margin: 40px 0 40px -0.7%;
+  padding: 0 !important;
 }
 .pembayaran {
-  color: rgba(59, 23, 36, 1);
-  font-weight: 500;
+  font-size: 16px;
   margin-left: 1.5%;
+  color: rgba(59, 23, 36, 1);
+  font-weight: 400;
 }
 .detail-wrapper {
-  width: 80%;
+  /* width: 80%; */
   margin: 0 auto;
   font-size: 24px;
 }
@@ -216,7 +223,7 @@ input {
   margin: 15px 0 !important;
 }
 .sub-title {
-  font-size: 24px;
+  font-size: 16px !important;
   font-weight: bold !important;
 }
 
@@ -238,22 +245,26 @@ input {
 .total {
   color: #4ec49a;
   font-weight: 700;
-  font-size: 30px;
+  font-size: 32px;
 }
 .total-bayar {
   font-weight: 500;
-  font-size: 24px;
-  line-height: 16px;
+  font-size: 16px;
   color: #434343;
 }
 
 .pay-button {
   text-transform: none;
   color: white;
-  font-weight: bold;
-  font-size: 20px;
+  font-weight: normal;
+  font-size: 16px;
   box-shadow: none !important;
   border-radius: 10px;
   padding: 30px !important;
+}
+@media only screen and (max-width: 600px) {
+  .pay-button {
+    width: 150px;
+  }
 }
 </style>

@@ -77,13 +77,12 @@
             v-show="product"
             :key="item.id"
             cols="12"
-            sm="6"
-            md="4"
-            lg="3"
+            md="12"
+            lg="6"
             ><v-card
               :class="[item.tersedia == false ? 'activeClass' : '']"
-              class="detail-pulsa-nominal d-flex flex-column align-center justify-center pa-2 ma-1"
-              height="160px"
+              class="detail-pulsa-nominal d-flex flex-column align-start justify-center pa-2 ma-1"
+              height="130px"
               @click="saveParam(item)"
             >
               <span v-if="item.tersedia == false" class="empty"
@@ -92,13 +91,13 @@
                   mdi-alert-circle-outline</v-icon
                 >
               </span>
-              <span class="mb-1">
+              <span class="mb-1 mt-6 ml-4">
                 <span class="pulsa-rp font-weight-bold">Rp</span>
                 <span class="pulsa-price font-weight-bold"
                   >{{ item.harga }}
                 </span>
               </span>
-              <p class="get-pulsa">Pulsa : {{ item.nominal }}</p>
+              <p class="get-pulsa ml-4">10 Gb + Semua Jaringan 24 Jam</p>
             </v-card>
           </v-col>
           <!-- end of Product -->
@@ -126,11 +125,11 @@
 
 <script>
 export default {
-  name: 'NominalPulsa',
+  name: 'NominalPaketData',
 
   data: () => ({
-    kategori: '1',
-    provider: '1',
+    kategori: '0',
+    provider: '0',
     activeClass: 'disabled',
     number: '',
     total: '',
@@ -199,47 +198,46 @@ export default {
         this.indosat = true
         this.product = true
         this.fetchProduct({
-          kategori: 1,
+          kategori: 2,
           provider: 2,
         })
       } else if (telkomsel.test(this.number)) {
         this.telkomsel = true
         this.product = true
         this.fetchProduct({
-          kategori: 1,
+          kategori: 2,
           provider: 6,
         })
       } else if (tri.test(this.number)) {
         this.tri = true
         this.product = true
         this.fetchProduct({
-          kategori: 1,
+          kategori: 2,
           provider: 7,
         })
       } else if (xl.test(this.number)) {
         this.xl = true
         this.product = true
         this.fetchProduct({
-          kategori: 1,
+          kategori: 2,
           provider: 8,
         })
       } else if (axis.test(this.number)) {
         this.axis = true
         this.product = true
         this.fetchProduct({
-          kategori: 1,
+          kategori: 2,
           provider: 1,
         })
       } else if (smartfren.test(this.number)) {
         this.smartfren = true
         this.product = true
         this.fetchProduct({
-          kategori: 1,
+          kategori: 2,
           provider: 4,
         })
       } else {
         // if false
-
         this.smartfren = false
         this.tri = false
         this.indosat = false
@@ -278,6 +276,7 @@ export default {
 
 .wrapper {
   margin: 0px 10% 4%;
+  /* padding: 10px 10%; */
 }
 .empty {
   color: #ff0000 !important;
@@ -346,14 +345,14 @@ p {
   box-shadow: none !important;
 }
 .detail-pulsa-nominal:hover {
-  border: none !important;
+  border: 1px solid rgba(78, 196, 154, 0.15) !important;
   background: rgba(78, 196, 154, 0.15);
 }
 
 .detail-pulsa-nominal:focus {
   background: rgba(78, 196, 154, 0.1);
   box-shadow: 0px 4px 40px rgba(78, 196, 154, 0.06) !important;
-  border: none !important;
+  border: 1px solid rgba(78, 196, 154, 0.15) !important;
 }
 .provider-img {
   border: 1px solid rgba(78, 196, 154, 0.4);

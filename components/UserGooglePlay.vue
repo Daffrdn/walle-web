@@ -8,73 +8,13 @@
               mdi-chevron-left
             </v-icon>
           </v-btn>
-          <h2 class="pulsa">Pulsa</h2>
+          <h2 class="pulsa">Voucher Game</h2>
         </v-card-title>
-        <span><h2 class="sub-title mb-4 ml-3">Nomor Telepon</h2></span>
-
-        <v-row>
-          <v-col cols="12" sm="2">
-            <v-card class="provider-img pa-2" height="56px" outlined>
-              <v-img
-                v-show="indosat"
-                height="38px"
-                contain
-                src="/provider/indosat.png"
-              />
-              <v-img
-                v-show="telkomsel"
-                height="38px"
-                contain
-                src="/provider/telkomsel.png"
-              />
-              <v-img v-show="xl" height="38px" contain src="/provider/xl.png" />
-              <v-img
-                v-show="axis"
-                height="38px"
-                contain
-                src="/provider/axis.png"
-              />
-              <v-img
-                v-show="tri"
-                height="38px"
-                contain
-                src="/provider/tri.png"
-              />
-              <v-img
-                v-show="smartfren"
-                height="38px"
-                contain
-                src="/provider/smartfren.png"
-              />
-            </v-card>
-          </v-col>
-          <v-col cols="12" sm="10">
-            <v-text-field
-              v-model="number"
-              oninput="this.value = this.value.replace(/[^0-9]/g, '')"
-              :rules="phoneRules"
-              type="text"
-              label="Nomor Telepon"
-              outlined
-              color="black"
-              single-line
-              @keyup="isPhoneValid"
-            />
-
-            <span v-show="phoneErr" style="color: red"
-              >Incorrect phone number
-            </span>
-          </v-col>
-        </v-row>
-        <h2 v-show="product" class="pb-6 sub-title ml-3">
-          Pilih Nominal Pulsa :
-        </h2>
 
         <v-row class="d-flex justify-center">
           <!-- Product -->
           <v-col
             v-for="item in listPulsa.produk"
-            v-show="product"
             :key="item.id"
             cols="12"
             sm="6"
@@ -126,28 +66,14 @@
 
 <script>
 export default {
-  name: 'NominalPulsa',
+  name: 'NominalGooglePlay',
 
   data: () => ({
-    kategori: '1',
+    kategori: '3',
     provider: '1',
-    activeClass: 'disabled',
-    number: '',
     total: '',
     totalShow: false,
     parameter: '',
-    phoneRules: [
-      (v) => v.length > 10 || 'Nomor terlalu pendek, minimal 10 karakter',
-    ],
-    phoneErr: false,
-    product: false,
-    // provider
-    xl: false,
-    tri: false,
-    axis: false,
-    telkomsel: false,
-    indosat: false,
-    smartfren: false,
   }),
   computed: {
     listPulsa() {
@@ -185,70 +111,6 @@ export default {
       window.console.log(this.parameter)
       this.$router.push({ path: '/produk/' + this.parameter })
     },
-    isPhoneValid() {
-      const indosat = /^(\\+62|\\+0|0|62)8(57|56)[0-9]{0,9}$/
-      const telkomsel =
-        /^(\\+62|\\+0|0|62)8(52|53|11|12|13|21|22|51)[0-9]{0,9}$/
-      const tri = /^(\\+62|\\+0|0|62)8(96|95|97|98|99)[0-9]{0,9}$/
-      const xl = /^(\\+62|\\+0|0|62)8(18|19|59|77|78)[0-9]{0,9}$/
-      const axis = /^(\\+62|\\+0|0|62)8(32|33|38)[0-9]{0,9}$/
-      const smartfren =
-        /^(\\+62|\\+0|0|62)8(81|82|83|84|85|86|86|88|89)[0-9]{0,9}$/
-      if (indosat.test(this.number)) {
-        // if true
-        this.indosat = true
-        this.product = true
-        this.fetchProduct({
-          kategori: 1,
-          provider: 2,
-        })
-      } else if (telkomsel.test(this.number)) {
-        this.telkomsel = true
-        this.product = true
-        this.fetchProduct({
-          kategori: 1,
-          provider: 6,
-        })
-      } else if (tri.test(this.number)) {
-        this.tri = true
-        this.product = true
-        this.fetchProduct({
-          kategori: 1,
-          provider: 7,
-        })
-      } else if (xl.test(this.number)) {
-        this.xl = true
-        this.product = true
-        this.fetchProduct({
-          kategori: 1,
-          provider: 8,
-        })
-      } else if (axis.test(this.number)) {
-        this.axis = true
-        this.product = true
-        this.fetchProduct({
-          kategori: 1,
-          provider: 1,
-        })
-      } else if (smartfren.test(this.number)) {
-        this.smartfren = true
-        this.product = true
-        this.fetchProduct({
-          kategori: 1,
-          provider: 4,
-        })
-      } else {
-        // if false
-
-        this.smartfren = false
-        this.tri = false
-        this.indosat = false
-        this.telkomsel = false
-        this.axis = false
-        this.xl = false
-        this.product = false
-      }
-    },
   },
 }
 </script>
@@ -269,11 +131,6 @@ export default {
 .title {
   margin: 40px 0 40px -0.7%;
   padding: 0 !important;
-}
-.sub-title {
-  color: rgba(67, 67, 67, 1);
-  font-weight: 400;
-  font-size: 16px;
 }
 
 .wrapper {
