@@ -53,4 +53,7 @@ html {
   background: #F9EDF2;
 }
 
+.btn {
+    text-transform: unset !important;
+}
 </style>

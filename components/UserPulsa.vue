@@ -199,7 +199,7 @@ export default {
     },
     toPayment() {
       window.console.log(this.parameter)
-      this.$router.push({ path: '/user/' + this.parameter })
+      this.$router.push({ path: '/produk/' + this.parameter })
     },
     isPhoneValid() {
       const indosat = /^(\\+62|\\+0|0|62)8(57|56)[0-9]{0,9}$/

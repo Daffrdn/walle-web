@@ -1,9 +1,10 @@
 <template>
 <v-card
-    class="mx-auto mt-5 rounded-card"
+    class="mx-auto mt-5 container"
     max-width="1200"
     elevation="2"
-  ><br>
+  >
+  <div class="wrapper">
   <v-card
   class="mx-auto mt-3"
   max-width="1100"
@@ -56,7 +57,7 @@
         block 
         dark 
         x-large 
-        class="mt-5" 
+        class="mt-5 btn" 
         color="#4EC49A"
         type="submit"
       > Masuk </v-btn><br>
@@ -66,11 +67,12 @@
             block 
             dark 
             x-large 
-            class="mt-3" 
+            class="mt-3 btn" 
             outlined color="#4EC49A"
             @click="registration"> Daftar </v-btn>
   </v-card>
   <br><br>
+  </div>
 </v-card>
 </template>
 
@@ -119,7 +121,16 @@ export default {
 h4 {
   color: #4EC49A;
 }
-.rounded-card{
-  border-radius:50px;
+
+.wrapper {
+  margin: 0px 10% 4%;
+}
+
+.container {
+  width: 80%;
+  background-color: white;
+  margin: 2% auto;
+  box-shadow: 0px 4px 20px rgba(78, 196, 154, 0.05) !important;
+  border-radius: 10px;
 }
 </style>

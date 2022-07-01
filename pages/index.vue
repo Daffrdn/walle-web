@@ -30,7 +30,7 @@
           </div>
           <br />
           <div>
-            <v-btn dark color="#4EC49A" nuxt to="/login"> Login </v-btn>
+            <v-btn dark color="#4EC49A" class="btn" nuxt to="/login"> Login </v-btn>
           </div>
         </v-carousel-item>
       </v-carousel>
