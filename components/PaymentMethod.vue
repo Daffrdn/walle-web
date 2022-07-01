@@ -65,7 +65,7 @@
 
 <script>
 export default {
-  name: 'PaymentDetails',
+  name: 'PaymentMethod',
 
   data: () => ({
     radioGroup: 1,
