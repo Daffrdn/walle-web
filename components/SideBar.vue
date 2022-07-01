@@ -13,28 +13,25 @@
   elevation="0"
   >
     <v-card-title>
-      <v-img
-        max-width=""
-        alt=""
-        src="/logo-web.png"
-      ></v-img>
-
+      <img src="../static/1 51.png" width="150">
     </v-card-title>
+    <br><br>
   </v-card>
 
   <v-card
   color="#F8FEFC"
   max-width="300"
   elevation="0"
-  class="mx-auto ml-5"
+  class="mx-auto"
   >
   <v-row>
     <v-btn
-      raised
       elevation="0"
       x-large
       color="white"
-      class="ml-5"
+      plain
+      class="ml-5 rounded-card"
+      @click="beranda"
     >
       <v-img
           width="20"
@@ -44,11 +41,12 @@
       <h4 class="ml-5">Beranda</h4>
     </v-btn>
     <v-btn
-      plain
       elevation="0"
       x-large
+      plain
       color="white"
-      class="mt-3 ml-5"
+      class="mt-3 ml-5 rounded-card"
+      @click="riwayat"
     >
       <v-img
           width="20"
@@ -62,7 +60,8 @@
       elevation="0"
       x-large
       color="white"
-      class="mt-3 ml-5"
+      class="mt-3 ml-5 rounded-card"
+      @click="akun"
     >
       <v-img
           width="20"
@@ -84,9 +83,26 @@ export default {
 
     }
   },
+  methods: {
+    akun(){
+      this.$router.push('/akun')
+    },
+    riwayat(){
+      this.$router.push('/riwayat')
+    },
+    beranda(){
+      this.$router.push('/beranda')
+    }
+  }
 }
 </script>
 
-<style>
+<style scoped>
+.rounded-card{
+  border-radius: 50px;
+}
 
+h4 {
+  color: #4EC49A;
+}
 </style>
