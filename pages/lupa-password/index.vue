@@ -2,10 +2,10 @@
 <div class="bg">
 <br>
 <v-card
-    class="mx-auto mt-5 rounded-card"
+    class="mx-auto mt-5 container"
     max-width="1200"
     elevation="2"
-  ><br>
+  ><div class="wrapper">
   <v-card
   class="mx-auto mt-3"
   max-width="1100"
@@ -43,7 +43,7 @@
         dark 
         x-large 
         type="submit"
-        class="mt-5" 
+        class="mt-5 btn" 
         color="#4EC49A"
         > 
       Selanjutnya
@@ -53,6 +53,7 @@
   </v-card>
   <br><br><br><br>
   <br><br><br><br>
+  </div>
 </v-card>
 </div>
 </template>
@@ -94,5 +95,15 @@ export default {
 <style scoped>
 .rounded-card{
   border-radius:50px;
+}
+.wrapper {
+  margin: 0px 10% 4%;
+}
+.container {
+  width: 80%;
+  background-color: white;
+  margin: 2% auto;
+  box-shadow: 0px 4px 20px rgba(78, 196, 154, 0.05) !important;
+  border-radius: 10px;
 }
 </style>

@@ -3,10 +3,10 @@
 <div class="bg">
 <br>
 <v-card
-    class="mx-auto mt-5 rounded-card"
+    class="mx-auto mt-5 container"
     max-width="1200"
     elevation="2"
-  ><br>
+  ><div class="wrapper">
   <v-card
     class="mx-auto mt-3"
     max-width="1100"
@@ -44,11 +44,12 @@
         Email ke <span v-text="$store.state.emails"></span> </p>
       </v-card-text>
       <a class="d-flex justify-center">Kirim Ulang</a><br>
-      <v-btn dark type="submit" class="mx-auto d-flex justify-center" color="#4EC49A">Konfirmasi</v-btn>
+      <v-btn dark type="submit" class="mx-auto d-flex justify-center btn" color="#4EC49A">Konfirmasi</v-btn>
     </form>
   </v-card>
   <br><br><br>
   <br><br><br>
+  </div>
 </v-card>
 </div>
 </template>
@@ -111,5 +112,16 @@ h1,a,span {
 
 CodeInput{
   color: #4EC49A;
+}
+
+.wrapper {
+  margin: 0px 10% 4%;
+}
+.container {
+  width: 80%;
+  background-color: white;
+  margin: 2% auto;
+  box-shadow: 0px 4px 20px rgba(78, 196, 154, 0.05) !important;
+  border-radius: 10px;
 }
 </style>

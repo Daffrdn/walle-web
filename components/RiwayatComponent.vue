@@ -6,13 +6,13 @@
     <v-card-text>
       <v-row>
         <v-col col="12" md="4" sm="4">
-          <v-btn dark block color="#4EC49A" outlined x-large @click="berhasil">Berhasil</v-btn>
+          <v-btn dark block color="#4EC49A" class="btn" outlined x-large @click="berhasil">Berhasil</v-btn>
         </v-col>
         <v-col col="12" md="4" sm="4">  
-          <v-btn dark block color="#FFC961" outlined x-large @click="tertunda">Tertunda</v-btn>
+          <v-btn dark block color="#FFC961" class="btn" outlined x-large @click="tertunda">Tertunda</v-btn>
         </v-col>
         <v-col col="12" md="4" sm="4">  
-          <v-btn dark block color="#FF4D4D" outlined x-large @click="gagal">Gagal</v-btn>
+          <v-btn dark block color="#FF4D4D" class="btn" outlined x-large @click="gagal">Gagal</v-btn>
         </v-col>
       </v-row>
     </v-card-text>

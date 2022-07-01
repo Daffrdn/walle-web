@@ -15,7 +15,7 @@
       text
       color="#4EC49A"
       x-large
-      class="mx-auto d-flex justify-center"
+      class="mx-auto d-flex justify-center btn"
       >
       Edit
       <v-icon>mdi-pencil-box-outline</v-icon>
@@ -24,7 +24,7 @@
       text
       color="#4EC49A"
       x-large
-      class="mx-auto d-flex justify-center"
+      class="mx-auto d-flex justify-center btn"
       @click="logout"
       >
       Log out
