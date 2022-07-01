@@ -13,7 +13,7 @@ const mutations = {
 }
 const actions = {
   fetchProduct(store, { kategori, provider }) {
-    const API_URL = `http://178.128.124.201/produk/pilih?kategori=${kategori}&provider=${provider}`
+    const API_URL = `https://bearuang.me/produk/pilih?kategori=${kategori}&provider=${provider}`
     axios
       .get(API_URL)
       .then((response) => {

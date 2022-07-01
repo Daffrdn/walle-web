@@ -1,13 +1,13 @@
 <template>
   <div class="bg">
     <br />
-    <UserPulsa />
+    <UserPaketData />
   </div>
 </template>
 
 <script>
 export default {
-  name: 'PulsaPagess',
+  name: 'PaketDataPagess',
   data() {
     return {}
   },

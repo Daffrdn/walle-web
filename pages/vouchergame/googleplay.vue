@@ -1,13 +1,13 @@
 <template>
   <div class="bg">
     <br />
-    <UserPulsa />
+    <UserGooglePlay />
   </div>
 </template>
 
 <script>
 export default {
-  name: 'PulsaPagess',
+  name: 'UserGooglePlays',
   data() {
     return {}
   },
