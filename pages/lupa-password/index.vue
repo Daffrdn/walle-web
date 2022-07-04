@@ -115,5 +115,4 @@ export default {
 .v-text-field >>> input {
   color: #4ec49a !important;
 }
-
 </style>
