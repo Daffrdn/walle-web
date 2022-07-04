@@ -99,7 +99,14 @@ export default {
       if (_this.pageSize == null || _this.listCount == null) return 0;
       return Math.ceil(_this.listCount / _this.pageSize);
     },
+    listBerhasil() {
+        return this.$store.state.transaction.berhasil
+    },
   },
+  mounted() {
+        this.fetchBerhasil({
+        })
+    },
     created() {
     const _this = this;
     _this.initPage();
@@ -121,6 +128,10 @@ export default {
       _this.historyList = _this.list.slice(_start, _end);
       _this.page = pageIndex;
     },
+    fetchBerhasil() {
+        this.$store.dispatch('transaction/fetchBerhasil', {
+      })
+    }, 
   },
 }
 </script>

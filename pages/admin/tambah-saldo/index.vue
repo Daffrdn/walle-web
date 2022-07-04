@@ -8,9 +8,9 @@
     color="#C44E78"
     elevation="0"
     class="card"
-    >
+    >   
         <v-card-title class="d-flex justify-center">
-            <h1>Rp. 1000.0000</h1>
+            <h1>{{ listSaldo }}</h1>
         </v-card-title>
         <v-card-text class="ml-6">
             <span>Saldo saat ini</span>
@@ -35,10 +35,24 @@
 export default {
     name: "AdminTambahSaldoPages",
     layout: "admin",
+    middleware: "auth",
+    computed: {
+        listSaldo() {
+            return this.$store.state.saldo.listSaldo
+        },
+    },
+    mounted() {
+        this.fetchProduct({
+        })
+    },
     methods: {
         isiSaldo(){
             this.$router.push("/admin/tambah-saldo/isi-saldo")
-        }
+        },
+        fetchProduct() {
+            this.$store.dispatch('saldo/fetchProduct', {
+            })
+        },
     }
 }
 </script>

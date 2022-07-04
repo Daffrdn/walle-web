@@ -8,6 +8,7 @@
 <script>
 export default {
   name: 'MetodePembayaran',
+  middleware: 'auth',
   validate({ params }) {
     // Must be a number
     return /^\d+$/.test(params.id)

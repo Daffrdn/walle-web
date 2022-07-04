@@ -61,6 +61,7 @@ export default {
     components: {
         // CodeInput
     },
+    middleware: 'guest',
     data: () => ({
       otp: '',
       error: null,

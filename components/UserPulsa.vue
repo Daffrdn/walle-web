@@ -103,7 +103,7 @@
           </v-col>
           <!-- end of Product -->
 
-          <p>{{ listPulsa }}</p>
+          <p>{{ listPulsa}}</p>
         </v-row>
       </div>
     </v-card>

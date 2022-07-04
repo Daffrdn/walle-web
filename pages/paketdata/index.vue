@@ -8,6 +8,7 @@
 <script>
 export default {
   name: 'PaketDataPagess',
+  middleware: 'auth',
   data() {
     return {}
   },

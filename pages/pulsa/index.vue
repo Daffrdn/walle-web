@@ -8,6 +8,7 @@
 <script>
 export default {
   name: 'PulsaPagess',
+  middleware: 'auth',
   data() {
     return {}
   },

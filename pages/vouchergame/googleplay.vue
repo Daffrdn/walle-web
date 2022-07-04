@@ -8,6 +8,7 @@
 <script>
 export default {
   name: 'UserGooglePlays',
+  middleware: 'auth',
   data() {
     return {}
   },

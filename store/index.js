@@ -4,6 +4,8 @@ import Vuex from 'vuex'
 import pulsa from './pulsa'
 import user from './user'
 import authentication from './authentication'
+import saldo from './saldo'
+import transaction from './transaction'
 
 Vue.use(Vuex)
 
@@ -21,6 +23,14 @@ export default () =>
       authentication: {
         namespaced: true,
         ...authentication,
+      },
+      saldo: {
+        namespaced: true,
+        ...saldo,
+      },
+      transaction: {
+        namespaced: true,
+        ...transaction,
       },
     },
   })

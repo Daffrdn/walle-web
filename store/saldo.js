@@ -1,9 +1,33 @@
-export const state = () => ({
-    saldos: null,
-})
+import axios from 'axios'
 
-export const mutations = {
-    tambah_saldo(state, saldo){
-        state.saldos = saldo
-    },
+const state = () => ({
+  listSaldo: [],
+})
+const mutations = {
+  setSaldo(state, payload) {
+    state.listSaldo = payload
+  },
+  setError(state, payload) {
+    state.desc = payload
+  },
+}
+const actions = {
+  fetchProduct(store) {
+    const API_URL = `https://bearuang.me/kategori/saldo`
+    axios
+      .get(API_URL)
+      .then((response) => {
+        store.commit('setSaldo', response.data)
+      })
+
+      .catch((error) => {
+        store.commit('setError', error)
+      })
+  },
+}
+
+export default {
+  state,
+  actions,
+  mutations,
 }

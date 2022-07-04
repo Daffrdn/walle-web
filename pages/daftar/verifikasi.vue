@@ -62,10 +62,12 @@ export default {
     components: {
         // CodeInput
     },
+    middleware: 'guest',
     data: () => ({
       error: null,
       otp: '',
     }),
+    
     methods: {
         // onChange(v) {
         //   // eslint-disable-next-line no-console

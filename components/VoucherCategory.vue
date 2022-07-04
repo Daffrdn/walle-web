@@ -20,6 +20,7 @@
             ><v-card
               class="card-voucher d-flex flex-column align-center justify-center pa-2 ma-1"
               height="207px"
+              @click="gplay"
             >
               <v-img contain src="/game/gplay.png" />
               <!-- <v-img :src="require('~/assets/provider/ml.png')" contain></v-img> -->
@@ -36,7 +37,11 @@
 export default {
   name: 'VoucherCategory',
   data: () => ({}),
-  methods: {},
+  methods: {
+    gplay(){
+      this.$router.push('/vouchergame/googleplay')
+    }
+  },
 }
 </script>
 <style scoped>

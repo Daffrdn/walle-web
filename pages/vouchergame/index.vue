@@ -8,6 +8,7 @@
 <script>
 export default {
   name: 'CategoryVoucher',
+  middleware: 'auth',
   data() {
     return {}
   },
