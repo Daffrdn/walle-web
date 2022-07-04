@@ -65,6 +65,7 @@ export default {
     components:{
       Notification,
     },
+    middleware: 'guest',
     data: () => ({
       email: "",
       error: null,
@@ -105,5 +106,14 @@ export default {
   margin: 2% auto;
   box-shadow: 0px 4px 20px rgba(78, 196, 154, 0.05) !important;
   border-radius: 10px;
+}
+
+.v-text-field--outlined >>> fieldset {
+  box-shadow: 0px 4px 20px rgba(78, 196, 154, 0.05);
+  border: 1px solid #4ec49a;
+  border-radius: 10px;
+}
+.v-text-field >>> input {
+  color: #4ec49a !important;
 }
 </style>

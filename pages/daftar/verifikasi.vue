@@ -41,7 +41,7 @@
       <!-- <CodeInput type="input" :loading="false" class="input mx-auto" color="#4EC49A" @change="onChange" @complete="onComplete" /> -->
       <v-card-text align="center"><br>
         <p>Kode Verifikasi telah dikirim melalui <br>
-        Email ke <span v-text="$store.state.emails"></span> </p>
+        Email ke <span v-text="$store.state.user.emails"></span> </p>
       </v-card-text>
       <a class="d-flex justify-center">Kirim Ulang</a><br>
       <v-btn dark type="submit" class="mx-auto d-flex justify-center btn" color="#4EC49A">Konfirmasi</v-btn>
@@ -80,11 +80,11 @@ export default {
         async verifikasi() {
           try {
             await this.$axios.post('/user/verifikasi', {
-              email: this.$store.state.emails,
-              code: this.otp,
+              email: this.$store.state.user.emails,
+              kode: this.otp,
             })
 
-            this.$router.push('/beranda')
+            this.$router.push('/login')
           } catch (e) {
             this.error = e.response.data.pesan
           }

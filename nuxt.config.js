@@ -40,6 +40,7 @@ plugins: [{ src: '~/plugins/persistedState.client.js' }],
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
+    '@nuxtjs/auth'
   ],
 
 
@@ -49,17 +50,17 @@ plugins: [{ src: '~/plugins/persistedState.client.js' }],
     baseURL: 'https://bearuang.me/',
   },
 
-  // auth: {
-  //   strategies: {
-  //     local: {
-  //       // endpoints: {
-  //       //   login: { url: '/user/login', method: 'post', propertyName: 'token' },
-  //       //   user: false,
-  //       //   logout: false
-  //       // }
-  //     }
-  //   }
-  // },
+  auth: {
+    strategies: {
+      local: {
+        endpoints: {
+          login: { url: '/user/login', method: 'post', propertyName: 'token' },
+          user: { url: '/user', method: 'get'},
+          logout: false
+        }
+      }
+    }
+  },
   
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa

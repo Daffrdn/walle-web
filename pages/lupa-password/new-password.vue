@@ -76,6 +76,7 @@
 <script>
 export default {
     name: 'NewPasswwordpage',
+    middleware: 'guest',
     data: () => ({
         error: null,
         show1: false,
@@ -90,7 +91,7 @@ export default {
         this.$router.push('/lupa-password')
       },
       newPassword(){
-        this.$store.commit('add_password', this.passwordBaru)
+        this.$store.commit('user/add_password', this.passwordBaru)
         this.$router.push('/lupa-password/verifikasi')
       }
       // async newPassword() {
@@ -121,4 +122,13 @@ export default {
   box-shadow: 0px 4px 20px rgba(78, 196, 154, 0.05) !important;
   border-radius: 10px;
 }
+.v-text-field--outlined >>> fieldset {
+  box-shadow: 0px 4px 20px rgba(78, 196, 154, 0.05);
+  border: 1px solid #4ec49a;
+  border-radius: 10px;
+}
+.v-text-field >>> input {
+  color: #4ec49a !important;
+}
+
 </style>

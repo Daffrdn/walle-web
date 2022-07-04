@@ -44,6 +44,7 @@
 <script>
 export default {
     name: 'SuccessPasswwordpage',
+    middleware: 'guest',
     data: () => ({
     }),
     methods: {

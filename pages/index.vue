@@ -1,47 +1,48 @@
 <template>
-  <v-row justify="center" align="center">
-    <v-col cols="12" sm="8" md="6">
-      <v-carousel
-        cycle
-        width="600"
-        height="650"
-        hide-delimiter-background
-        show-arrows-on-hover
-        class="d-flex justify-center"
-        align="center"
-      >
-        <v-carousel-item
-          v-for="(item, i) in items"
-          :key="i"
+    <v-row class="d-flex align-center justify-center">
+      <v-col cols="12" sm="8" md="6">
+        <v-carousel
+          cycle
           width="600"
-          class="mx-auto"
-          reverse-transition="fade-transition"
-          transition="fade-transition"
+          height="650"
+          hide-delimiter-background
+          show-arrows-on-hover
+          class="d-flex justify-center"
+          align="center"
         >
-          <img class="mx-auto" width="400" :src="item.src" />
-          <h1 align="center">{{ item.title }}</h1>
-          <br />
-          <div align="center">
-            <span align="center">{{ item.text }}</span
-            ><br />
-            <span align="center">{{ item.text1 }}</span
-            ><br />
-            <span align="center">{{ item.text2 }}</span>
-          </div>
-          <br />
-          <div>
-            <v-btn dark color="#4EC49A" class="btn" nuxt to="/login"> Login </v-btn>
-          </div>
-        </v-carousel-item>
-      </v-carousel>
-      <!-- <v-btn color="primary" nuxt to="/beranda"> Homepage </v-btn> -->
-    </v-col>
-  </v-row>
+          <v-carousel-item
+            v-for="(item, i) in items"
+            :key="i"
+            width="600"
+            class="mx-auto"
+            reverse-transition="fade-transition"
+            transition="fade-transition"
+          >
+            <img class="mx-auto" width="400" :src="item.src" />
+            <h1 align="center">{{ item.title }}</h1>
+            <br />
+            <div align="center">
+              <span align="center">{{ item.text }}</span
+              ><br />
+              <span align="center">{{ item.text1 }}</span
+              ><br />
+              <span align="center">{{ item.text2 }}</span>
+            </div>
+            <br />
+            <div>
+              <v-btn dark color="#4EC49A" class="btn" nuxt to="/login"> Login </v-btn>
+            </div>
+          </v-carousel-item>
+        </v-carousel>
+        <!-- <v-btn color="primary" nuxt to="/beranda"> Homepage </v-btn> -->
+      </v-col>
+    </v-row>
 </template>
 
 <script>
 export default {
   name: 'IndexPage',
+  middleware: 'guest',
   data() {
     return {
       items: [
