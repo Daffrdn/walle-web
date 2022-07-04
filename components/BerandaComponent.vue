@@ -85,10 +85,10 @@ export default {
           this.$router.push("/pulsa")
         },
         paketData(){
-          this.$router.push("/paket-data")
+          this.$router.push("/paketdata")
         },
         voucherGames(){
-          this.$router.push("/voucher-games")
+          this.$router.push("/vouchergame")
         },
       }
 }
