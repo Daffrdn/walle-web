@@ -1,13 +1,17 @@
 <template>
   <div class="bg">
     <br />
-    <UserPulsa />
+    <PaymentMethod />
   </div>
 </template>
 
 <script>
 export default {
-  name: 'PulsaPagess',
+  name: 'MetodePembayaran',
+  validate({ params }) {
+    // Must be a number
+    return /^\d+$/.test(params.id)
+  },
   data() {
     return {}
   },

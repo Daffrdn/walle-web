@@ -1,13 +1,13 @@
 <template>
   <div class="bg">
     <br />
-    <UserPulsa />
+    <VoucherCategory />
   </div>
 </template>
 
 <script>
 export default {
-  name: 'PulsaPagess',
+  name: 'CategoryVoucher',
   data() {
     return {}
   },
