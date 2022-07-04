@@ -1,9 +1,10 @@
-export const state = () => ({
+const state = () => ({
     emails: [],
     passwords: [],
 })
 
-export const mutations = {
+
+const mutations = {
     add_email(state, email){
         state.emails = email
     },
@@ -11,3 +12,8 @@ export const mutations = {
         state.passwords = password
     }
 }
+
+export default {
+    state,
+    mutations,
+  }

@@ -164,7 +164,7 @@ export default {
     axis: false,
     telkomsel: false,
     indosat: false,
-  }),
+  }), 
   computed: {
     listPulsa() {
       return this.$store.state.pulsa.listProduct

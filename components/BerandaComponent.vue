@@ -18,14 +18,13 @@
         </v-list-item-action>
 
         <v-list-item-content>
-          <h3 class="white--text">Nomor Telepon Utama</h3>
-          <v-list-item-title></v-list-item-title>
-          <span class="white--text">0895 1537 0909</span>
-        </v-list-item-content>
+            <h3 class="white--text">Nomor Telepon Utama</h3>
+              <v-list-item-title></v-list-item-title>
+            <span class="white--text" >{{loggedInUser.nomor_handphone}}</span>
+        </v-list-item-content>  
       </v-list-item>
     </v-card-actions>
     <br />
-
   </v-card>
 
   <v-card
@@ -67,11 +66,20 @@
 
 <script>
 export default {
+  layout: "user",
   data() {
         return {
 
         }
       },
+      computed: {
+    loggedInUser(){
+      return this.$store.state.auth.user
+    },
+    isAuthenticated(){
+      return this.$store.state.auth.loggedIn
+    }
+  },
       methods: {
         pulsa(){
           this.$router.push("/pulsa")

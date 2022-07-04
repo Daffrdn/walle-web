@@ -1,5 +1,5 @@
 <template>
-<div >
+<div v-if="$store.state.auth.loggedIn">
   <v-row>
     <v-col>
       <BerandaComponent/>
@@ -12,7 +12,6 @@
 export default {
   name: 'BerandaPages',
   layout: "user",
-  // middleware: 'auth',
-
+  middleware: 'auth',
 }
 </script>
