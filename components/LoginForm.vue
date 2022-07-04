@@ -1,9 +1,10 @@
 <template>
 <v-card
-    class="mx-auto mt-5 rounded-card"
+    class="mx-auto mt-5 container"
     max-width="1200"
     elevation="2"
-  ><br>
+  >
+  <div class="wrapper">
   <v-card
   class="mx-auto mt-3"
   max-width="1100"
@@ -56,21 +57,23 @@
         block 
         dark 
         x-large 
-        class="mt-5" 
+        class="mt-5 btn" 
         color="#4EC49A"
         type="submit"
       > Masuk </v-btn><br>
       <span class="mt-3 d-flex justify-center grey--text" >Atau</span><br>
   </form>
-        <v-btn 
-            block 
-            dark 
-            x-large 
-            class="mt-3" 
-            outlined color="#4EC49A"
-            @click="registration"> Daftar </v-btn>
+      <v-btn 
+      block 
+      dark 
+      x-large 
+      class="mt-3 btn" 
+      outlined color="#4EC49A"
+      @click="registration"
+    > Daftar </v-btn>
   </v-card>
   <br><br>
+  </div>
 </v-card>
 </template>
 
@@ -85,7 +88,8 @@ export default {
       show1: false,
       email: '',
       password: '',
-      error: null
+      error: null,
+      message: 'Coba di ingat-ingat lagi password atau emailmu ada yang salah nih :('
     }),
     methods: {
       registration() {
@@ -102,13 +106,19 @@ export default {
       //   } 
         async login() {
         try {
-          await this.$axios.post('/user/login', {
-            email: this.email,
-            password: this.password
+          await this.$auth.loginWith('local', {
+            data: {
+              email: this.email,
+              password: this.password
+            }
           })
-            this.$router.push('/beranda')
+            // if (this.email === 'admin@gmail.com') {
+            //  this.$router.push('/admin');
+            // } else {
+             this.$router.push('/beranda');
+            // }
           } catch(e) {
-            this.error = e.response.data.pesan
+            this.error = this.message
           }
         },
   }
@@ -119,7 +129,25 @@ export default {
 h4 {
   color: #4EC49A;
 }
-.rounded-card{
-  border-radius:50px;
+
+.wrapper {
+  margin: 0px 10% 4%;
 }
+
+.container {
+  width: 80%;
+  background-color: white;
+  margin: 2% auto;
+  box-shadow: 0px 4px 20px rgba(78, 196, 154, 0.05) !important;
+  border-radius: 10px;
+}
+.v-text-field--outlined >>> fieldset {
+  box-shadow: 0px 4px 20px rgba(78, 196, 154, 0.05);
+  border: 1px solid #4ec49a;
+  border-radius: 10px;
+}
+.v-text-field >>> input {
+  color: #4ec49a !important;
+}
+
 </style>

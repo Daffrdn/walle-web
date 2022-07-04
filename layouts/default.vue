@@ -12,14 +12,14 @@
 export default {
   name: 'DefaultLayout',
   data() {
-    return {
-    }
+    return {}
   },
 }
 </script>
 
 <style>
-body, html {
+body,
+html {
   padding: 0;
   margin: 0;
   width: 100%;
@@ -39,6 +39,10 @@ html {
   background-color: #f8fefc;
 }
 
+* {
+  font-family: 'Poppins', sans-serif;
+}
+
 .bg-admin {
   position: absolute;
   top: 0;
@@ -49,4 +53,7 @@ html {
   background: #F9EDF2;
 }
 
+.btn {
+    text-transform: unset !important;
+}
 </style>

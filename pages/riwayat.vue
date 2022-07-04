@@ -1,5 +1,5 @@
 <template>
-<div class="">
+<div v-if="!ïsAuthenticated">
   <v-row>
       <v-col>
         <RiwayatComponent/>
@@ -13,7 +13,12 @@
 export default {
   name: 'RiwayatPages',
   layout: 'user',
-  // middleware: 'auth',
+  middleware: 'auth',
+  computed: {
+    isAuthenticated(){
+      return this.$store.state.auth.loggedIn
+    }
+  }
 }
 </script>
 

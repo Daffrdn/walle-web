@@ -1,9 +1,10 @@
 <template>
 <v-card
-    class="mx-auto mt-5 rounded-card"
+    class="mx-auto mt-5 container"
     max-width="1200"
     elevation="2"
   ><br>
+  <div class="wrapper">
   <v-card
   class="mx-auto mt-3"
   max-width="1100"
@@ -14,7 +15,7 @@
           mdi-chevron-left
           </v-icon>
         </v-btn>
-          <h2>Daftar</h2>
+        <h2>Daftar</h2>
     </v-card-title>
   </v-card>
   <v-card
@@ -103,12 +104,13 @@
         <!-- <v-overflow-btn :items="dropdown_country" label="Country" outlined color="#4EC49A"></v-overflow-btn>
         <v-text-field label="No. Hp" single-line outlined max-width="40px" color="#4EC49A"></v-text-field> -->
       <!-- <vue-tel-input-vuetify :valid-characters-only="true" placeholder="Nomor Telepon" label="Nomor Telepon" :rules="phoneRules" v-model="phoneNumber" single-line outlined :onlyCountries="['ID']"></vue-tel-input-vuetify> -->
-      <v-btn block dark x-large color="#4EC49A" type="submit"> Daftar </v-btn><br />
+      <v-btn block dark x-large color="#4EC49A" type="submit" class="btn"> Daftar </v-btn><br />
       </form>
         <span class="d-flex justify-center grey--text">Dengan ini saya setuju untuk mematuhi peraturan</span>
         <span class="d-flex justify-center grey--text">di platform ini serta kebijakan privasi</span>
   </v-card>
   <br><br>
+  </div>
 </v-card>
 </template>
 
@@ -165,19 +167,19 @@ export default {
       this.$router.push('/login')
     },
     // register(){
-    //   this.$store.commit('add_email', this.email);
+    //   this.$store.commit('user/add_email', this.email);
     //   this.$router.push('/daftar/verifikasi')
     // },
     async register() {
       try {
         await this.$axios.post('/user', {
-          name: this.username,
+          nama: this.username,
           email: this.email,
           password: this.password,
-          phonenumber: this.indo + this.phone,
-          roleid : 2,
+          nomor_handphone: this.indo + this.phone,
+          role_id : 2,
         })
-        this.$store.commit('add_email', this.email)
+        this.$store.commit('user/add_email', this.email)
         this.$router.push('/daftar/verifikasi')
       } catch (e) {
         this.error = e.response.data.pesan
@@ -194,16 +196,31 @@ h3 {
 .rounded-card{
   border-radius:50px;
 }
+.wrapper {
+  margin: 0px 10% 4%;
+}
+.container {
+  width: 80%;
+  background-color: white;
+  margin: 2% auto;
+  box-shadow: 0px 4px 20px rgba(78, 196, 154, 0.05) !important;
+  border-radius: 10px;
+}
   .country-img {
   border: 1px solid rgba(78, 196, 154, 0.4);
   border-radius: 10px;
 }
 .v-text-field--outlined >>> fieldset {
-  border: 1px solid rgba(78, 196, 154, 0.4);
+  box-shadow: 0px 4px 20px rgba(78, 196, 154, 0.05);
+  border: 1px solid #4ec49a;
   border-radius: 10px;
+}
+.v-text-field >>> input {
+  color: #4ec49a !important;
 }
 
 span {
   font-size: 16px;
 }
+
 </style>

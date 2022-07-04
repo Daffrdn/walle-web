@@ -4,15 +4,15 @@
   class="mx-auto mt-5"
   elevation="0">
     <v-card-text>
-      <v-row>
+      <v-row class="button_container">
         <v-col col="12" md="4" sm="4">
-          <v-btn dark block color="#4EC49A" outlined x-large @click="berhasil">Berhasil</v-btn>
+          <v-btn block exact link class="btn button-berhasil" outlined x-large @click="berhasil"><span>Berhasil</span></v-btn>
         </v-col>
         <v-col col="12" md="4" sm="4">  
-          <v-btn dark block color="#FFC961" outlined x-large @click="tertunda">Tertunda</v-btn>
+          <v-btn block class="btn button-tertunda" outlined x-large @click="tertunda"><span>Tertunda</span></v-btn>
         </v-col>
         <v-col col="12" md="4" sm="4">  
-          <v-btn dark block color="#FF4D4D" outlined x-large @click="gagal">Gagal</v-btn>
+          <v-btn block class="btn button-gagal" outlined x-large @click="gagal"><span>Gagal</span></v-btn>
         </v-col>
       </v-row>
     </v-card-text>
@@ -66,7 +66,81 @@ export default {
 .rounded-card{
   border-radius: 50px;
 }
-.rounded-cards{
-  border-radius: 15px;
+.buttonContainer{
+  margin-top:100px;
+  text-align:center;
+}
+.button-berhasil{
+  display:inline-block;
+  
+  font:normal normal 300 1.3em 'Open Sans';
+  text-decoration:none; 
+  
+  color:#4EC49A;
+  background-color:transparent;
+  border:1px solid #4EC49A;
+  border-radius:10px;
+  
+  padding: .3em 1.2em;
+  margin:5px;
+      
+  background-size: 200% 100%; 
+  background-image: linear-gradient(to right, transparent 50%, #4EC49A 50%);
+  transition: background-position .3s cubic-bezier(0.19, 1, 0.22, 1) .1s, color .5s ease 0s, background-color .5s ease;
+}
+
+.button-berhasil:hover{
+  color:rgba(255, 255, 255, 1);
+  background-color:#4EC49A;
+  background-position: -100% 100%;
+}
+
+.button-tertunda{
+  display:inline-block;
+  
+  font:normal normal 300 1.3em 'Open Sans';
+  text-decoration:none; 
+  
+  color:#FFC961;
+  background-color:transparent;
+  border:1px solid #FFC961;
+  border-radius:10px;
+  
+  padding: .3em 1.2em;
+  margin:5px;
+      
+  background-size: 200% 100%; 
+  background-image: linear-gradient(to right, transparent 50%, #FFC961 50%);
+  transition: background-position .3s cubic-bezier(0.19, 1, 0.22, 1) .1s, color .5s ease 0s, background-color .5s ease;
+}
+
+.button-tertunda:hover{
+  color:rgba(255, 255, 255, 1);
+  background-color:#FFC961;
+  background-position: -100% 100%;
+}
+.button-gagal{
+  display:inline-block;
+  
+  font:normal normal 300 1.3em 'Open Sans';
+  text-decoration:none; 
+  
+  color:#FF4D4D;
+  background-color:transparent;
+  border:1px solid #FF4D4D;
+  border-radius:10px;
+  
+  padding: .3em 1.2em;
+  margin:5px;
+      
+  background-size: 200% 100%; 
+  background-image: linear-gradient(to right, transparent 50%, #FF4D4D 50%);
+  transition: background-position .3s cubic-bezier(0.19, 1, 0.22, 1) .1s, color .5s ease 0s, background-color .5s ease;
+}
+
+.button-gagal:hover{
+  color:rgba(255, 255, 255, 1);
+  background-color:#FF4D4D;
+  background-position: -100% 100%;
 }
 </style>

@@ -1,12 +1,11 @@
 <template>
-    
 <div class="bg">
 <br>
 <v-card
-    class="mx-auto mt-5 rounded-card"
+    class="mx-auto mt-5 container"
     max-width="1200"
     elevation="2"
-  ><br>
+  ><div class="wrapper">
   <v-card
   class="mx-auto mt-3"
   max-width="1100"
@@ -41,14 +40,15 @@
       <!-- <CodeInput v-model="code" type="input" :loading="false" class="input mx-auto" color="#4EC49A" @change="onChange" @complete="onComplete" /> -->
       <v-card-text align="center"><br>
         <p>Kode Verifikasi telah dikirim melalui <br>
-        Email ke <span v-text="$store.state.emails"></span> </p>
+        Email ke <span v-text="$store.state.user.emails"></span> </p>
       </v-card-text>
       <a class="d-flex justify-center">Kirim Ulang</a><br>
-      <v-btn dark type="submit" class="mx-auto d-flex justify-center" color="#4EC49A">Selanjutkan</v-btn>
+      <v-btn dark type="submit" class="mx-auto d-flex justify-center btn" color="#4EC49A">Selanjutnya</v-btn>
     </form>
   </v-card>
   <br><br><br>
   <br><br><br>
+  </div>
 </v-card>
 </div>
 </template>
@@ -82,9 +82,9 @@ export default {
         async verifikasi() {
           try {
             await this.$axios.post('/user/reset/update', {
-              email: this.$store.state.emails,
+              email: this.$store.state.user.emails,
               kode: this.otp,
-              password: this.$store.state.passwords,
+              password: this.$store.state.user.passwords,
             })
           this.$router.push('/lupa-password/success-new-password')
           } catch (e) {
@@ -106,5 +106,26 @@ h1,a,span {
 
 CodeInput{
   color: #4EC49A;
+}
+
+.wrapper {
+  margin: 0px 10% 4%;
+}
+
+.container {
+  width: 80%;
+  background-color: white;
+  margin: 2% auto;
+  box-shadow: 0px 4px 20px rgba(78, 196, 154, 0.05) !important;
+  border-radius: 10px;
+}
+
+.v-otp-input >>> input {
+  font-size: 24px;
+  color: #4ec49a;
+}
+
+.v-otp-input >>> fieldset {
+  border-color: rgba(78, 196, 154, 0.4);
 }
 </style>

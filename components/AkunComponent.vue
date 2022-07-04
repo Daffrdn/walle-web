@@ -1,56 +1,90 @@
 <template>
 <div>
-  <v-card
-  class="mx-auto mt-5"
-  max-width="900"
-  elevation="0">
-    <v-card-text>
-      <v-avatar
-        color="#4EC49A"
-        class="mx-auto d-flex justify-center"
-        size="123"
-        dark
-      ></v-avatar>
+  <v-container>
+    <div class="d-flex align-center ml-3 mt-3">
+      <v-img src="/akun/akun.png" max-width="40px">
+      </v-img>
+      <span class="ml-5 mt-2">{{ loggedInUser.nama }}</span>
+    </div>
+  </v-container>
+  <v-divider class="mt-3"></v-divider>
+  <v-container>
+    <div class="d-flex justify-space-between mt-4">
+      <span>Email </span>
+      <div>
+        <span class="ml-5">{{ loggedInUser.email }}</span>
+        <v-btn 
+          icon
+          color="#4EC49A"
+          @click="changeEmail"
+        >
+        <v-icon>mdi-chevron-right</v-icon>
+        </v-btn>
+      </div>
+    </div>
+    <div class="d-flex justify-space-between mt-6">
+      <span>Nomor Telepon </span>
+      <div>
+        <span class="ml-5">{{ loggedInUser.nomor_handphone }}</span>
+        <v-btn 
+          icon
+          color="#4EC49A"
+          @click="changeTelepon"
+        >
+        <v-icon>mdi-chevron-right</v-icon>
+        </v-btn>
+      </div>
+    </div>
+    <div class="d-flex justify-end">
       <v-btn
       text
       color="#4EC49A"
       x-large
-      class="mx-auto d-flex justify-center"
-      >
-      Edit
-      <v-icon>mdi-pencil-box-outline</v-icon>
-      </v-btn>
-      <v-btn
-      text
-      color="#4EC49A"
-      x-large
-      class="mx-auto d-flex justify-center"
+      class="mt-4 btn"
       @click="logout"
       >
       Log out
-      <v-icon>mdi-user</v-icon>
+        <v-icon>mdi-user</v-icon>
       </v-btn>
-    </v-card-text>
-    <br><br>
-  </v-card>
+    </div>
+  </v-container>
 </div>
 </template>
 
 <script>
 export default {
   data() {
-        return {
+    return {
 
-        }
-      },
-      methods: {
-
-      }
+    }
+  },
+  computed: {
+    loggedInUser(){
+      return this.$store.state.auth.user
+    },
+    isAuthenticated(){
+      return this.$store.state.auth.loggedIn
+    }
+  },
+  methods: {
+    async logout() {
+      await this.$auth.logout();
+    },
+    changeEmail() {
+      this.$router.push('/akun/ganti-email')
+    },
+    changeTelepon() {
+      this.$router.push('/akun/ganti-telepon')
+    },
+  }
 }
 </script>
 
 <style scoped>
-
+span {
+  width: 352.67px;
+  height: 35px;
+}
 .rounded-card{
   border-radius: 50px;
 }

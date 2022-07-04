@@ -2,10 +2,10 @@
 <div class="bg">
 <br>
     <v-card
-        class="mx-auto mt-5 rounded-card"
-        max-width="1200"
-        elevation="2"
-    ><br>
+      class="mx-auto mt-5 container"
+      max-width="1200"
+      elevation="2"
+    ><div class="wrapper">
     <v-card
     class="mx-auto mt-3"
     max-width="1100"
@@ -52,12 +52,12 @@
         :type="show2 ? 'text' : 'password'"
         counter
         @click:append="show2 = !show2"
-        ></v-text-field>
+      ></v-text-field>
         <v-btn 
         block 
         dark 
         x-large 
-        class="mt-5" 
+        class="mt-5 btn" 
         color="#4EC49A"
         type="submit"
         > 
@@ -68,13 +68,15 @@
     </v-card>
     <br><br><br><br>
     <br><br>
-    </v-card>
+    </div>
+  </v-card>
 </div>
 </template>
 
 <script>
 export default {
     name: 'NewPasswwordpage',
+    middleware: 'guest',
     data: () => ({
         error: null,
         show1: false,
@@ -89,7 +91,7 @@ export default {
         this.$router.push('/lupa-password')
       },
       newPassword(){
-        this.$store.commit('add_password', this.passwordBaru)
+        this.$store.commit('user/add_password', this.passwordBaru)
         this.$router.push('/lupa-password/verifikasi')
       }
       // async newPassword() {
@@ -110,4 +112,23 @@ export default {
 .rounded-card{
   border-radius:50px;
 }
+.wrapper {
+  margin: 0px 10% 4%;
+}
+.container {
+  width: 80%;
+  background-color: white;
+  margin: 2% auto;
+  box-shadow: 0px 4px 20px rgba(78, 196, 154, 0.05) !important;
+  border-radius: 10px;
+}
+.v-text-field--outlined >>> fieldset {
+  box-shadow: 0px 4px 20px rgba(78, 196, 154, 0.05);
+  border: 1px solid #4ec49a;
+  border-radius: 10px;
+}
+.v-text-field >>> input {
+  color: #4ec49a !important;
+}
+
 </style>

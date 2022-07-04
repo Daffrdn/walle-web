@@ -9,6 +9,7 @@
 <script>
 export default{
     name: 'LoginPages',
+    middleware: 'guest',
     data(){
         return {
         
