@@ -1,5 +1,6 @@
 <template>
 <div>
+    {{listGagal}}
     <v-row>
     <v-col
           v-for="(item, i) in historyList"

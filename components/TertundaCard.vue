@@ -1,6 +1,7 @@
 <template>
 <div>
     {{listTertunda}}
+    {{ $auth.strategy.token }}
     <v-row>
     <v-col
           v-for="(item, i) in historyList"

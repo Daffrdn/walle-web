@@ -15,7 +15,11 @@ const actions = {
   fetchProduct(store) {
     const API_URL = `https://bearuang.me/kategori/saldo`
     axios
-      .get(API_URL)
+      .get(API_URL, {
+        headers: { 
+         'Authorization': this.$auth.$storage._state['_token.local']
+        }
+       })
       .then((response) => {
         store.commit('setSaldo', response.data)
       })

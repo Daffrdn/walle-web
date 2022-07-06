@@ -3,7 +3,7 @@ import axios from 'axios'
 const state = () => ({
   gagal: [],
   tertunda: [],
-  berhasil: []
+  berhasil: [],
 })
 const mutations = {
   setGagal(state, payload) {
@@ -12,7 +12,7 @@ const mutations = {
   setTertunda(state, payload) {
     state.tertunda = payload
   },
-  setberhasil(state, payload) {
+  setBerhasil(state, payload) {
     state.berhasil = payload
   },
   setError(state, payload) {
@@ -23,11 +23,15 @@ const actions = {
   fetchGagal(store) {
     const API_URL = `https://bearuang.me/transaksi/user?filter=gagal`
     axios
-      .get(API_URL)
+      .get(API_URL, {
+        headers: { 
+         'Authorization': this.$auth.$storage._state['_token.local']
+        }
+       })
       .then((response) => {
         store.commit('setGagal', response.data)
       })
-
+      
       .catch((error) => {
         store.commit('setError', error)
       })
@@ -35,7 +39,11 @@ const actions = {
   fetchTertunda(store) {
     const API_URL = `https://bearuang.me/transaksi/user?filter=tertunda`
     axios
-      .get(API_URL)
+      .get(API_URL,  {
+        headers: { 
+         'Authorization': this.$auth.$storage._state['_token.local']
+        }
+       })
       .then((response) => {
         store.commit('setTertunda', response.data)
       })
@@ -47,7 +55,11 @@ const actions = {
   fetchBerhasil(store) {
     const API_URL = `https://bearuang.me/transaksi/user?filter=berhasil`
     axios
-      .get(API_URL)
+      .get(API_URL,  {
+        headers: { 
+         'Authorization': this.$auth.$storage._state['_token.local']
+        }
+       })
       .then((response) => {
         store.commit('setBerhasil', response.data)
       })

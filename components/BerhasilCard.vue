@@ -1,5 +1,6 @@
 <template>
 <div>
+    {{listBerhasil}}
     <v-row>
     <v-col
           v-for="(item, i) in historyList"

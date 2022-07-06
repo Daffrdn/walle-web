@@ -21,7 +21,7 @@ export default {
   css: [],
 
 // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-plugins: [{ src: '~/plugins/persistedState.client.js' }],
+  plugins: [],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -53,8 +53,17 @@ plugins: [{ src: '~/plugins/persistedState.client.js' }],
   auth: {
     strategies: {
       local: {
+        token: {
+          property: 'token',
+          required: true,
+          global: true,
+        },
+        user: {
+          property: 'false',
+          autoFetch: true
+        },
         endpoints: {
-          login: { url: '/user/login', method: 'post', propertyName: 'token' },
+          login: { url: '/user/login', method: 'post'},
           user: { url: '/user', method: 'get'},
           logout: false
         }

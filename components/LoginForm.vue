@@ -112,11 +112,8 @@ export default {
               password: this.password
             }
           })
-            // if (this.email === 'admin@gmail.com') {
-            //  this.$router.push('/admin');
-            // } else {
+              console.log(this.$auth.$storage._state['_token.local'])
              this.$router.push('/beranda');
-            // }
           } catch(e) {
             this.error = this.message
           }

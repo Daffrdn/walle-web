@@ -62,7 +62,7 @@
 export default {
     name: 'AdminPage',
     layout: "admin",
-
+    // middleware: "admin",
 }
 </script>
 

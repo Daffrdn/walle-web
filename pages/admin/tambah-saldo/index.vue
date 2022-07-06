@@ -10,10 +10,10 @@
     class="card"
     >   
         <v-card-title class="d-flex justify-center">
-            <h1>{{ listSaldo }}</h1>
+            <h1></h1>
         </v-card-title>
         <v-card-text class="ml-6">
-            <span>Saldo saat ini</span>
+            <span>{{ listSaldo }}</span>
         </v-card-text>
         <br>
         <v-btn 
