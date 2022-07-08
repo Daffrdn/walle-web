@@ -112,7 +112,6 @@ export default {
               password: this.password
             }
           })
-              console.log(this.$auth.$storage._state['_token.local'])
              this.$router.push('/beranda');
           } catch(e) {
             this.error = this.message

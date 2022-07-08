@@ -3,31 +3,36 @@
     <br>
     <span>Tambah Saldo</span>
     <br>
-    <v-card 
-    dark
-    color="#C44E78"
-    elevation="0"
-    class="card"
-    >   
-        <v-card-title class="d-flex justify-center">
-            <h1></h1>
-        </v-card-title>
-        <v-card-text class="ml-6">
-            <span>{{ listSaldo }}</span>
-        </v-card-text>
-        <br>
-        <v-btn 
-         block 
-         dark 
-         x-large
-         class="mt-3 radius-button"
-         color="#B0466C"
-         elevation="0"
-         @click="isiSaldo"> 
-            Tambah Saldo
-            <v-icon>mdi-chevron-right</v-icon> 
-        </v-btn>
-    </v-card>
+    <v-row class="d-flex justify">
+        <v-col v-for="(saldo, i) in listSaldo.saldo" :key="i">
+            <v-card 
+            dark
+            color="#C44E78"
+            elevation="0"
+            class="card"
+            >   
+                <v-card-title class="d-flex justify-center">
+                    <h1>Rp. {{ saldo.saldo }}</h1>
+                </v-card-title>
+                <v-card-text class="ml-6">
+                    <span>saldo {{saldo.kategory.nama}} saat ini</span>
+                </v-card-text>
+                <br>
+                <v-btn 
+                block 
+                dark 
+                x-large
+                class="mt-3 radius-button"
+                color="#B0466C"
+                elevation="0"
+                @click="isiSaldo"
+                > 
+                Tambah Saldo
+                <v-icon>mdi-chevron-right</v-icon> 
+                </v-btn>
+            </v-card>
+        </v-col>
+    </v-row>
   </div>
 </template>
 

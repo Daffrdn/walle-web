@@ -20,17 +20,21 @@
             width="1000px"
             elevation="0"
         >
+        <form method="post" @submit.prevent="tambahSaldo">
             <v-card-text>
                 <span>Tambah Saldo</span>
-                <v-autocomplete
-                v-model="saldo"
-                :items="items"
-                outlined
-                color="#B0466C"
-                single-line
-                label="Pilih Nominal"
-                class="mt-3 autocomplete"
-            ></v-autocomplete>
+                <v-select
+                    v-model="saldo"
+                    type="input"
+                    :items="items"
+                    required
+                    outlined
+                    color="#B0466C"
+                    single-line
+                    label="Pilih Nominal"
+                    class="mt-3 autocomplete"
+                    prefix="Rp "
+                ></v-select>
             </v-card-text>
             <v-card-text class="mt-5">
                 <v-btn
@@ -39,11 +43,12 @@
                     color="#B0466C"
                     x-large
                     class="radius-button"
-                    @click="tambahSaldo"
+                    type="submit"
                 >
                     Tambah
                 </v-btn>
             </v-card-text>
+        </form>
         </v-card>
         <br><br><br><br>
         <br><br><br><br>
@@ -56,13 +61,25 @@
 export default {
     name: "AdminIsiSaldoPages",
     data: () => ({
-      items: ['Rp. 1000.000', 'Rp. 2000.000', 'Rp. 3000.000', 'Lainnya..'],
+      items: ['100000', '200000', '300000', 'Lainnya..'],
       saldo: null,
     }),
     methods: {
-        tambahSaldo(){
-            this.$store.commit('tambah_saldo', this.saldo)
-            this.$router.push("/admin/tambah-saldo") 
+        async tambahSaldo(){
+        try {
+          await this.$axios.post('/kategori/saldo', {
+              saldo: parseInt(this.saldo),
+              kategori_id: 1
+          }, {
+                headers: {
+                    Authorization: this.$auth.$storage._state['_token.local'],
+                },
+            }
+          )
+                this.$router.push("/admin/tambah-saldo") 
+          } catch(e) {
+            this.error = this.message
+          }
         }
     }
 }
