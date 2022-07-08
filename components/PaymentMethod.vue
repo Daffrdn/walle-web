@@ -14,15 +14,15 @@
         <div class="detail-cost">
           <v-row class="d-flex justify-space-between ma-0">
             <span>Nama Produk</span>
-            <span>aa</span>
+            <span>{{ list.deskripsi }}</span>
           </v-row>
           <v-row class="d-flex justify-space-between ma-0 middle">
             <span>Harga</span>
-            <span>Rpaa</span>
+            <span>Rp.{{ list.nominal }}</span>
           </v-row>
           <v-row class="d-flex justify-space-between ma-0">
             <span>Biaya Admin</span>
-            <span>Gratis</span>
+            <span>Rp. {{ list.harga - list.nominal }}</span>
           </v-row>
           <div class="line"></div>
           <!-- Payment -->
@@ -50,7 +50,7 @@
             <v-row class="total-row d-flex align-center justify-space-between">
               <span>
                 <span class="font-weight-regular total-bayar">Total Bayar</span>
-                <p class="total font-weight-bold ma-0 mt-1">20.000</p>
+                <p class="total font-weight-bold ma-0 mt-1">Rp. {{ list.harga }}</p>
               </span>
               <v-btn color="#4EC49A" class="pay-button mb-1" x-large
                 >Bayar Sekarang</v-btn
@@ -76,8 +76,9 @@ export default {
       return this.$route.params.id
     },
     list() {
-      return this.$store.state
+      return this.$store.state.pulsa.listProduct
     },
+  
   },
   methods: {
     back() {
