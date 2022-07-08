@@ -10,7 +10,10 @@
           </v-btn>
           <h2 class="pulsa">Voucher Game</h2>
         </v-card-title>
-
+        <v-flex>
+          <img width="120px" class="img-voucher" src="/game/gplay.png" />
+        </v-flex>
+        <p class="pilih-nominal mt-4">Pilih Nominal :</p>
         <v-row class="d-flex justify-center">
           <!-- Product -->
           <v-col
@@ -18,12 +21,11 @@
             :key="item.id"
             cols="12"
             sm="6"
-            md="4"
-            lg="3"
+            lg="4"
             ><v-card
               :class="[item.tersedia == false ? 'activeClass' : '']"
               class="detail-pulsa-nominal d-flex flex-column align-center justify-center pa-2 ma-1"
-              height="160px"
+              height="140px"
               @click="saveParam(item)"
             >
               <span v-if="item.tersedia == false" class="empty"
@@ -38,12 +40,10 @@
                   >{{ item.harga }}
                 </span>
               </span>
-              <p class="get-pulsa">Pulsa : {{ item.nominal }}</p>
+              <p class="get-pulsa">Saldo : {{ item.nominal }}</p>
             </v-card>
           </v-col>
           <!-- end of Product -->
-
-          <p>{{ listPulsa }}</p>
         </v-row>
       </div>
     </v-card>
@@ -70,7 +70,7 @@ export default {
 
   data: () => ({
     kategori: '3',
-    provider: '1',
+    provider: '3',
     total: '',
     totalShow: false,
     parameter: '',
@@ -94,7 +94,7 @@ export default {
       })
     },
     back() {
-      this.$router.push('/')
+      this.$router.push('/vouchergame')
     },
     saveParam(param) {
       this.totalShow = true
@@ -132,7 +132,9 @@ export default {
   margin: 40px 0 40px -0.7%;
   padding: 0 !important;
 }
-
+.pilih-nominal {
+  color: #434343;
+}
 .wrapper {
   margin: 0px 10% 4%;
 }
@@ -152,6 +154,9 @@ p {
 
 .warning-icon {
   float: right;
+}
+.img-voucher {
+  margin-left: 4%;
 }
 .pulsa-price {
   font-size: 32px;
