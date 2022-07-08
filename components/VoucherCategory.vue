@@ -20,12 +20,26 @@
             ><v-card
               class="card-voucher d-flex flex-column align-center justify-center pa-2 ma-1"
               height="207px"
-              @click="gplay"
+              @click="toGoogleplay"
             >
               <v-img contain src="/game/gplay.png" />
-              <!-- <v-img :src="require('~/assets/provider/ml.png')" contain></v-img> -->
             </v-card>
             <div class="name-voucher mt-2"><span>Google Play Store</span></div>
+          </v-col>
+          <v-col
+            class="flex justify-center text-center"
+            cols="12"
+            sm="8"
+            md="6"
+            lg="4"
+            ><v-card
+              class="card-voucher d-flex flex-column align-center justify-center pa-2 ma-1"
+              height="207px"
+              @click="toSteam"
+            >
+              <v-img contain src="/game/steam.png" />
+            </v-card>
+            <div class="name-voucher mt-2"><span>Steam</span></div>
           </v-col>
         </v-row>
       </div>
@@ -38,9 +52,15 @@ export default {
   name: 'VoucherCategory',
   data: () => ({}),
   methods: {
-    gplay(){
+    back() {
+      this.$router.push('/')
+    },
+    toGoogleplay() {
       this.$router.push('/vouchergame/googleplay')
-    }
+    },
+    toSteam() {
+      this.$router.push('/vouchergame/steam')
+    },
   },
 }
 </script>

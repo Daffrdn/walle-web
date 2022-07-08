@@ -4,10 +4,10 @@
     <v-card class="mx-auto title" width="1278px" elevation="1"
       ><br />
       <v-card-title class="ml-16">
-        <v-btn icon x-large>
+        <v-btn icon x-large @click="back">
           <v-icon>mdi-chevron-left</v-icon>
         </v-btn>
-        Tambah Produk
+        Tambah Produk Paket Data
       </v-card-title>
       <v-card class="mx-auto" width="1000px" elevation="0">
         <v-card-text>
@@ -32,7 +32,7 @@
               color="#B0466C"
               single-line
               required
-              label="Nominal produk pulsa yang akan dijual"
+              label="Nominal produk sebelum biaya admin"
               class="mb-6 autocomplete"
             ></v-text-field>
             <span>Harga</span>
@@ -52,7 +52,7 @@
               outlined
               color="#B0466C"
               single-line
-              label="contoh : Pulsa Axis 50k"
+              label="contoh : Tri 3GB"
               class="mb-6 autocomplete"
             ></v-text-field>
             <span>Deskripsi Produk</span>
@@ -61,7 +61,7 @@
               outlined
               color="#B0466C"
               single-line
-              label="contoh : Pulsa Axis 50000"
+              label="contoh : 3Gb + Semua Jaringan 24 Jam"
               class="mb-6 autocomplete"
             ></v-text-field>
             <v-btn
@@ -97,7 +97,7 @@
     <v-dialog class="" v-model="successful" width="400">
       <v-card class="dialog d-flex flex-column">
         <div class="dialog-img d-flex mt-10 mx-auto">
-          <!-- <img class="" height="150px" src="~/static/admin/berhasil.png" /> -->
+          <img class="" height="150px" src="~/static/admin/berhasil.png" />
         </div>
         <div class="dialog-text my-5 mx-auto">
           <p>Data berhasil Ditambahkan</p>
@@ -119,7 +119,7 @@
 
 <script>
 export default {
-  name: 'AdminTambahPulsa',
+  name: 'AdminTambahData',
   data: () => ({
     providers: [
       { id: 1, name: 'Axis' },
@@ -130,7 +130,7 @@ export default {
       { id: 8, name: 'XL' },
     ],
     posts: {
-      kategori_id: 1,
+      kategori_id: 2,
       provider_id: null,
       nominal: null,
       harga: null,
@@ -141,15 +141,20 @@ export default {
     successful: false,
   }),
   methods: {
+    back() {
+      this.$router.push('/admin/tambah-produk/pulsa')
+    },
+    emptyField() {
+      this.posts.nama = null
+      this.posts.nominal = null
+      this.posts.harga = null
+      this.posts.deskripsi = null
+      this.posts.provider_id = null
+    },
     async postData(e) {
-      // console.log(this.provider)
-      // console.log(this.nominal)
-      // console.log(this.harga)
       e.preventDefault()
-      console.log(this.$auth.$storage._state['_token.local'])
-
       await this.$axios.post(
-        '/produk/tambah',
+        '/produk',
         {
           nama: this.posts.nama,
           nominal: parseInt(this.posts.nominal),
@@ -157,8 +162,6 @@ export default {
           deskripsi: this.posts.deskripsi,
           kategori_id: this.posts.kategori_id,
           provider_id: this.posts.provider_id,
-          //   saldo: this.posts.saldo,
-          //   kategori_id: this.posts.kategori_id,
         },
         {
           headers: {
@@ -166,6 +169,8 @@ export default {
           },
         }
       )
+      this.successful = true
+      this.emptyField()
     },
   },
 }
@@ -189,7 +194,6 @@ span {
 
 .v-card {
   padding-bottom: 30px;
-  box-shadow: 0px 4px 20px rgba(78, 196, 154, 0.05) !important;
 }
 .v-text-field {
   border-radius: 10px;
