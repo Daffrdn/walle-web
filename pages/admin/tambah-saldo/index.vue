@@ -25,7 +25,7 @@
                 class="mt-3 radius-button"
                 color="#B0466C"
                 elevation="0"
-                @click="isiSaldo"
+                @click="isiSaldo(saldo)"
                 > 
                 Tambah Saldo
                 <v-icon>mdi-chevron-right</v-icon> 
@@ -47,16 +47,15 @@ export default {
         },
     },
     mounted() {
-        this.fetchProduct({
-        })
+        this.fetchProduct();
     },
     methods: {
-        isiSaldo(){
-            this.$router.push("/admin/tambah-saldo/isi-saldo")
+        isiSaldo(param){
+            this.$store.commit('saldo/setSaldo', param)
+            this.$router.replace({'path': '/admin/tambah-saldo/'+ param.id})
         },
         fetchProduct() {
-            this.$store.dispatch('saldo/fetchProduct', {
-            })
+            this.$store.dispatch('saldo/fetchProduct');
         },
     }
 }

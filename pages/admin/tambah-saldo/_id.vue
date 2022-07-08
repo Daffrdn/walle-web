@@ -10,6 +10,7 @@
         <v-btn
             icon
             x-large
+            @click="back"
         >
         <v-icon>mdi-chevron-left</v-icon>
         </v-btn>
@@ -22,7 +23,7 @@
         >
         <form method="post" @submit.prevent="tambahSaldo">
             <v-card-text>
-                <span>Tambah Saldo</span>
+                <span>Tambah Saldo {{ listSaldo.kategory.nama }}</span>
                 <v-select
                     v-model="saldo"
                     type="input"
@@ -60,16 +61,22 @@
 <script>
 export default {
     name: "AdminIsiSaldoPages",
+    middleware: 'auth',
     data: () => ({
       items: ['100000', '200000', '300000', 'Lainnya..'],
       saldo: null,
     }),
+    computed: {
+        listSaldo() {
+            return this.$store.state.saldo.listSaldo
+        },
+    },
     methods: {
         async tambahSaldo(){
         try {
           await this.$axios.post('/kategori/saldo', {
               saldo: parseInt(this.saldo),
-              kategori_id: 1
+              kategori_id: parseInt(this.$store.state.saldo.listSaldo.id)
           }, {
                 headers: {
                     Authorization: this.$auth.$storage._state['_token.local'],
@@ -80,7 +87,10 @@ export default {
           } catch(e) {
             this.error = this.message
           }
-        }
+        },
+        back(){
+            this.$router.push("/admin/tambah-saldo")
+        },
     }
 }
 </script>
