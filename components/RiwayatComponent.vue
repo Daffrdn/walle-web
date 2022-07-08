@@ -18,6 +18,7 @@
     </v-card-text>
       <div v-if="show1">
         <BerhasilCard/>
+
       </div>
       <div v-if="show2">  
         <TertundaCard/>
@@ -30,7 +31,17 @@
 </template>
 
 <script>
+import BerhasilCard from './riwayat/BerhasilCard.vue'
+import TertundaCard from './riwayat/TertundaCard.vue'
+import GagalCard from './riwayat/GagalCard.vue'
+
 export default {
+  name: 'RiwayatComponent',
+  components: {
+        GagalCard,
+        TertundaCard,
+        BerhasilCard
+      },
   data() {
         return {
           show1: false,
