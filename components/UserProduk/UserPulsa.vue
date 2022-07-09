@@ -77,29 +77,28 @@
             v-show="product"
             :key="item.id"
             cols="12"
-            md="12"
-            lg="6"
+            sm="6"
+            md="4"
+            lg="3"
             ><v-card
               :class="[item.tersedia == false ? 'activeClass' : '']"
-              class="detail-pulsa-nominal d-flex flex-column align-start justify-center pa-2 ma-1"
-              height="120px"
+              class="detail-pulsa-nominal d-flex flex-column align-center justify-center pa-2 ma-1"
+              height="160px"
               @click="saveParam(item)"
             >
-              <span v-if="item.tersedia == false" class="empty ml-4 mt-2"
+              <span v-if="item.tersedia == false" class="empty"
                 >Maaf, saldo lagi habis
                 <v-icon class="warning-icon ml-1" small color="red">
                   mdi-alert-circle-outline</v-icon
                 >
               </span>
-              <span class="mb-1 mt-5 ml-4">
+              <span class="mb-1">
                 <span class="pulsa-rp font-weight-bold">Rp</span>
                 <span class="pulsa-price font-weight-bold"
                   >{{ item.harga }}
                 </span>
               </span>
-              <p class="get-pulsa ml-4">
-                {{ item.deskripsi }}
-              </p>
+              <p class="get-pulsa">Pulsa : {{ item.nominal }}</p>
             </v-card>
           </v-col>
           <!-- end of Product -->
@@ -127,11 +126,11 @@
 
 <script>
 export default {
-  name: 'NominalPaketData',
+  name: 'NominalPulsa',
 
   data: () => ({
-    kategori: '0',
-    provider: '0',
+    kategori: '1',
+    provider: '1',
     activeClass: 'disabled',
     number: '',
     total: '',
@@ -174,7 +173,7 @@ export default {
     saveParam(param) {
       this.totalShow = true
       window.console.log(param.id)
-      this.parameter = param.id
+      this.parameter = param
       this.total = param.harga
       // console.log(param.harga)
       // this.detail = this.items[index].id
@@ -184,7 +183,8 @@ export default {
     },
     toPayment() {
       window.console.log(this.parameter)
-      this.$router.push({ path: '/produk/' + this.parameter })
+      this.$store.commit('pulsa/setProduct', this.parameter)
+      this.$router.push({ path: '/pulsa/' + this.parameter.id })
     },
     isPhoneValid() {
       const indosat = /^(\\+62|\\+0|0|62)8(57|56)[0-9]{0,9}$/
@@ -200,46 +200,47 @@ export default {
         this.indosat = true
         this.product = true
         this.fetchProduct({
-          kategori: 2,
+          kategori: 1,
           provider: 2,
         })
       } else if (telkomsel.test(this.number)) {
         this.telkomsel = true
         this.product = true
         this.fetchProduct({
-          kategori: 2,
+          kategori: 1,
           provider: 6,
         })
       } else if (tri.test(this.number)) {
         this.tri = true
         this.product = true
         this.fetchProduct({
-          kategori: 2,
+          kategori: 1,
           provider: 7,
         })
       } else if (xl.test(this.number)) {
         this.xl = true
         this.product = true
         this.fetchProduct({
-          kategori: 2,
+          kategori: 1,
           provider: 8,
         })
       } else if (axis.test(this.number)) {
         this.axis = true
         this.product = true
         this.fetchProduct({
-          kategori: 2,
+          kategori: 1,
           provider: 1,
         })
       } else if (smartfren.test(this.number)) {
         this.smartfren = true
         this.product = true
         this.fetchProduct({
-          kategori: 2,
+          kategori: 1,
           provider: 4,
         })
       } else {
         // if false
+
         this.smartfren = false
         this.tri = false
         this.indosat = false
@@ -278,11 +279,8 @@ export default {
 
 .wrapper {
   margin: 0px 10% 4%;
-  /* padding: 10px 10%; */
 }
 .empty {
-  position: absolute;
-  top: 0;
   color: #ff0000 !important;
   font-size: 12px;
   font-weight: 400;
@@ -347,17 +345,16 @@ p {
   color: rgba(78, 196, 154, 1);
   border: 1px solid #dfdfdf !important;
   box-shadow: none !important;
-  position: relative;
 }
 .detail-pulsa-nominal:hover {
-  border: 1px solid rgba(78, 196, 154, 0.15) !important;
+  border: none !important;
   background: rgba(78, 196, 154, 0.15);
 }
 
 .detail-pulsa-nominal:focus {
   background: rgba(78, 196, 154, 0.1);
   box-shadow: 0px 4px 40px rgba(78, 196, 154, 0.06) !important;
-  border: 1px solid rgba(78, 196, 154, 0.15) !important;
+  border: none !important;
 }
 .provider-img {
   border: 1px solid rgba(78, 196, 154, 0.4);

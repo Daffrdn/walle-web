@@ -14,7 +14,7 @@
         >
         <v-icon>mdi-chevron-left</v-icon>
         </v-btn>
-        Isi Saldo
+        Isi Saldo 
     </v-card-title>
         <v-card 
             class="mx-auto "
@@ -23,7 +23,7 @@
         >
         <form method="post" @submit.prevent="tambahSaldo">
             <v-card-text>
-                <span>Tambah Saldo {{ listSaldo.kategory.nama }}</span>
+                <span>Tambah Saldo {{ param }}</span>
                 <v-select
                     v-model="saldo"
                     type="input"
@@ -67,8 +67,8 @@ export default {
       saldo: null,
     }),
     computed: {
-        listSaldo() {
-            return this.$store.state.saldo.listSaldo
+        param() {
+            return this.$route.params.id
         },
     },
     methods: {
@@ -76,7 +76,7 @@ export default {
         try {
           await this.$axios.post('/kategori/saldo', {
               saldo: parseInt(this.saldo),
-              kategori_id: parseInt(this.$store.state.saldo.listSaldo.id)
+              kategori_id: parseInt(this.$route.params.id)
           }, {
                 headers: {
                     Authorization: this.$auth.$storage._state['_token.local'],

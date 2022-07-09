@@ -6,8 +6,13 @@
 </template>
 
 <script>
+import UserPaketData from '../../components/UserProduk/UserPaketData.vue'
+
 export default {
   name: 'PaketDataPagess',
+  components: {
+    UserPaketData
+  },
   middleware: 'auth',
   data() {
     return {}

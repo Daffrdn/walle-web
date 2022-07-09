@@ -4,18 +4,18 @@
     <span>Tambah Saldo</span>
     <br>
     <v-row class="d-flex justify">
-        <v-col v-for="(saldo, i) in listSaldo.saldo" :key="i">
+        <v-col v-for="(saldo, i) in listSaldo.saldo" :key="saldo.id">
             <v-card 
             dark
             color="#C44E78"
             elevation="0"
-            class="card"
+            class="card" 
             >   
                 <v-card-title class="d-flex justify-center">
                     <h1>Rp. {{ saldo.saldo }}</h1>
                 </v-card-title>
                 <v-card-text class="ml-6">
-                    <span>saldo {{saldo.kategory.nama}} saat ini</span>
+                    <span>saldo {{saldo.id}} saat ini</span>
                 </v-card-text>
                 <br>
                 <v-btn 
@@ -52,7 +52,7 @@ export default {
     methods: {
         isiSaldo(param){
             this.$store.commit('saldo/setSaldo', param)
-            this.$router.replace({'path': '/admin/tambah-saldo/'+ param.id})
+            this.$router.push({ path: '/admin/tambah-saldo/' + param.id})
         },
         fetchProduct() {
             this.$store.dispatch('saldo/fetchProduct');
