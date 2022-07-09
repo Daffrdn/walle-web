@@ -10,16 +10,12 @@
       app
       max-width="300"
     >
-    <v-card-title align="center" class="mx-auto d-flex justify-center">    
-      <img src="../static/2 11.png">
-    </v-card-title>
+      <v-card-title align="center" class="mx-auto d-flex justify-center">
+        <img src="../static/2 11.png" />
+      </v-card-title>
 
       <v-list>
-        <v-list-item
-          to="/admin"
-          router
-          exact
-        >
+        <v-list-item to="/admin" router exact>
           <v-list-item-action>
             <v-img src="/home.png" max-width="30"></v-img>
           </v-list-item-action>
@@ -27,14 +23,11 @@
             <v-list-item-title> Beranda </v-list-item-title>
           </v-list-item-content>
         </v-list-item>
-        <v-list-group
-          :value="true"
-          no-action
-        >
+        <v-list-group :value="true" no-action>
           <template v-slot:activator>
             <v-list-item-action>
-            <v-img src="/home.png" max-width="30"></v-img>
-          </v-list-item-action>
+              <v-img src="/home.png" max-width="30"></v-img>
+            </v-list-item-action>
             <v-list-item-content>
               <v-list-item-title><span>Manage Produk</span></v-list-item-title>
             </v-list-item-content>
@@ -47,18 +40,17 @@
             router
             exact
           >
-            <v-list-item-title class="white--text" v-text="admin.title"></v-list-item-title>
+            <v-list-item-title
+              class="white--text"
+              v-text="admin.title"
+            ></v-list-item-title>
 
             <v-list-item-icon>
               <v-icon></v-icon>
             </v-list-item-icon>
           </v-list-item>
         </v-list-group>
-        <v-list-item
-          to="/admin/status-transaksi"
-          router
-          exact
-        >
+        <v-list-item to="/admin/status-transaksi" router exact>
           <v-list-item-action>
             <v-img src="/vector.png" max-width="30"></v-img>
           </v-list-item-action>
@@ -96,13 +88,13 @@ export default {
       drawer: false,
       admins: [
         {
-         title: "Tambah Saldo",
-         to: "/admin/tambah-saldo"
+          title: 'Tambah Saldo',
+          to: '/admin/tambah-saldo',
         },
         {
-         title: "Tambah Produk",
-         to: "/admin/tambah-produk"
-        }
+          title: 'Tambah Produk',
+          to: '/admin/tambah-produk',
+        },
       ],
       miniVariant: false,
       title: 'Beranda',
@@ -113,10 +105,10 @@ export default {
 
 <style scoped>
 span {
-    color: #FFFFFF;
+  color: #ffffff;
 }
 
 v-list-group {
-    color: #FFFFFF;
+  color: #ffffff;
 }
 </style>

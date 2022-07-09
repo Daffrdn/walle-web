@@ -50,7 +50,9 @@
             <v-row class="total-row d-flex align-center justify-space-between">
               <span>
                 <span class="font-weight-regular total-bayar">Total Bayar</span>
-                <p class="total font-weight-bold ma-0 mt-1">Rp. {{ list.harga }}</p>
+                <p class="total font-weight-bold ma-0 mt-1">
+                  Rp. {{ list.harga }}
+                </p>
               </span>
               <v-btn color="#4EC49A" class="pay-button mb-1" x-large
                 >Bayar Sekarang</v-btn
@@ -78,11 +80,10 @@ export default {
     list() {
       return this.$store.state.pulsa.listProduct
     },
-  
   },
   methods: {
     back() {
-      this.$router.push('/')
+      this.$router.push('/pulsa')
     },
   },
 }
