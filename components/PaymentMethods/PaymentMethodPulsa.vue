@@ -103,7 +103,7 @@ export default {
           "bank": this.bank
         },)
         this.$router.push('/pulsa/'+ this.$route.params.id + '/pembayaran-bank')
-      }
+      } 
     },
   }
 }
