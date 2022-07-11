@@ -48,7 +48,6 @@
     </v-col>
     </v-row>
     <br>
-    <v-btn dark color="red" @click="transaksi">Detail Transaksi {{detail}}</v-btn>
     <v-row>
       <v-col>
         <span>Page {{ page }} of {{ pageSize }}</span>
@@ -86,7 +85,7 @@ export default {
       return Math.ceil(_this.listCount / _this.pageSize);
     },
     listGagal() {
-        return this.$store.state.transaction.listTransaksi
+        return this.$store.state.transaction.gagal.transaksi
     },
   },
   mounted() {
@@ -121,10 +120,6 @@ export default {
     },
     detailTransaksi(param){
       this.parameter = param;
-      window.console.log(param.id)
-      this.detail = param.produk.deskripsi
-    },
-    transaksi(){
       window.console.log(this.parameter)
       this.$store.commit('transaction/setGagal', this.parameter)
       this.$router.push({ path: '/riwayat/' + this.parameter.id })
