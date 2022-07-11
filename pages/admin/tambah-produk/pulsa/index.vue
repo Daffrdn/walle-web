@@ -1,10 +1,13 @@
 <template>
-  <div></div>
+  <TabelPulsa />
 </template>
+
 <script>
+import TabelPulsa from '~/components/adminProduk/TabelPulsa.vue'
 export default {
-  name: 'IndexProdukPulsa',
+  name: 'IndexTabelProdukPulsa',
   layout: 'admin',
+  components: { TabelPulsa },
 }
 </script>
 
