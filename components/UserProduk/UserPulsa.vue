@@ -170,7 +170,7 @@ export default {
     back() {
       this.$router.push('/')
     },
-    saveParam(param) {
+    saveParam(param) { 
       this.totalShow = true
       window.console.log(param.id)
       this.parameter = param
