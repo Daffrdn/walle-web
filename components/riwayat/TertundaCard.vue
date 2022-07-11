@@ -80,7 +80,7 @@ export default {
       return Math.ceil(_this.listCount / _this.pageSize);
     },
     listTertunda() {
-        return this.$store.state.transaction.tertunda.transaksi
+        return this.$store.state.transaction.tertunda
     },
   },
   mounted() {
@@ -94,18 +94,18 @@ export default {
   methods: {
     initPage () {
       const _this = this;
-      _this.listCount = _this.listTertunda.length;
+      _this.listCount = _this.listTertunda.transaksi.length;
       if (_this.listCount < _this.pageSize) {
-        _this.historyList = _this.listTertunda;
+        _this.historyList = _this.listTertunda.transaksi;
       } else {
-        _this.historyList = _this.listTertunda.slice(0, _this.pageSize);
+        _this.historyList = _this.listTertunda.transaksi.slice(0, _this.pageSize);
       }
     },
     updatePage (pageIndex) {
       const _this = this;
       const _start = (pageIndex - 1) * _this.pageSize;
       const _end = pageIndex * _this.pageSize;
-      _this.historyList = _this.listTertunda.slice(_start, _end);
+      _this.historyList = _this.listTertunda.transaksi.slice(_start, _end);
       _this.page = pageIndex;
     },
     fetchTertunda() {

@@ -75,9 +75,8 @@ export default {
     },
   computed: {
     pages() {
-      const _this = this;
-      if (_this.pageSize == null || _this.listCount == null) return 0;
-      return Math.ceil(_this.listCount / _this.pageSize);
+      if (this.pageSize == null || this.listCount == null) return 0;
+      return Math.ceil(this.listCount / this.pageSize);
     },
     listBerhasil() {
         return this.$store.state.transaction.berhasil.transaksi
@@ -87,25 +86,22 @@ export default {
       this.fetchBerhasil()
     },
     created() {
-    const _this = this;
-    _this.initPage();
+    this.initPage()
   },
   methods: {
     initPage () {
-      const _this = this;
-      _this.listCount = _this.listBerhasil.length;
-      if (_this.listCount < _this.pageSize) {
-        _this.historyList = _this.listBerhasil;
+      this.listCount = this.listBerhasil.length
+      if (this.listCount < this.pageSize) {
+        this.historyList = this.listBerhasil
       } else {
-        _this.historyList = _this.listBerhasil.slice(0, _this.pageSize);
+        this.historyList = this.listBerhasil.slice(0, this.pageSize)
       }
     },
     updatePage (pageIndex) {
-      const _this = this;
-      const _start = (pageIndex - 1) * _this.pageSize;
-      const _end = pageIndex * _this.pageSize;
-      _this.historyList = _this.listBerhasil.slice(_start, _end);
-      _this.page = pageIndex;
+      const start = (pageIndex - 1) * this.pageSize
+      const end = pageIndex * this.pageSize
+      this.historyList = this.listBerhasil.slice(start, end)
+      this.page = pageIndex;
     },
     fetchBerhasil() {
       this.$store.dispatch('transaction/fetchBerhasil')

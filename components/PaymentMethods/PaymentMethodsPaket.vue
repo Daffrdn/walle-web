@@ -83,11 +83,7 @@ export default {
   },
   methods: {
     back() {
-<<<<<<< HEAD:components/PaymentMethods/PaymentMethodsPaket.vue
       this.$router.push('/paketdata')
-=======
-      this.$router.push('/pulsa')
->>>>>>> 903642c4bb75954d4fa5a29e999d490272fbc1f0:components/PaymentMethod.vue
     },
   },
 }
