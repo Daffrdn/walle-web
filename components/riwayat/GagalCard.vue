@@ -8,7 +8,6 @@
           cols="12"
           exact
           router
-          link
           @click="detailTransaksi(item)"
         >
         <v-card  
@@ -38,9 +37,9 @@
                         <v-spacer></v-spacer>
                     <h4 class="red--text">Rp.{{ item.produk.harga }}</h4>
                 </v-card-title>
-                <v-card-subtitle>{{ item.transaction_time }}</v-card-subtitle>
+                <v-card-subtitle>{{ item.waktu_transaksi }}</v-card-subtitle>
                 <v-card-text>
-                    <h3 class="black--text">{{ item.payment_type }} {{ item.bank }}</h3>
+                    <h3 class="black--text">{{ item.metode_pembayaran }} {{ item.bank }}</h3>
                 </v-card-text>
             </v-card>
             </v-card>
@@ -50,7 +49,7 @@
     <br>
     <v-row>
       <v-col>
-        <span>Page {{ page }} of {{ pageSize }}</span>
+        <span>Page {{ page }} of {{ listCount/3 }}</span>
       </v-col>
       <v-col class="d-flex justify-end">
         <v-pagination
@@ -70,6 +69,7 @@
 export default {
     data() {
         return {
+        filter: "gagal",
         page: 1,
         pageSize: 3,
         listCount: 0,
@@ -121,7 +121,7 @@ export default {
     detailTransaksi(param){
       this.parameter = param;
       window.console.log(this.parameter)
-      this.$store.commit('transaction/setGagal', this.parameter)
+      this.$store.commit('transaction/setAll', this.parameter)
       this.$router.push({ path: '/riwayat/' + this.parameter.id })
     }
   },

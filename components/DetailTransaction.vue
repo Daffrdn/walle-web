@@ -12,11 +12,15 @@
         </v-row>
         <v-row class="d-flex justify-sm-space-between ma-0 middle">
           <span class="sub">Tanggal Transaksi </span>
-          <span class="sub-value">{{detailTransaksi.transaction_time}}</span>
+          <span class="sub-value">{{detailTransaksi.waktu_transaksi}}</span>
+        </v-row>
+        <v-row class="d-flex justify-sm-space-between ma-0 middle">
+          <span class="sub">Jam </span>
+          <span class="sub-value">{{detailTransaksi.waktu_transaksi}} WIB</span>
         </v-row>
         <v-row class="d-flex justify-sm-space-between ma-0">
-          <span class="sub">Jam </span>
-          <span class="sub-value">{{detailTransaksi.transaction_time}} WIB</span>
+          <span class="sub">Status </span>
+          <span class="sub-value">{{detailTransaksi.status_transaksi}}</span>
         </v-row>
         <!-- LINE 1-->
         <div class="line"></div>
@@ -24,19 +28,19 @@
         <span class="sub-title">Detail Layanan</span>
         <v-row class="d-flex justify-sm-space-between ma-0 mt-4">
           <span class="sub">Layanan </span>
-          <span class="sub-value">{{detail.deskripsi}}</span>
+          <span class="sub-value">{{detailTransaksis.deskripsi}}</span>
         </v-row>
         <v-row class="d-flex justify-sm-space-between ma-0 middle">
           <span class="sub">Harga </span>
-          <span class="sub-value">Rp. {{detail.nominal}}</span>
+          <span class="sub-value">Rp. {{detailTransaksis.harga}}</span>
         </v-row>
         <v-row class="d-flex justify-sm-space-between ma-0 middle">
           <span class="sub">Biaya Admin </span>
-          <span class="sub-value">Rp. {{detail.harga - detail.nominal}}</span>
+          <span class="sub-value">Rp. {{detailTransaksis.harga - detailTransaksis.nominal}}</span>
         </v-row>
         <v-row class="d-flex justify-sm-space-between ma-0">
           <span class="sub">No. Hp </span>
-          <span class="sub-value">0895 1537 0909</span>
+          <span class="sub-value">{{detailTransaksi.nomor_handphone}}</span>
         </v-row>
         <!-- LINE 2-->
         <div class="line"></div>
@@ -44,11 +48,11 @@
         <span class="sub-title">Total Pembayaran</span>
         <v-row class="d-flex justify-sm-space-between ma-0 mt-4">
           <span class="sub">Metode Pembayaran</span>
-          <span class="sub-value">{{detailTransaksi.payment_type}} {{detailTransaksi.bank}}</span>
+          <span class="sub-value">{{detailTransaksi.metode_pembayaran}} {{detailTransaksi.bank}}</span>
         </v-row>
         <v-row class="d-flex justify-sm-space-between ma-0 middle">
           <span class="sub">Total Pembayaran</span>
-          <span class="sub-value">Rp. {{detail.harga}}</span>
+          <span class="sub-value">Rp. {{detailTransaksi.total_harga}}</span>
         </v-row>
       </div>
 
@@ -60,9 +64,9 @@
           width="100%"
           class="buy-button"
           @click="kembali"
-          >Beli Lagi</v-btn
-        ></span
-      >
+          >Beli Lagi
+        </v-btn>
+      </span>
     </div>
   </v-card>
 </div>
@@ -81,15 +85,15 @@ export default {
       return this.$route.params.id
     },
     detailTransaksi() {
-      return this.$store.state.transaction.gagal
+      return this.$store.state.transaction.listTransaksi
     },
-    detail() {
-      return this.$store.state.transaction.gagal.produk
+    detailTransaksis() {
+      return this.$store.state.transaction.listTransaksi.produk
     },
   },
   methods: {
     kembali(){
-      this.$router.push('/riwayat')
+      this.$router.push('/beranda')
     },
   }
 }

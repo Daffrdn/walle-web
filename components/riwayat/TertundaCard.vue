@@ -3,9 +3,13 @@
     <!-- {{listTertunda}} -->
     <v-row>
     <v-col
-          v-for="(item, i) in historyList"
-          :key="i"
+          v-for="item in historyList"
+          :key="item.id"
           cols="12"
+          exact
+          router
+          link
+          @click="detailTransaksi(item)"
         >
         <v-card  
             class="mx-auto rounded-card"
@@ -31,9 +35,9 @@
                         <v-spacer></v-spacer>
                     <h4 class="yellow--text">Rp. {{ item.produk.harga }}</h4>
                 </v-card-title>
-                <v-card-subtitle>{{ item.transaction_time }}</v-card-subtitle>
+                <v-card-subtitle>{{ item.waktu_transaksi }}</v-card-subtitle>
                 <v-card-text>
-                    <h3 class="black--text">{{ item.payment_type }} {{ item.bank }}</h3>
+                    <h3 class="black--text">{{ item.metode_pembayaran }} {{ item.bank }}</h3>
                 </v-card-text>
             </v-card>
             </v-card>
@@ -43,7 +47,7 @@
     <br>
     <v-row>
       <v-col>
-        <span>Page {{ page }} of {{ pageSize }}</span>
+        <span>Page {{ page }} of {{ listCount/3 }}</span>
       </v-col>
       <v-col class="d-flex justify-end">
         <v-pagination
@@ -76,7 +80,7 @@ export default {
       return Math.ceil(_this.listCount / _this.pageSize);
     },
     listTertunda() {
-        return this.$store.state.transaction.tertunda
+        return this.$store.state.transaction.tertunda.transaksi
     },
   },
   mounted() {
@@ -90,24 +94,33 @@ export default {
   methods: {
     initPage () {
       const _this = this;
-      _this.listCount = _this.listTertunda.transaksi.length;
+      _this.listCount = _this.listTertunda.length;
       if (_this.listCount < _this.pageSize) {
-        _this.historyList = _this.listTertunda.transaksi;
+        _this.historyList = _this.listTertunda;
       } else {
-        _this.historyList = _this.listTertunda.transaksi.slice(0, _this.pageSize);
+        _this.historyList = _this.listTertunda.slice(0, _this.pageSize);
       }
     },
     updatePage (pageIndex) {
       const _this = this;
       const _start = (pageIndex - 1) * _this.pageSize;
       const _end = pageIndex * _this.pageSize;
-      _this.historyList = _this.listTertunda.transaksi.slice(_start, _end);
+      _this.historyList = _this.listTertunda.slice(_start, _end);
       _this.page = pageIndex;
     },
     fetchTertunda() {
         this.$store.dispatch('transaction/fetchTertunda', {
       })
+    },
+    handleClick(item) {
+      console.log(item.id)
     }, 
+    detailTransaksi(param){
+      this.parameter = param;
+      window.console.log(this.parameter)
+      this.$store.commit('transaction/setAll', this.parameter)
+      this.$router.push({ path: '/riwayat/' + this.parameter.id })
+    },
   },
 }
 </script>

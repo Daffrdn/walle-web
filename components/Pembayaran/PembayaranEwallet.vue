@@ -71,7 +71,7 @@
 
 <script>
 export default {
-  name: 'PPembayaranEwallet',
+  name: 'PembayaranEwallet',
   data: () => ({
   }),
   computed: {
