@@ -33,7 +33,7 @@ export default {
   layout: 'admin',
   methods: {
     toPulsa() {
-      this.$router.push('tambah-produk/pulsa/tambah')
+      this.$router.push('tambah-produk/pulsa')
     },
   },
 }

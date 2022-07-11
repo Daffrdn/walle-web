@@ -5,7 +5,7 @@
 <script>
 import TambahPulsa from '~/components/adminProduk/TambahPulsa.vue'
 export default {
-  name: 'IndexTmabahProdukPulsa',
+  name: 'IndexTambahProdukPulsa',
   layout: 'admin',
   components: { TambahPulsa },
 }
