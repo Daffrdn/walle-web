@@ -1,17 +1,16 @@
 <template>
   <div class="bg">
     <br />
-    <UserGooglePlay />
+    <PembayaranBank />
   </div>
 </template>
 
 <script>
-import UserGooglePlay from '../../components/UserProduk/UserGooglePlay.vue'
-
+import PembayaranBank from '../../../components/Pembayaran/PembayaranBank.vue'
 export default {
-  name: 'UserGooglePlays',
+  name: 'PembayaranPulsaPagess',
   components: {
-    UserGooglePlay
+    PembayaranBank
   },
   middleware: 'auth',
   data() {

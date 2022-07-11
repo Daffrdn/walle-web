@@ -1,11 +1,14 @@
 <template>
 <div>
-    {{listGagal}}
+    <!-- {{listGagal}} -->
     <v-row>
     <v-col
-          v-for="(item, i) in historyList"
-          :key="i"
+          v-for="item in historyList"
+          :key="item.id"
           cols="12"
+          exact
+          router
+          @click="detailTransaksi(item)"
         >
         <v-card  
             class="mx-auto rounded-card"
@@ -13,6 +16,9 @@
             max-width="1130"
             elevation="0"
             outlined
+            exact 
+            link
+            router
         >
         <v-card
             class="mx-auto rounded-card"
@@ -27,13 +33,13 @@
                 elevation="0"
             >
                 <v-card-title>
-                    <h4>{{ item.title }}</h4>
+                    <h4>{{ item.produk.deskripsi }}</h4>
                         <v-spacer></v-spacer>
-                    <h4 class="red--text">{{ item.harga }}</h4>
+                    <h4 class="red--text">Rp.{{ item.produk.harga }}</h4>
                 </v-card-title>
-                <v-card-subtitle>{{ item.tanggal }}</v-card-subtitle>
+                <v-card-subtitle>{{ item.waktu_transaksi }}</v-card-subtitle>
                 <v-card-text>
-                    <h3 class="black--text">{{ item.via }}</h3>
+                    <h3 class="black--text">{{ item.metode_pembayaran }} {{ item.bank }}</h3>
                 </v-card-text>
             </v-card>
             </v-card>
@@ -43,7 +49,7 @@
     <br>
     <v-row>
       <v-col>
-        <span>Page {{ page }} of {{ pageSize }}</span>
+        <span>Page {{ page }} of {{ listCount/3 }}</span>
       </v-col>
       <v-col class="d-flex justify-end">
         <v-pagination
@@ -51,6 +57,7 @@
           class="pagination mr-16"
           color="#4EC49A"
           :length="pages"
+          :total-visible="8"
           @input="updatePage"
         ></v-pagination>
       </v-col>
@@ -62,36 +69,13 @@
 export default {
     data() {
         return {
+        filter: "gagal",
         page: 1,
         pageSize: 3,
         listCount: 0,
-		historyList: [],
-        list: [
-            {
-            title: 'Pulsa ( 20000 )',
-            harga: 'Rp 21.000',
-            tanggal: '16 Jun 2022, 12:30 WIB',
-            via: 'OVO',
-            },
-            {
-            title: 'Paket Data ( 50000 )',
-            harga: 'Rp 51.000',
-            tanggal: '16 Jun 2022, 12:30 WIB',
-            via: 'GoPay',
-            },
-            {
-            title: 'Pulsa ( 10000 )',
-            harga: 'Rp 10.000',
-            tanggal: '16 Jun 2022, 12:30 WIB',
-            via: 'OVO',
-            },
-            {
-            title: 'Steam Games ( 50000 )',
-            harga: 'Rp 51.000',
-            tanggal: '16 Jun 2022, 12:30 WIB',
-            via: 'BCA',
-            },
-        ],
+		    historyList: [],
+        parameter: '',
+        detail: '',
       };
     },
   computed: {
@@ -101,12 +85,11 @@ export default {
       return Math.ceil(_this.listCount / _this.pageSize);
     },
     listGagal() {
-        return this.$store.state.transaction.gagal
+        return this.$store.state.transaction.gagal.transaksi
     },
   },
   mounted() {
-        this.fetchGagal({
-        })
+        this.fetchGagal()
     },
     created() {
     const _this = this;
@@ -115,24 +98,32 @@ export default {
   methods: {
     initPage () {
       const _this = this;
-      _this.listCount = _this.list.length;
+      _this.listCount = _this.listGagal.length;
       if (_this.listCount < _this.pageSize) {
-        _this.historyList = _this.list;
+        _this.historyList = _this.listGagal;
       } else {
-        _this.historyList = _this.list.slice(0, _this.pageSize);
+        _this.historyList = _this.listGagal.slice(0, _this.pageSize);
       }
     },
     updatePage (pageIndex) {
       const _this = this;
       const _start = (pageIndex - 1) * _this.pageSize;
       const _end = pageIndex * _this.pageSize;
-      _this.historyList = _this.list.slice(_start, _end);
+      _this.historyList = _this.listGagal.slice(_start, _end);
       _this.page = pageIndex;
     },
     fetchGagal() {
-        this.$store.dispatch('transaction/fetchGagal', {
-      })
+        this.$store.dispatch('transaction/fetchGagal')
     }, 
+    handleClick(item) {
+      console.log(item.id)
+    },
+    detailTransaksi(param){
+      this.parameter = param;
+      window.console.log(this.parameter)
+      this.$store.commit('transaction/setAll', this.parameter)
+      this.$router.push({ path: '/riwayat/' + this.parameter.id })
+    }
   },
 }
 </script>

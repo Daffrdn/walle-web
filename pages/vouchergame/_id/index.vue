@@ -1,13 +1,18 @@
 <template>
   <div class="bg">
     <br />
-    <PaymentMethod />
+    <PaymentMethodVoucherGames />
   </div>
 </template>
 
 <script>
+import PaymentMethodVoucherGames from '../../../components/PaymentMethods/PaymentMethodsVoucherGames.vue'
+
 export default {
   name: 'MetodePembayaran',
+  components: {
+    PaymentMethodVoucherGames
+  },
   middleware: 'auth',
   validate({ params }) {
     // Must be a number

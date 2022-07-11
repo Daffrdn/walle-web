@@ -9,7 +9,13 @@
         </v-btn>
         <h2 class="pembayaran">Pembayaran</h2>
       </v-card-title>
-      <div class="detail-wrapper">
+      <div class="d-flex align-center justify-center">
+      <v-img  max-width="300"></v-img>
+      </div>
+      <v-btn dark block class="btn" color="#4EC49A" x-large elevation="0" @click="riwayat">
+        Riwayat Transaksi
+      </v-btn>
+      <!-- <div class="detail-wrapper">
         <h2 class="sub-title mb-6">Detail Pembayaran</h2>
         <div class="detail-cost">
           <v-row class="d-flex justify-space-between ma-0">
@@ -24,9 +30,9 @@
             <span>Biaya Admin</span>
             <span>Rp. {{ list.harga - list.nominal }}</span>
           </v-row>
-          <div class="line"></div>
+          <div class="line"></div> -->
           <!-- Payment -->
-          <span class="sub-title">Pilih Metode Pembayaran</span>
+          <!-- <span class="sub-title">Pilih Metode Pembayaran</span>
           <form action="" class="form mt-3">
             <div class="inputGroup">
               <input id="gopay" name="method" type="radio" />
@@ -43,16 +49,14 @@
                 <span class="ml-2 payment">OVO</span></label
               >
             </div>
-          </form>
+          </form> -->
           <!-- End of Payment -->
 
-          <div class="wrapper-total">
+          <!-- <div class="wrapper-total">
             <v-row class="total-row d-flex align-center justify-space-between">
               <span>
                 <span class="font-weight-regular total-bayar">Total Bayar</span>
-                <p class="total font-weight-bold ma-0 mt-1">
-                  Rp. {{ list.harga }}
-                </p>
+                <p class="total font-weight-bold ma-0 mt-1">Rp. {{ list.harga }}</p>
               </span>
               <v-btn color="#4EC49A" class="pay-button mb-1" x-large
                 >Bayar Sekarang</v-btn
@@ -60,18 +64,15 @@
             </v-row>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
   </v-card>
 </template>
 
 <script>
 export default {
-  name: 'PaymentMethod',
-
+  name: 'PPembayaranBank',
   data: () => ({
-    radioGroup: 1,
-    activeClass: '',
   }),
   computed: {
     param() {
@@ -80,11 +81,15 @@ export default {
     list() {
       return this.$store.state.pulsa.listProduct
     },
+  
   },
   methods: {
     back() {
-      this.$router.push('/pulsa')
+      this.$router.push('/beranda')
     },
+    riwayat() {
+      this.$router.push('/riwayat')
+    }
   },
 }
 </script>
