@@ -60,7 +60,7 @@ const actions = {
     const API_URL = `https://bearuang.me/transaksi/user?filter=tertunda`
     axios
       .get(API_URL,  {
-        headers: { 
+        headers: {  
          'Authorization': this.$auth.$storage._state['_token.local']
         }
        })

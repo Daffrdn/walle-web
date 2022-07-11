@@ -64,7 +64,7 @@
             <span v-show="phoneErr" style="color: red"
               >Incorrect phone number
             </span>
-          </v-col>
+          </v-col> 
         </v-row>
         <h2 v-show="product" class="pb-6 sub-title ml-3">
           Pilih Nominal Pulsa :

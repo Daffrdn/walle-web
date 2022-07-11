@@ -11,7 +11,6 @@
       </v-card-title>
       <div class="d-flex align-center justify-center">
       <v-img src max-width="300"></v-img>
-      {{detailTransaksi}}
       </div>
       <v-btn dark block class="btn" color="#4EC49A" x-large elevation="0" @click="riwayat">
         Riwayat Transaksi
@@ -77,7 +76,7 @@ export default {
   }),
   computed: {
     param() {
-      return this.$route.params.id
+      return this.$route.params.transaksi_id
     },
     list() {
       return this.$store.state.pulsa.listProduct
@@ -89,7 +88,7 @@ export default {
     },
     riwayat() {
       this.$router.push('/riwayat')
-    }
+    },
   },
 }
 </script>

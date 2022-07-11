@@ -81,7 +81,6 @@ export default {
     list() {
       return this.$store.state.pulsa.listProduct
     },
-  
   },
   methods: {
     back() {
@@ -94,7 +93,7 @@ export default {
           "user_id": parseInt(this.$auth.user.id),
           "produk_id": parseInt(this.$route.params.id),
         },)
-        this.$router.push('/pulsa/'+ this.$route.params.id + '/pembayaran-ewallet')
+        this.$router.push('/pulsa/'+ this.$route.params.id + "/pembayaran-ewallet")
       } else {
         await this.$axios.post('/transaksi/bank',
         {

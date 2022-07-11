@@ -1,18 +1,18 @@
 <template>
   <div class="bg">
     <br />
-    <PaymentMethodPulsa />
+    <DetailTransaction />
   </div>
 </template>
 
 <script>
-import PaymentMethodPulsa from '../../../components/PaymentMethods/PaymentMethodPulsa.vue'
+// import PaymentMethodPulsa from '../../../components/PaymentMethods/PaymentMethodPulsa.vue'
 
 export default {
-  name: 'MetodePembayaran',
-  components: {
-    PaymentMethodPulsa
-  },
+  name: 'DetailTransaksi',
+  // components: {
+  //   PaymentMethodPulsa
+  // },
   middleware: 'auth',
   validate({ params }) {
     // Must be a number

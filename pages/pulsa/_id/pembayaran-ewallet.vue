@@ -13,6 +13,10 @@ export default {
     PembayaranEwallet
   },
   middleware: 'auth',
+  validate({ params }) {
+    // Must be a number
+    return /^\d+$/.test(params.id)
+  },
   data() {
     return {}
   },
