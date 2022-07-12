@@ -1,10 +1,6 @@
 <template>
   <v-app>
-    <v-main>
-      <v-container>
-        <Nuxt />
-      </v-container>
-    </v-main>
+    <Nuxt />
   </v-app>
 </template>
 
@@ -28,6 +24,7 @@ html {
 
 html {
   background-color: white;
+  scroll-behavior: smooth !important;
 }
 
 .bg {
@@ -49,11 +46,11 @@ html {
   left: 0;
   bottom: 0;
   right: 0;
-  background-color: #F9EDF2;
-  background: #F9EDF2;
+  background-color: #f9edf2;
+  background: #f9edf2;
 }
 
 .btn {
-    text-transform: unset !important;
+  text-transform: unset !important;
 }
 </style>

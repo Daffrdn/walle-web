@@ -4,20 +4,15 @@
     <br />
 
     <v-row class="">
-      <v-col
-        v-for="saldo in listSaldo.saldo"
-        :key="saldo.id"
-        cols="12"
-        sm="6"
-        lg="4"
-        class="d-flex justify-center"
-      >
+      <v-col cols="12" sm="6" lg="4" class="d-flex justify-center">
         <v-card dark color="#C44E78" elevation="0" class="card">
-          <v-card-title class="d-flex justify-center">
-            <h1>Rp. {{ saldo.saldo }}</h1>
+          <v-card-title class="d-flex justify-start mt-3">
+            <p class="saldo">Rp. {{ listSaldo.saldo[0].saldo }}</p>
           </v-card-title>
-          <v-card-text class="mt-2 mb-7 d-flex justify-center">
-            <span>saldo {{ saldo.kategory.nama }} </span>
+          <v-card-text class="mb-7 d-flex justify-start">
+            <p class="saldo-kategori">
+              saldo {{ listSaldo.saldo[0].kategory.nama }}
+            </p>
           </v-card-text>
           <v-btn
             block
@@ -25,6 +20,54 @@
             x-large
             class="mt-3 radius-button"
             color="#B0466C"
+            elevation="0"
+            @click="isiSaldo"
+          >
+            Tambah Saldo
+            <v-icon>mdi-chevron-right</v-icon>
+          </v-btn>
+        </v-card>
+      </v-col>
+      <v-col cols="12" sm="6" lg="4" class="d-flex justify-center">
+        <v-card dark color="#4EC49A" elevation="0" class="card">
+          <v-card-title class="d-flex justify-start mt-3">
+            <p class="saldo">Rp. {{ listSaldo.saldo[1].saldo }}</p>
+          </v-card-title>
+          <v-card-text class="mb-7 d-flex justify-start">
+            <p class="saldo-kategori">
+              saldo {{ listSaldo.saldo[1].kategory.nama }}
+            </p>
+          </v-card-text>
+          <v-btn
+            block
+            dark
+            x-large
+            class="mt-3 radius-button"
+            color="#37896C"
+            elevation="0"
+            @click="isiSaldo"
+          >
+            Tambah Saldo
+            <v-icon>mdi-chevron-right</v-icon>
+          </v-btn>
+        </v-card>
+      </v-col>
+      <v-col cols="12" sm="6" lg="4" class="d-flex justify-center">
+        <v-card dark color="#FFC961" elevation="0" class="card">
+          <v-card-title class="d-flex justify-start mt-3">
+            <p class="saldo">Rp. {{ listSaldo.saldo[2].saldo }}</p>
+          </v-card-title>
+          <v-card-text class="mb-7 d-flex justify-start">
+            <p class="saldo-kategori">
+              saldo {{ listSaldo.saldo[2].kategory.nama }}
+            </p>
+          </v-card-text>
+          <v-btn
+            block
+            dark
+            x-large
+            class="mt-3 radius-button"
+            color="#B38D44"
             elevation="0"
             @click="isiSaldo"
           >
@@ -70,15 +113,15 @@ export default {
   border-radius: 10px;
 }
 
-h1 {
-  /* font-family: 'Poppins'; */
-  font-style: normal;
+.saldo {
   font-weight: 700;
   font-size: 40px;
-  line-height: 120%;
-  text-align: center;
 }
-
+.saldo-kategori {
+  font-weight: 400;
+  font-size: 20px;
+  color: #ffffff;
+}
 span {
   /* font-family: 'Poppins'; */
   font-style: normal;

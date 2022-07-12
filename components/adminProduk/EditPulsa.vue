@@ -75,12 +75,7 @@
             </v-btn>
           </v-form>
         </v-card-text>
-        <!-- {{ detailProduct.produk.nama }} -->
       </v-card>
-
-      <!-- <br /><br /><br /><br />
-      <br /><br /><br /><br />
-      <br /><br /><br /><br /> -->
     </v-card>
     <!-- DIALOG -->
     <v-dialog class="" v-model="successful" width="400">
@@ -126,11 +121,7 @@ export default {
     },
     successful: false,
   }),
-  // computed: {
-  //   listProduct() {
-  //     return this.fetchProduct
-  //   },
-  // },
+
   mounted() {
     this.fetchProduct()
   },
@@ -185,7 +176,6 @@ export default {
 
 <style scoped>
 .title {
-  position: relative;
   background: #ffffff;
   border-radius: 10px;
   box-shadow: 0px 4px 20px rgba(78, 196, 154, 0.05) !important;

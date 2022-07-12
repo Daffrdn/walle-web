@@ -7,7 +7,7 @@
         <v-btn icon x-large @click="back">
           <v-icon>mdi-chevron-left</v-icon>
         </v-btn>
-        Tambah Produk Voucher
+        Tambah Produk Voucher Game
       </v-card-title>
       <v-card class="mx-auto" width="1000px" elevation="0">
         <v-card-text>
@@ -52,7 +52,7 @@
               outlined
               color="#B0466C"
               single-line
-              label="contoh : Steam 50k"
+              label="contoh : Steam 50000"
               class="mb-6 autocomplete"
             ></v-text-field>
 
@@ -126,7 +126,7 @@ export default {
   }),
   methods: {
     back() {
-      this.$router.push('/admin/tambah-produk/pulsa')
+      this.$router.push('/admin/tambah-produk/voucher')
     },
     emptyField() {
       this.posts.nama = null
@@ -140,6 +140,7 @@ export default {
         '/produk',
         {
           nama: this.posts.nama,
+          deskripsi: this.posts.nama,
           nominal: parseInt(this.posts.nominal),
           harga: parseInt(this.posts.harga),
           kategori_id: this.posts.kategori_id,

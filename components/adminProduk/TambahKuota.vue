@@ -7,7 +7,7 @@
         <v-btn icon x-large @click="back">
           <v-icon>mdi-chevron-left</v-icon>
         </v-btn>
-        Tambah Produk Pulsa
+        Tambah Produk Paket Data
       </v-card-title>
       <v-card class="mx-auto" width="1000px" elevation="0">
         <v-card-text>
@@ -32,7 +32,7 @@
               color="#B0466C"
               single-line
               required
-              label="Nominal produk pulsa yang akan dijual"
+              label="Nominal produk sebelum biaya admin"
               class="mb-6 autocomplete"
             ></v-text-field>
             <span>Harga</span>
@@ -52,10 +52,18 @@
               outlined
               color="#B0466C"
               single-line
-              label="contoh : Pulsa Axis 50000"
+              label="contoh : Paket Data Tri 3GB + Semua Jaringan 24 Jam"
               class="mb-6 autocomplete"
             ></v-text-field>
-
+            <span>Deskripsi Produk</span>
+            <v-text-field
+              v-model="posts.deskripsi"
+              outlined
+              color="#B0466C"
+              single-line
+              label="contoh : 3Gb + Semua Jaringan 24 Jam"
+              class="mb-6 autocomplete"
+            ></v-text-field>
             <v-btn
               block
               color="#B0466C"
@@ -71,7 +79,9 @@
                 this.posts.harga == null ||
                 this.posts.harga == '' ||
                 this.posts.nama == null ||
-                this.posts.nama == ''
+                this.posts.nama == '' ||
+                this.posts.deskripsi == null ||
+                this.posts.deskripsi == ''
               "
             >
               Tambah
@@ -109,7 +119,7 @@
 
 <script>
 export default {
-  name: 'AdminTambahPulsa',
+  name: 'AdminTambahData',
   data: () => ({
     providers: [
       { id: 1, name: 'Axis' },
@@ -120,22 +130,25 @@ export default {
       { id: 8, name: 'XL' },
     ],
     posts: {
-      kategori_id: 1,
+      kategori_id: 2,
       provider_id: null,
       nominal: null,
       harga: null,
       nama: null,
+      deskripsi: null,
+      saldo: null,
     },
     successful: false,
   }),
   methods: {
     back() {
-      this.$router.push('/admin/tambah-produk/pulsa')
+      this.$router.push('/admin/tambah-produk/kuota')
     },
     emptyField() {
       this.posts.nama = null
       this.posts.nominal = null
       this.posts.harga = null
+      this.posts.deskripsi = null
       this.posts.provider_id = null
     },
     async postData(e) {
@@ -144,9 +157,9 @@ export default {
         '/produk',
         {
           nama: this.posts.nama,
-          deskripsi: this.posts.nama,
           nominal: parseInt(this.posts.nominal),
           harga: parseInt(this.posts.harga),
+          deskripsi: this.posts.deskripsi,
           kategori_id: this.posts.kategori_id,
           provider_id: this.posts.provider_id,
         },
@@ -180,7 +193,7 @@ span {
 }
 
 .v-card {
-  padding-bottom: 40px;
+  padding-bottom: 30px;
 }
 .v-text-field {
   border-radius: 10px;
