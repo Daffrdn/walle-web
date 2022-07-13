@@ -27,38 +27,37 @@
           <div class="line"></div>
           <!-- Payment -->
           <span class="sub-title">Pilih Metode Pembayaran</span>
-          <form action="" class="form mt-3">
-            <div class="inputGroup">
+          <form methods="post" class="form mt-3" @submit.prevent="transaksi">
+            <div class="inputGroup"> 
               <input id="gopay" name="method" type="radio" />
               <label for="gopay">
                 <img src="/payment/gopay.png" width="30px" alt="gopay" />
 
-                <span class="ml-2 payment">GOPAY</span></label
-              >
+                <span class="ml-2 payment">GOPAY</span>
+              </label>
             </div>
             <div class="inputGroup">
-              <input id="ovo" name="method" type="radio" />
-              <label for="ovo">
+              <input id="bca" v-model="bank" name="method" type="radio" value="bca"/>
+              <label for="bca">
                 <img src="/payment/ovo.png" width="35px" alt="ovo" />
-                <span class="ml-2 payment">OVO</span></label
-              >
+                <span class="ml-2 payment">BCA</span>
+              </label>
+            </div>
+          
+            <!-- End of Payment -->
+
+            <div class="wrapper-total">
+              <v-row class="total-row d-flex align-center justify-space-between">
+                <span>
+                  <span class="font-weight-regular total-bayar">Total Bayar</span>
+                  <p class="total font-weight-bold ma-0 mt-1">Rp. {{ list.harga }}</p>
+                </span>
+                <v-btn color="#4EC49A" class="pay-button mb-1" x-large type="submit"
+                  >Bayar Sekarang</v-btn
+                >
+              </v-row>
             </div>
           </form>
-          <!-- End of Payment -->
-
-          <div class="wrapper-total">
-            <v-row class="total-row d-flex align-center justify-space-between">
-              <span>
-                <span class="font-weight-regular total-bayar">Total Bayar</span>
-                <p class="total font-weight-bold ma-0 mt-1">
-                  Rp. {{ list.harga }}
-                </p>
-              </span>
-              <v-btn color="#4EC49A" class="pay-button mb-1" x-large
-                >Bayar Sekarang</v-btn
-              >
-            </v-row>
-          </div>
         </div>
       </div>
     </div>
@@ -67,11 +66,13 @@
 
 <script>
 export default {
-  name: 'PaymentMethodPaket',
+  name: 'PaymentMethodPulsa',
  
   data: () => ({
     radioGroup: 1,
     activeClass: '',
+    bank: '',
+    ewallet: '',
   }),
   computed: {
     param() {
@@ -85,7 +86,31 @@ export default {
     back() {
       this.$router.push('/paketdata')
     },
-  },
+    async transaksi(){
+      if(!this.bank) {
+        await this.$axios.post('/transaksi/ewallet',
+        {
+          "user_id": parseInt(this.$auth.user.id),
+          "produk_id": parseInt(this.$route.params.id),
+        },).then((res)=>{
+          this.ewallet = res.data.data
+          this.$store.commit('detailTransaction/setEwallet', this.ewallet)
+          this.$router.push('/pulsa/'+ this.$route.params.id + "/pembayaran-ewallet")
+        })
+      } else {
+        await this.$axios.post('/transaksi/bank',
+        {
+          "user_id": parseInt(this.$auth.user.id),
+          "produk_id": parseInt(this.$route.params.id),
+          "bank": this.bank
+        },).then((res)=>{
+          this.detail = res.data.data
+          this.$store.commit('detailTransaction/setBank', this.detail)
+          this.$router.push('/pulsa/'+ this.$route.params.id + "/pembayaran-bank")
+        })
+      } 
+    },
+  }
 }
 </script>
 

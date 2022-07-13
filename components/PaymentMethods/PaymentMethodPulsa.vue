@@ -28,7 +28,7 @@
           <!-- Payment -->
           <span class="sub-title">Pilih Metode Pembayaran</span>
           <form methods="post" class="form mt-3" @submit.prevent="transaksi">
-            <div class="inputGroup">
+            <div class="inputGroup"> 
               <input id="gopay" name="method" type="radio" />
               <label for="gopay">
                 <img src="/payment/gopay.png" width="30px" alt="gopay" />
@@ -72,7 +72,7 @@ export default {
     radioGroup: 1,
     activeClass: '',
     bank: '',
-
+    ewallet: '',
   }),
   computed: {
     param() {
@@ -92,16 +92,22 @@ export default {
         {
           "user_id": parseInt(this.$auth.user.id),
           "produk_id": parseInt(this.$route.params.id),
-        },)
-        this.$router.push('/pulsa/'+ this.$route.params.id + "/pembayaran-ewallet")
+        },).then((res)=>{
+          this.ewallet = res.data.data
+          this.$store.commit('detailTransaction/setEwallet', this.ewallet)
+          this.$router.push('/pulsa/'+ this.$route.params.id + "/pembayaran-ewallet")
+        })
       } else {
         await this.$axios.post('/transaksi/bank',
         {
           "user_id": parseInt(this.$auth.user.id),
           "produk_id": parseInt(this.$route.params.id),
           "bank": this.bank
-        },)
-        this.$router.push('/pulsa/'+ this.$route.params.id + '/pembayaran-bank')
+        },).then((res)=>{
+          this.detail = res.data.data
+          this.$store.commit('detailTransaction/setBank', this.detail)
+          this.$router.push('/pulsa/'+ this.$route.params.id + "/pembayaran-bank")
+        })
       } 
     },
   }

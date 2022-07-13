@@ -6,6 +6,7 @@ import authentication from './authentication'
 import saldo from './saldo'
 import productadmin from './productadmin'
 import idproduct from './idproduct'
+import detailTransaction from './detailTransaction'
 
 import transaction from './transaction'
 
@@ -41,6 +42,10 @@ export default () =>
       idproduct: {
         namespaced: true,
         ...idproduct,
+      },
+      detailTransaction: {
+        namespaced: true,
+        ...detailTransaction,
       },
     },
   })

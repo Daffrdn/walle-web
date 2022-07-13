@@ -8,7 +8,6 @@
           cols="12"
           exact
           router
-          link
           @click="detailTransaksi(item)"
         >
         <v-card  
@@ -81,15 +80,15 @@ export default {
     },
     listTertunda() {
         return this.$store.state.transaction.tertunda
+      },
     },
-  },
   mounted() {
         this.fetchTertunda({
         })
     },
   created() {
-  const _this = this;
-  _this.initPage();
+    const _this = this;
+    _this.initPage();
   },
   methods: {
     initPage () {
