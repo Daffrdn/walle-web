@@ -22,7 +22,7 @@
       </v-card-title>
       <v-data-table
         :headers="headers"
-        :items="desserts"
+        :items="listTransaksi.transaksi"
         :page.sync="page"
         :items-per-page="itemsPerPage"
         sort-by="calories"
@@ -44,19 +44,20 @@
             >
               {{ item.status }}
             </v-chip>
+            {{}}
           </div>
         </template>
-        <template v-slot:item.tanggal="{ item }">
+        <template v-slot:item.tanggal="{}">
           <div class="blue--text">
             {{ item.tanggal }}
           </div>
         </template>
       </v-data-table>
     </v-card>
+    <div class="sisasaldo d-flex justify-end">
+      <span class="align-self-center mr-16">Sisa Saldo : Rp 999.000</span>
+    </div>
     <v-row class="mt-5">
-      <v-col>
-        <p>Menampilkan {{ page }} s/d {{ pageCount }} data</p>
-      </v-col>
       <v-col class="d-flex justify-end">
         <v-pagination v-model="page" :length="pageCount"></v-pagination>
       </v-col>
@@ -72,122 +73,35 @@ export default {
     search: '',
     page: 1,
     pageCount: 0,
-    itemsPerPage: 5,
+    itemsPerPage: 7,
     headers: [
       {
         text: 'Tanggal',
         align: 'center',
         sortable: false,
-        value: 'tanggal',
+        value: 'waktu_transaksi',
       },
-      { text: 'Provider', value: 'provider', align: 'center' },
-      { text: 'Nominal', value: 'nominal', align: 'center' },
-      { text: 'No.Telepon', value: 'notelepon', align: 'center' },
-      { text: 'Harga', value: 'harga', align: 'center' },
-      { text: 'Pembayaran', value: 'pembayaran', align: 'center' },
-      { text: 'Status', value: 'status', align: 'center' },
+      { text: 'Produk', value: 'produk.nama', align: 'center' },
+      { text: 'Nominal', value: 'produk.nominal', align: 'center' },
+      { text: 'No.Telepon', value: 'nomor_handphone', align: 'center' },
+      { text: 'Harga', value: 'produk.harga', align: 'center' },
+      { text: 'Pembayaran', value: 'bank', align: 'center' },
+      { text: 'Status', value: 'status_transaksi', align: 'center' },
     ],
     desserts: [],
   }),
-
-  created() {
-    this.initialize()
+  computed: {
+    listTransaksi() {
+      return this.$store.state.transaction.listAdmin
+    },
+  },
+  mounted() {
+    this.fetchProduct()
   },
 
   methods: {
-    initialize() {
-      this.desserts = [
-        {
-          tanggal: '09/06/2022 19:00',
-          provider: 'Indosat',
-          nominal: '10.000',
-          notelepon: '081234567890',
-          harga: 'Rp. 10.000',
-          pembayaran: 'Gopay',
-          status: 'Sukses',
-        },
-        {
-          tanggal: '09/06/2022 19:25',
-          provider: 'Indosat',
-          nominal: '20.000',
-          notelepon: '081234567890',
-          harga: 'Rp. 20.000',
-          pembayaran: 'Gopay',
-          status: 'Sukses',
-        },
-        {
-          tanggal: '09/06/2022 19:00',
-          provider: 'Indosat',
-          nominal: '10.000',
-          notelepon: '081234567890',
-          harga: 'Rp. 10.000',
-          pembayaran: 'Gopay',
-          status: 'Sukses',
-        },
-        {
-          tanggal: '09/06/2022 21:00',
-          provider: 'Telkomsel',
-          nominal: '20.000',
-          notelepon: '081234567809',
-          harga: 'Rp. 20.000',
-          pembayaran: 'Ovo',
-          status: 'Gagal',
-        },
-        {
-          tanggal: '09/06/2022 19:00',
-          provider: 'Indosat',
-          nominal: '10.000',
-          notelepon: '081234567890',
-          harga: 'Rp. 10.000',
-          pembayaran: 'Gopay',
-          status: 'Gagal',
-        },
-        {
-          tanggal: '09/06/2022 19:00',
-          provider: 'Indosat',
-          nominal: '10.000',
-          notelepon: '081234567890',
-          harga: 'Rp. 10.000',
-          pembayaran: 'Gopay',
-          status: 'Sukses',
-        },
-        {
-          tanggal: '09/06/2022 19:00',
-          provider: 'Indosat',
-          nominal: '10.000',
-          notelepon: '081234567890',
-          harga: 'Rp. 10.000',
-          pembayaran: 'Gopay',
-          status: 'Gagal',
-        },
-        {
-          tanggal: '09/06/2022 19:00',
-          provider: 'Indosat',
-          nominal: '10.000',
-          notelepon: '081234567890',
-          harga: 'Rp. 10.000',
-          pembayaran: 'Gopay',
-          status: 'Sukses',
-        },
-        {
-          tanggal: '09/06/2022 19:00',
-          provider: 'Indosat',
-          nominal: '10.000',
-          notelepon: '081234567890',
-          harga: 'Rp. 10.000',
-          pembayaran: 'Gopay',
-          status: 'Sukses',
-        },
-        {
-          tanggal: '09/06/2022 19:00',
-          provider: 'Indosat',
-          nominal: '10.000',
-          notelepon: '081234567890',
-          harga: 'Rp. 10.000',
-          pembayaran: 'Gopay',
-          status: 'Gagal',
-        },
-      ]
+    fetchProduct() {
+      this.$store.dispatch('transaction/listAdmin')
     },
     getColor(status) {
       if (status === 'Sukses') return '#4EC49A'
@@ -208,9 +122,9 @@ export default {
   background: #f9edf2;
   border: 1px solid #edcad7;
   border-radius: 20px 20px 0px 0px;
+  box-shadow: none !important;
 }
 .tables {
-  background: #f9edf2;
   border: 1px solid #edcad7;
 }
 
@@ -229,5 +143,24 @@ span {
   justify-content: center;
   align-items: center;
   width: 70px;
+}
+
+.v-data-table >>> th {
+  background-color: #ffff !important;
+}
+
+.v-data-table >>> tr:nth-of-type(odd) {
+  background-color: #f9edf2 !important;
+}
+.v-data-table >>> tr:nth-of-type(even) {
+  background-color: #ffff !important;
+}
+.sisasaldo {
+  height: 60px;
+  background-image: linear-gradient(rgba(237, 202, 215, 1), #f9edf2);
+}
+.sisasaldo span {
+  color: #c44e78;
+  font-weight: 600;
 }
 </style>

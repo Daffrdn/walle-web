@@ -8,7 +8,7 @@
         <v-btn icon x-large @click="back">
           <v-icon>mdi-chevron-left</v-icon>
         </v-btn>
-        Produk Pulsa
+        Produk Paket Data
       </v-card-title>
 
       <v-card class="mx-auto wrapper" width="90%" elevation="0">
@@ -142,7 +142,7 @@ export default {
   },
   mounted() {
     this.fetchProduct({
-      kategori: '1',
+      kategori: '2',
     })
   },
   methods: {
@@ -153,10 +153,10 @@ export default {
       this.$router.push('/admin/tambah-produk')
     },
     toTambah() {
-      this.$router.push('pulsa/tambah')
+      this.$router.push('kuota/tambah')
     },
     toEdit(item) {
-      this.$router.push({ path: 'pulsa/' + item.id })
+      this.$router.push({ path: 'kuota/' + item.id })
     },
     deleteItem(item) {
       this.toDeleteId = item.id
@@ -169,7 +169,7 @@ export default {
         },
       })
       this.fetchProduct({
-        kategori: '1',
+        kategori: '2',
       })
       this.dialogDelete = false
     },

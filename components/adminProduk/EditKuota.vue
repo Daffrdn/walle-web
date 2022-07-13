@@ -7,32 +7,31 @@
         <v-btn icon x-large @click="back">
           <v-icon>mdi-chevron-left</v-icon>
         </v-btn>
-        Tambah Produk Paket Data
+        Edit Produk Paket Data
       </v-card-title>
       <v-card class="mx-auto" width="1000px" elevation="0">
         <v-card-text>
           <v-form>
             <span>Provider</span>
-            <v-autocomplete
-              v-model="posts.provider_id"
-              :items="providers"
-              item-text="name"
-              item-value="id"
-              outlined
-              color="#B0466C"
-              single-line
-              label="Pilih Provider"
-              class="mb-6 autocomplete"
-            ></v-autocomplete>
-            <span>Nominal</span>
             <v-text-field
-              oninput="this.value = this.value.replace(/[^0-9]/g, '')"
-              v-model="posts.nominal"
+              v-model="posts.provider"
+              disabled
               outlined
               color="#B0466C"
               single-line
               required
-              label="Nominal produk sebelum biaya admin"
+              label="Provider"
+              class="mb-6 autocomplete"
+            ></v-text-field>
+            <span>Nominal</span>
+            <v-text-field
+              v-model="posts.nominal"
+              oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+              outlined
+              color="#B0466C"
+              single-line
+              required
+              label="Nominal produk pulsa yang akan dijual"
               class="mb-6 autocomplete"
             ></v-text-field>
             <span>Harga</span>
@@ -46,16 +45,16 @@
               class="mb-6 autocomplete"
               prefix="Rp "
             ></v-text-field>
-            <span>Nama Produk</span>
+            <span>Nama Produk </span>
             <v-text-field
               v-model="posts.nama"
               outlined
               color="#B0466C"
               single-line
-              label="contoh : Tri 3GB"
+              label="contoh : Paket Data Tri 3GB + Semua Jaringan 24 Jam"
               class="mb-6 autocomplete"
             ></v-text-field>
-            <span>Deskripsi Produk</span>
+            <span>Deskripsi Produk </span>
             <v-text-field
               v-model="posts.deskripsi"
               outlined
@@ -64,16 +63,15 @@
               label="contoh : 3Gb + Semua Jaringan 24 Jam"
               class="mb-6 autocomplete"
             ></v-text-field>
+
             <v-btn
               block
               color="#B0466C"
               x-large
               class="submit-button mt-10"
               type="submit"
-              @click="postData"
+              @click="editData"
               :disabled="
-                this.posts.provider_id == null ||
-                this.posts.provider_id == '' ||
                 this.posts.nominal == null ||
                 this.posts.nominal == '' ||
                 this.posts.harga == null ||
@@ -84,14 +82,11 @@
                 this.posts.deskripsi == ''
               "
             >
-              Tambah
+              Edit
             </v-btn>
           </v-form>
         </v-card-text>
       </v-card>
-      <!-- <br /><br /><br /><br />
-      <br /><br /><br /><br />
-      <br /><br /><br /><br /> -->
     </v-card>
     <!-- DIALOG -->
     <v-dialog class="" v-model="successful" width="400">
@@ -100,14 +95,14 @@
           <img class="" height="150px" src="~/static/admin/berhasil.png" />
         </div>
         <div class="dialog-text my-5 mx-auto">
-          <p>Data berhasil Ditambahkan</p>
+          <p>Data berhasil Dirubah</p>
         </div>
         <v-card-actions class="mx-auto">
           <v-btn
             x-large
             color="#B0466C"
             class="button-dialog"
-            @click="successful = false"
+            @click="closeDialog"
           >
             OK
           </v-btn>
@@ -119,7 +114,7 @@
 
 <script>
 export default {
-  name: 'AdminTambahData',
+  name: 'AdminTambahPulsa',
   data: () => ({
     providers: [
       { id: 1, name: 'Axis' },
@@ -130,39 +125,52 @@ export default {
       { id: 8, name: 'XL' },
     ],
     posts: {
-      kategori_id: 2,
-      provider_id: null,
+      provider: null,
       nominal: null,
       harga: null,
       nama: null,
       deskripsi: null,
-      saldo: null,
     },
     successful: false,
   }),
+
+  mounted() {
+    this.fetchProduct()
+  },
   methods: {
+    fetchProduct(id) {
+      id = this.$route.params.id
+      this.$axios
+        .get(`https://bearuang.me/produk/${id}`, {
+          headers: {
+            Authorization: this.$auth.$storage._state['_token.local'],
+          },
+        })
+        .then((res) => {
+          this.posts.provider = res.data.produk.provider.nama
+          this.posts.nama = res.data.produk.nama
+          this.posts.harga = res.data.produk.harga
+          this.posts.nominal = res.data.produk.nominal
+          this.posts.deskripsi = res.data.produk.deskripsi
+        })
+    },
     back() {
-      this.$router.push('/admin/tambah-produk/pulsa')
+      this.$router.push('/admin/tambah-produk/kuota')
     },
-    emptyField() {
-      this.posts.nama = null
-      this.posts.nominal = null
-      this.posts.harga = null
-      this.posts.deskripsi = null
-      this.posts.provider_id = null
-    },
-    async postData(e) {
+
+    async editData(e, id) {
       e.preventDefault()
-      await this.$axios.post(
-        '/produk',
+      id = this.$route.params.id
+
+      await this.$axios.put(
+        `/produk/${id}`,
         {
           nama: this.posts.nama,
+          deskripsi: this.posts.deskripsi,
           nominal: parseInt(this.posts.nominal),
           harga: parseInt(this.posts.harga),
-          deskripsi: this.posts.deskripsi,
-          kategori_id: this.posts.kategori_id,
-          provider_id: this.posts.provider_id,
         },
+
         {
           headers: {
             Authorization: this.$auth.$storage._state['_token.local'],
@@ -170,7 +178,11 @@ export default {
         }
       )
       this.successful = true
-      this.emptyField()
+      this.fetchProduct()
+    },
+    closeDialog() {
+      this.successful = false
+      this.$router.push('/admin/tambah-produk/kuota')
     },
   },
 }
@@ -178,9 +190,9 @@ export default {
 
 <style scoped>
 .title {
-  position: relative;
   background: #ffffff;
   border-radius: 10px;
+  box-shadow: 0px 4px 20px rgba(78, 196, 154, 0.05) !important;
 }
 
 span {
@@ -193,7 +205,7 @@ span {
 }
 
 .v-card {
-  padding-bottom: 30px;
+  padding-bottom: 40px;
 }
 .v-text-field {
   border-radius: 10px;

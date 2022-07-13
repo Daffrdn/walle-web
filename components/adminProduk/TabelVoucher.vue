@@ -8,7 +8,7 @@
         <v-btn icon x-large @click="back">
           <v-icon>mdi-chevron-left</v-icon>
         </v-btn>
-        Produk Pulsa
+        Produk Voucher Game
       </v-card-title>
 
       <v-card class="mx-auto wrapper" width="90%" elevation="0">
@@ -73,6 +73,11 @@
             </template>
           </v-data-table>
           <v-row class="mt-5 mx-1">
+            <!-- <v-col> -->
+            <!-- <p class="pagination-info my-2">
+                Menampilkan {{ page }} s/d {{ pageCount }} data
+              </p> -->
+            <!-- </v-col> -->
             <v-col class="d-flex justify-end">
               <v-pagination
                 v-model="page"
@@ -125,7 +130,7 @@ export default {
         sortable: false,
       },
       {
-        text: 'Provider',
+        text: 'Nama',
         value: 'provider.nama',
         align: 'center',
       },
@@ -142,7 +147,7 @@ export default {
   },
   mounted() {
     this.fetchProduct({
-      kategori: '1',
+      kategori: '3',
     })
   },
   methods: {
@@ -153,10 +158,10 @@ export default {
       this.$router.push('/admin/tambah-produk')
     },
     toTambah() {
-      this.$router.push('pulsa/tambah')
+      this.$router.push('voucher/tambah')
     },
     toEdit(item) {
-      this.$router.push({ path: 'pulsa/' + item.id })
+      this.$router.push({ path: 'voucher/' + item.id })
     },
     deleteItem(item) {
       this.toDeleteId = item.id
@@ -169,7 +174,7 @@ export default {
         },
       })
       this.fetchProduct({
-        kategori: '1',
+        kategori: '3',
       })
       this.dialogDelete = false
     },

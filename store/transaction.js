@@ -1,12 +1,16 @@
 import axios from 'axios'
 
 const state = () => ({
+  listAdmin: [],
   listTransaksi: [],
   gagal: [],
   tertunda: [],
   berhasil: [],
 })
 const mutations = {
+  listAdmin(state, payload) {
+    state.listAdmin = payload
+  },
   setAll(state, payload) {
     state.listTransaksi = payload
   },
@@ -24,18 +28,35 @@ const mutations = {
   },
 }
 const actions = {
+  listAdmin(store) {
+    const API_URL = `https://bearuang.me/transaksi`
+    axios
+      .get(API_URL, {
+        headers: {
+          Authorization: this.$auth.$storage._state['_token.local'],
+        },
+      })
+      .then((response) => {
+        store.commit('listAdmin', response.data)
+        console.log(response.data)
+      })
+
+      .catch((error) => {
+        store.commit('setError', error)
+      })
+  },
   fetchAllTransaksi(store) {
     const API_URL = `https://bearuang.me/transaksi/user`
     axios
       .get(API_URL, {
-        headers: { 
-         'Authorization': this.$auth.$storage._state['_token.local']
-        }
-       })
+        headers: {
+          Authorization: this.$auth.$storage._state['_token.local'],
+        },
+      })
       .then((response) => {
         store.commit('setAll', response.data)
       })
-      
+
       .catch((error) => {
         store.commit('setError', error)
       })
@@ -44,14 +65,14 @@ const actions = {
     const API_URL = `https://bearuang.me/transaksi/user?filter=gagal`
     axios
       .get(API_URL, {
-        headers: { 
-         'Authorization': this.$auth.$storage._state['_token.local']
-        }
-       })
+        headers: {
+          Authorization: this.$auth.$storage._state['_token.local'],
+        },
+      })
       .then((response) => {
         store.commit('setGagal', response.data)
       })
-      
+
       .catch((error) => {
         store.commit('setError', error)
       })
@@ -59,11 +80,11 @@ const actions = {
   fetchTertunda(store) {
     const API_URL = `https://bearuang.me/transaksi/user?filter=tertunda`
     axios
-      .get(API_URL,  {
-        headers: {  
-         'Authorization': this.$auth.$storage._state['_token.local']
-        }
-       })
+      .get(API_URL, {
+        headers: {
+          Authorization: this.$auth.$storage._state['_token.local'],
+        },
+      })
       .then((response) => {
         store.commit('setTertunda', response.data)
       })
@@ -75,11 +96,11 @@ const actions = {
   fetchBerhasil(store) {
     const API_URL = `https://bearuang.me/transaksi/user?filter=berhasil`
     axios
-      .get(API_URL,  {
-        headers: { 
-         'Authorization': this.$auth.$storage._state['_token.local']
-        }
-       })
+      .get(API_URL, {
+        headers: {
+          Authorization: this.$auth.$storage._state['_token.local'],
+        },
+      })
       .then((response) => {
         store.commit('setBerhasil', response.data)
       })
