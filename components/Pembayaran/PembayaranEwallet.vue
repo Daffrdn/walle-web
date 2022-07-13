@@ -26,7 +26,7 @@
         </v-row>
         <v-row class="d-flex justify-sm-space-between ma-0 middle">
           <span class="sub">Harga </span>
-          <span class="sub-value">{{list.harga}}</span>
+          <span class="sub-value">Rp. {{list.harga}}</span>
         </v-row>
       </div><br>
       <v-btn dark block class="btn" color="#4EC49A" x-large elevation="0" @click="riwayat">

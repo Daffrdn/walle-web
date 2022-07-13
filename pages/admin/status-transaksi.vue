@@ -55,7 +55,9 @@
       </v-data-table>
     </v-card>
     <div class="sisasaldo d-flex justify-end">
-      <span class="align-self-center mr-16">Sisa Saldo : Rp 999.000</span>
+      <span class="align-self-center mr-16">
+        Sisa Saldo : Rp {{listSaldo.saldo[0].saldo+listSaldo.saldo[1].saldo+listSaldo.saldo[2].saldo}}
+      </span>
     </div>
     <v-row class="mt-5">
       <v-col class="d-flex justify-end">
@@ -94,6 +96,9 @@ export default {
     listTransaksi() {
       return this.$store.state.transaction.listAdmin
     },
+    listSaldo() {
+      return this.$store.state.saldo.listSaldo
+    },
   },
   mounted() {
     this.fetchProduct()
@@ -102,6 +107,7 @@ export default {
   methods: {
     fetchProduct() {
       this.$store.dispatch('transaction/listAdmin')
+      this.$store.dispatch('saldo/fetchProduct')
     },
     getColor(status) {
       if (status === 'Sukses') return '#4EC49A'

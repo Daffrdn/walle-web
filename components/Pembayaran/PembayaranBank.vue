@@ -30,7 +30,7 @@
         </v-row>
         <v-row class="d-flex justify-sm-space-between ma-0 middle">
           <span class="sub">Harga </span>
-          <span class="sub-value">{{list.harga}} WIB</span>
+          <span class="sub-value">Rp. {{list.harga}} WIB</span>
         </v-row>
       </div>
       <br>
