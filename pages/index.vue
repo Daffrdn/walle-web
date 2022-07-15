@@ -143,10 +143,13 @@
           </div>
           <div class="benefit-title-wrapper pl-16 align-self-center">
             <h1 class="benefit-title font-weight-regular mb-8">Benefit</h1>
-            <p>
-              Dapatkan kemudahan bertransaksi pulsa,paket data dan voucher game
-              hanya dengan satu aplikasi
-            </p>
+            <div class="benefit-desc">
+              <p class="">
+                Dapatkan kemudahan bertransaksi pulsa,paket data dan voucher
+                game hanya dengan satu aplikasi
+              </p>
+            </div>
+
             <div class="hero-detail mb-16">
               <p>
                 <img src="/landingpage/check.svg" width="20px" /><span
@@ -174,7 +177,7 @@
             <div class="d-flex justify-start">
               <v-btn
                 class="hero-btn-login"
-                width="80%"
+                width="50%"
                 height="48px"
                 color="#009232"
                 @click="toDaftar"
@@ -229,7 +232,7 @@ header {
   position: fixed;
   right: 0;
   left: 0;
-  box-shadow: inset 0 -1px 0 0 rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 -1px 0 0 rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(5px);
 
   z-index: 99;
@@ -325,12 +328,15 @@ header {
   width: 50%;
 }
 .benefit-title-wrapper {
-  width: 35%;
+  width: 50%;
   color: #161616;
 }
 .benefit-title {
   font-weight: 500;
   font-size: 32px;
+}
+.benefit-desc {
+  width: 460px;
 }
 #footer {
   padding-top: 1rem;
