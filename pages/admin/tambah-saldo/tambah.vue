@@ -87,6 +87,7 @@
 <script>
 export default {
   name: 'AdminTambahSaldo',
+  middleware: ['admin', 'auth'],
   data: () => ({
     kategori: [
       { id: 1, name: 'Saldo Pulsa' },

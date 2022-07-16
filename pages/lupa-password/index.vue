@@ -80,7 +80,7 @@ export default {
         await this.$axios.post('/user/reset', {
           email: this.email,
         })
-        this.$store.commit('add_email', this.email)
+        this.$store.commit('user/add_email', this.email)
         this.$router.push('/lupa-password/new-password')
       } catch (e) {
         this.error = e.response.data.message

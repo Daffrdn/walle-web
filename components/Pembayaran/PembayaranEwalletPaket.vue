@@ -61,7 +61,7 @@ export default {
     },
     confirmation(param) {
       const params = this.$store.state.detailTransaction.ewallets
-      this.$router.push('/pulsa/'+ param +'/' + params.id)
+      this.$router.push('/paketdata/'+ param +'/' + params.id)
     }
   },
 }

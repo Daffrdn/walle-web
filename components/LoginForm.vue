@@ -64,13 +64,13 @@
       <span class="mt-3 d-flex justify-center grey--text" >Atau</span><br>
   </form>
       <v-btn 
-      block 
-      dark 
-      x-large 
-      class="mt-3 btn" 
-      outlined color="#4EC49A"
-      @click="registration"
-    > Daftar </v-btn>
+        block 
+        dark 
+        x-large 
+        class="mt-3 btn" 
+        outlined color="#4EC49A"
+        @click="registration"
+      > Daftar </v-btn>
   </v-card>
   <br><br>
   </div>
@@ -112,7 +112,15 @@ export default {
               password: this.password
             }
           })
-             this.$router.push('/beranda');
+          .then(()=>{
+             console.log(this.$store.state.auth.user.role_id)
+             if(this.$store.state.auth.user.role_id === 2){
+              // this.$router.push('/beranda');
+              this.$router.push('/admin')
+             } else {
+              this.$router.push('/admin')
+             }
+            })
           } catch(e) {
             this.error = this.message
           }

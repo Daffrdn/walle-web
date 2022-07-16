@@ -67,7 +67,7 @@
           </v-col>
         </v-row>
         <h2 v-show="product" class="pb-6 sub-title ml-3">
-          Pilih Nominal Pulsa :
+          Pilih Paket Data :
         </h2>
 
         <v-row class="d-flex justify-center">
@@ -103,6 +103,7 @@
             </v-card>
           </v-col>
           <!-- end of Product -->
+
         </v-row>
       </div>
     </v-card>
