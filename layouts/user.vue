@@ -8,9 +8,9 @@
       fixed
       app
     >
-    <v-card-title align="center" class="mx-auto d-flex justify-center">    
-      <img src="../static/2 11.png">
-    </v-card-title>
+      <v-card-title align="center" class="mx-auto d-flex justify-center">
+        <img src="../static/2 11.png" />
+      </v-card-title>
 
       <v-list>
         <v-list-item
@@ -21,7 +21,7 @@
           exact
         >
           <v-list-item-action>
-            <v-img :src="item.img" max-width="30"></v-img>
+            <v-icon size="30">{{ item.img }}</v-icon>
           </v-list-item-action>
           <v-list-item-content>
             <v-list-item-title v-text="item.title" />
@@ -31,9 +31,9 @@
     </v-navigation-drawer>
     <v-app-bar :clipped-left="clipped" fixed app color="white" elevation="1">
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <v-btn icon @click.stop="clipped = !clipped">
+      <!-- <v-btn icon @click.stop="clipped = !clipped">
         <v-icon>mdi-{{ `chevron-${clipped ? 'down' : 'left'}` }}</v-icon>
-      </v-btn>
+      </v-btn> -->
       <v-toolbar-title v-text="items.title" />
       <v-spacer />
     </v-app-bar>
@@ -54,17 +54,17 @@ export default {
       drawer: false,
       items: [
         {
-          img: '/home.png',
+          img: 'mdi-home-outline',
           title: 'Beranda',
           to: '/beranda',
-        }, 
+        },
         {
-          img: '/vector.png',
+          img: 'mdi-history',
           title: 'Riwayat',
           to: '/riwayat',
         },
         {
-          img: '/vector-1.png',
+          img: 'mdi-account-circle-outline',
           title: 'Akun',
           to: '/akun',
         },
@@ -74,6 +74,4 @@ export default {
 }
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

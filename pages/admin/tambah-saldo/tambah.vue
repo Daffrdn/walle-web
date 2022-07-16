@@ -147,6 +147,7 @@ export default {
   position: relative;
   background: #ffffff;
   border-radius: 10px;
+  box-shadow: 0px 4px 20px rgba(78, 196, 154, 0.05) !important;
 }
 
 span {

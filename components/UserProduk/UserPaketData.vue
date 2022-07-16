@@ -117,6 +117,7 @@
           color="rgba(78, 196, 154, 1)"
           class="pay-button mb-1"
           @click="toPayment"
+          :disabled="this.number.length < 10"
           >Beli</v-btn
         >
       </v-row>
@@ -137,7 +138,7 @@ export default {
     totalShow: false,
     parameter: '',
     phoneRules: [
-      (v) => v.length > 10 || 'Nomor terlalu pendek, minimal 10 karakter',
+      (v) => v.length > 9 || 'Nomor terlalu pendek, minimal 10 karakter',
     ],
     phoneErr: false,
     product: false,

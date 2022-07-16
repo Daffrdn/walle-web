@@ -64,7 +64,7 @@
             <span v-show="phoneErr" style="color: red"
               >Incorrect phone number
             </span>
-          </v-col> 
+          </v-col>
         </v-row>
         <h2 v-show="product" class="pb-6 sub-title ml-3">
           Pilih Nominal Pulsa :
@@ -115,6 +115,7 @@
           color="rgba(78, 196, 154, 1)"
           class="pay-button mb-1"
           @click="toPayment"
+          :disabled="this.number.length < 10"
           >Beli</v-btn
         >
       </v-row>
@@ -127,15 +128,15 @@ export default {
   name: 'NominalPulsa',
 
   data: () => ({
-    kategori: '1',
-    provider: '1',
+    kategori: '0',
+    provider: '0',
     activeClass: 'disabled',
     number: '',
     total: '',
     totalShow: false,
     parameter: '',
     phoneRules: [
-      (v) => v.length > 10 || 'Nomor terlalu pendek, minimal 10 karakter',
+      (v) => v.length > 9 || 'Nomor terlalu pendek, minimal 10 karakter',
     ],
     phoneErr: false,
     product: false,
@@ -168,7 +169,7 @@ export default {
     back() {
       this.$router.push('/')
     },
-    saveParam(param) { 
+    saveParam(param) {
       this.totalShow = true
       window.console.log(param.id)
       this.parameter = param
