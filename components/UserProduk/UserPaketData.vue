@@ -74,7 +74,7 @@
           <!-- Product -->
           <v-col
             v-for="item in listPulsa.produk"
-            v-show="product"
+            v-show="product" 
             :key="item.id"
             cols="12"
             md="12"
