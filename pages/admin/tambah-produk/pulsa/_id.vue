@@ -8,6 +8,7 @@ export default {
   name: 'IndexEditProdukPulsa',
   layout: 'admin',
   components: { EditPulsa },
+  middleware: ['auth', 'admin'],
 }
 </script>
 

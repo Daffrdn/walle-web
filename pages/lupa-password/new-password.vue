@@ -76,7 +76,6 @@
 <script>
 export default {
     name: 'NewPasswwordpage',
-    middleware: 'guest',
     data: () => ({
         error: null,
         show1: false,
@@ -86,6 +85,7 @@ export default {
         passwordRules: [(v) => !!v || "Passwordnya harus unik ya", (v) => v.length >= 8 || "Min 8 characters"],
         confirmPasswordRules: [(v) => !!v || "Masukan Password yang sama", (v) => v.length >= 8 || "Min 8 characters"],
     }),
+    middleware: 'guest',
     methods: {
       back() {
         this.$router.push('/lupa-password')

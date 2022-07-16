@@ -21,7 +21,7 @@
           <span class="sub-value">{{list.order_id}}</span>
         </v-row>
         <v-row class="d-flex justify-sm-space-between ma-0 middle">
-          <span class="sub">Nama Produk</span> 
+          <span class="sub">Nama Produk</span>
           <span class="sub-value">{{list.nama_produk}}</span>
         </v-row>
         <v-row class="d-flex justify-sm-space-between ma-0 middle">
@@ -61,7 +61,7 @@ export default {
     },
     confirmation(param) {
       const params = this.$store.state.detailTransaction.ewallets
-      this.$router.push('/pulsa/'+ param +'/' + params.id)
+      this.$router.push('/vouchergame/'+ param +'/' + params.id)
     }
   },
 }

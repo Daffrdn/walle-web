@@ -40,7 +40,8 @@ export default {
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
-    '@nuxtjs/auth'
+    '@nuxtjs/auth',
+    'nuxt-clipboard2',
   ],
 
 
@@ -60,7 +61,6 @@ export default {
         },
         user: {
           property: 'false',
-          autoFetch: true
         },
         endpoints: {
           login: { url: '/user/login', method: 'post'},

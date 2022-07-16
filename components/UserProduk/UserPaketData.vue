@@ -8,7 +8,7 @@
               mdi-chevron-left
             </v-icon>
           </v-btn>
-          <h2 class="pulsa">Pulsa</h2>
+          <h2 class="pulsa">Paket Data</h2>
         </v-card-title>
         <span><h2 class="sub-title mb-4 ml-3">Nomor Telepon</h2></span>
 
@@ -67,7 +67,7 @@
           </v-col>
         </v-row>
         <h2 v-show="product" class="pb-6 sub-title ml-3">
-          Pilih Nominal Pulsa :
+          Pilih Paket Data :
         </h2>
 
         <v-row class="d-flex justify-center">
@@ -104,7 +104,6 @@
           </v-col>
           <!-- end of Product -->
 
-          <p>{{ listPulsa }}</p>
         </v-row>
       </div>
     </v-card>

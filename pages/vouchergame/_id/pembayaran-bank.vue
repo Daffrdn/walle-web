@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import PembayaranBank from '../../../components/Pembayaran/PembayaranBank.vue'
+import PembayaranBank from '../../../components/Pembayaran/PembayaranBankGame.vue'
 export default {
   name: 'PembayaranPulsaPagess',
   components: {

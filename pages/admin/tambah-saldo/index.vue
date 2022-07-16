@@ -84,7 +84,7 @@
 export default {
   name: 'AdminTambahSaldoPages',
   layout: 'admin',
-  middleware: 'auth',
+  middleware: ['admin', 'auth'],
   computed: {
     listSaldo() {
       return this.$store.state.saldo.listSaldo

@@ -6,10 +6,14 @@ const state = () => ({
   gagal: [],
   tertunda: [],
   berhasil: [],
+  saldoKeluar: [],
 })
 const mutations = {
   listAdmin(state, payload) {
     state.listAdmin = payload
+  },
+  setSaldoKeluar(state, payload) {
+    state.saldoKeluar = payload
   },
   setAll(state, payload) {
     state.listTransaksi = payload
@@ -38,6 +42,23 @@ const actions = {
       })
       .then((response) => {
         store.commit('listAdmin', response.data)
+        console.log(response.data)
+      })
+
+      .catch((error) => {
+        store.commit('setError', error)
+      })
+  },
+  listSaldoKeluar(store) {
+    const API_URL = `https://bearuang.me/transaksi/pemasukan`
+    axios
+      .get(API_URL, {
+        headers: {
+          Authorization: this.$auth.$storage._state['_token.local'],
+        },
+      })
+      .then((response) => {
+        store.commit('setSaldoKeluar', response.data)
         console.log(response.data)
       })
 

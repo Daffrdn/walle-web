@@ -8,6 +8,7 @@ export default {
   name: 'IndexTambahProdukPulsa',
   layout: 'admin',
   components: { TambahPulsa },
+  middleware: ['auth', 'admin'],
 }
 </script>
 

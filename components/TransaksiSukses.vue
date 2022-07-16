@@ -10,7 +10,7 @@
         color="#4EC49A" 
         class="buy-button" 
         elevation="0"
-        to="/riwayat" 
+        @click="detailTransaksi(param)"
         x-large
     >Detail Transaksi</v-btn>
     <v-btn 
@@ -30,7 +30,17 @@
 
 <script>
 export default {
-
+  name: 'TransaksiSukses',
+  computed: {
+    param() {
+      return this.$route.params.id
+    }
+  },
+  methods: {
+    detailTransaksi(param){
+      this.$router.push('/riwayat/' + param)
+    }
+  }
 }
 </script>
 

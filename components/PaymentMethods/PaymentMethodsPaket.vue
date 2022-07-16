@@ -26,8 +26,9 @@
           </v-row>
           <div class="line"></div>
           <!-- Payment -->
-          <span class="sub-title">Pilih Metode Pembayaran</span>
+          <span class="sub-title">Pilih Metode Pembayaran :</span>
           <form methods="post" class="form mt-3" @submit.prevent="transaksi">
+          <span>E-Wallet</span>
             <div class="inputGroup"> 
               <input id="gopay" name="method" type="radio" />
               <label for="gopay">
@@ -36,11 +37,28 @@
                 <span class="ml-2 payment">GOPAY</span>
               </label>
             </div>
+          <span>Virtual Bank Account</span>
             <div class="inputGroup">
               <input id="bca" v-model="bank" name="method" type="radio" value="bca"/>
               <label for="bca">
-                <img src="/payment/ovo.png" width="35px" alt="ovo" />
-                <span class="ml-2 payment">BCA</span>
+                <img class="mt-2" src="/payment/bca.png" width="50px" alt="bca" />
+                <span class="ml-4 payment"> BCA Virtual Account</span>
+              </label>
+            </div>
+
+            <div class="inputGroup">
+              <input id="bni" v-model="bank" name="method" type="radio" value="bni"/>
+              <label for="bni">
+                <img class="mt-2" src="/payment/bni.png" width="50px" alt="bni" />
+                <span class="ml-4 payment"> BNI Virtual Account</span>
+              </label>
+            </div>
+
+            <div class="inputGroup">
+              <input id="bri" v-model="bank" name="method" type="radio" value="bri"/>
+              <label for="bri">
+                <img class="mt-3" src="/payment/bri.png" width="50px" alt="bri" />
+                <span class="ml-4 payment"> BRI Virtual Account</span>
               </label>
             </div>
           
@@ -95,7 +113,7 @@ export default {
         },).then((res)=>{
           this.ewallet = res.data.data
           this.$store.commit('detailTransaction/setEwallet', this.ewallet)
-          this.$router.push('/pulsa/'+ this.$route.params.id + "/pembayaran-ewallet")
+          this.$router.push('/paketdata/'+ this.$route.params.id + "/pembayaran-ewallet")
         })
       } else {
         await this.$axios.post('/transaksi/bank',
@@ -106,7 +124,7 @@ export default {
         },).then((res)=>{
           this.detail = res.data.data
           this.$store.commit('detailTransaction/setBank', this.detail)
-          this.$router.push('/pulsa/'+ this.$route.params.id + "/pembayaran-bank")
+          this.$router.push('/paketdata/'+ this.$route.params.id + "/pembayaran-bank")
         })
       } 
     },
