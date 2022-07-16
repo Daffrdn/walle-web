@@ -1,8 +1,5 @@
 <template>
   <div>
-    <br />
-    <span>Tambah Produk</span>
-    <br />
     <v-card class="mx-auto" elevation="0">
       <v-row class="mx-auto mt-5">
         <v-col>

@@ -8,7 +8,7 @@
               mdi-chevron-left
             </v-icon>
           </v-btn>
-          <h2 class="pulsa">Pulsa</h2>
+          <h2 class="pulsa">Paket Data</h2>
         </v-card-title>
         <span><h2 class="sub-title mb-4 ml-3">Nomor Telepon</h2></span>
 
@@ -103,8 +103,6 @@
             </v-card>
           </v-col>
           <!-- end of Product -->
-
-          <p>{{ listPulsa }}</p>
         </v-row>
       </div>
     </v-card>
@@ -118,6 +116,7 @@
           color="rgba(78, 196, 154, 1)"
           class="pay-button mb-1"
           @click="toPayment"
+          :disabled="this.number.length < 10"
           >Beli</v-btn
         >
       </v-row>
@@ -138,7 +137,7 @@ export default {
     totalShow: false,
     parameter: '',
     phoneRules: [
-      (v) => v.length > 10 || 'Nomor terlalu pendek, minimal 10 karakter',
+      (v) => v.length > 9 || 'Nomor terlalu pendek, minimal 10 karakter',
     ],
     phoneErr: false,
     product: false,

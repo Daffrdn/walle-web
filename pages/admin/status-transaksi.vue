@@ -2,7 +2,7 @@
 <template>
   <div>
     <br />
-    <p>Status Transaksi</p>
+    <br />
     <v-card class="card">
       <v-card-title>
         <v-icon color="#D683A1" class="mr-2">mdi-update</v-icon>
@@ -34,29 +34,30 @@
         @page-count="pageCount = $event"
       >
         // eslint-disable-next-line vue/valid-v-slot
-        <template v-slot:item.status="{ item }">
-          <div>
-            <v-chip
-              :color="getColor(item.status)"
-              dark
-              label
-              class="chips ml-5"
-            >
-              {{ item.status }}
-            </v-chip>
-            {{}}
-          </div>
+
+        <template v-slot:item.status_transaksi="{ item }">
+          <v-chip
+            class="chips mx-auto"
+            dark
+            medium
+            :color="getColor(item.status_transaksi)"
+            >{{ item.status_transaksi }}</v-chip
+          >
         </template>
-        <template v-slot:item.tanggal="{}">
-          <div class="blue--text">
-            {{ item.tanggal }}
-          </div>
+
+        <template v-slot:item.waktu_transaksi="{ item }">
+          <div class="blue--text">{{ item.waktu_transaksi }}</div>
         </template>
       </v-data-table>
     </v-card>
     <div class="sisasaldo d-flex justify-end">
       <span class="align-self-center mr-16">
-        Sisa Saldo : Rp {{listSaldo.saldo[0].saldo+listSaldo.saldo[1].saldo+listSaldo.saldo[2].saldo}}
+        Sisa Saldo : Rp
+        {{
+          listSaldo.saldo[0].saldo +
+          listSaldo.saldo[1].saldo +
+          listSaldo.saldo[2].saldo
+        }}
       </span>
     </div>
     <v-row class="mt-5">
@@ -110,9 +111,9 @@ export default {
       this.$store.dispatch('saldo/fetchProduct')
     },
     getColor(status) {
-      if (status === 'Sukses') return '#4EC49A'
-      else if (status === 'Gagal') return '#FF1A1A'
-      else return 'yellow'
+      if (status === 'settlement') return '#47A34B'
+      else if (status === 'expire') return '#FF2A55'
+      else return '#FFAA2A'
     },
   },
 }
@@ -148,13 +149,15 @@ span {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  width: 70px;
+  width: 50%;
 }
 
 .v-data-table >>> th {
   background-color: #ffff !important;
 }
-
+.blue--text {
+  color: blue !important;
+}
 .v-data-table >>> tr:nth-of-type(odd) {
   background-color: #f9edf2 !important;
 }

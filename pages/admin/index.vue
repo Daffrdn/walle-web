@@ -1,121 +1,123 @@
 <template>
- <div>
-    <br><br><br>
-    <v-row class="mx-auto">
-        <v-col sm="5">
-            <v-card 
+  <div>
+    <br /><br />
+    <v-row class="d-flex justify-center">
+      <v-col sm="5">
+        <v-card dark color="#C44E78" elevation="0" class="card">
+          <v-card-title class="d-flex justify-start">
+            <h1>
+              Rp.
+              {{
+                listSaldo.saldo[0].saldo +
+                listSaldo.saldo[1].saldo +
+                listSaldo.saldo[2].saldo
+              }}
+            </h1>
+          </v-card-title>
+          <v-card-text class="">
+            <span class="saldo-desc">Saldo saat ini</span>
+          </v-card-text>
+          <br />
+          <v-btn
+            block
             dark
-            color="#C44E78"
+            x-large
+            class="mt-3 radius-button"
+            color="#B0466C"
+            to="/admin/tambah-saldo"
             elevation="0"
-            class="card"
-            >
-                <v-card-title class="d-flex justify-center">
-                    <h1>Rp. {{listSaldo.saldo[0].saldo+listSaldo.saldo[1].saldo+listSaldo.saldo[2].saldo}}</h1>
-                </v-card-title>
-                <v-card-text class="ml-6">
-                    <span>Saldo saat ini</span>
-                </v-card-text>
-                <br>
-                <v-btn 
-                block 
-                dark 
-                x-large
-                class="mt-3 radius-button"
-                color="#B0466C"
-                to="/admin/tambah-saldo"
-                elevation="0"> 
-                    Selengkapnya
-                    <v-icon>mdi-chevron-right</v-icon> 
-                </v-btn>
-            </v-card>
-        </v-col>
-        <v-col sm="4" class="mr-12 pl-0">
-            <v-card 
-            dark 
-            color="#4EC49A"
+          >
+            Selengkapnya
+            <v-icon>mdi-chevron-right</v-icon>
+          </v-btn>
+        </v-card>
+      </v-col>
+      <v-col sm="4" class="mr-12 pl-0">
+        <v-card dark color="#4EC49A" elevation="0" class="card">
+          <v-card-title class="d-flex justify-center">
+            <h1>Rp. {{ SaldoKeluar.pemasukan }}</h1>
+          </v-card-title>
+          <v-card-text class="ml-6">
+            <span>Saldo keluar</span>
+          </v-card-text>
+          <br />
+          <v-btn
+            block
+            dark
+            x-large
+            class="mt-3 radius-button"
+            color="#37896C"
+            to="/admin/status-transaksi"
             elevation="0"
-            class="card"
-            >
-                <v-card-title class="d-flex justify-center">
-                    <h1>Rp. {{SaldoKeluar.pemasukan}}</h1>
-                </v-card-title>
-                <v-card-text class="ml-6">
-                    <span>Saldo keluar</span>
-                </v-card-text>
-                <br>
-                <v-btn 
-                block 
-                dark 
-                x-large
-                class="mt-3 radius-button"
-                color="#37896C"
-                to="/admin/status-transaksi"
-                elevation="0"> 
-                    Selengkapnya 
-                    <v-icon>mdi-chevron-right</v-icon>   
-                </v-btn>
-            </v-card>
-        </v-col>
+          >
+            Selengkapnya
+            <v-icon>mdi-chevron-right</v-icon>
+          </v-btn>
+        </v-card>
+      </v-col>
     </v-row>
- </div>
+  </div>
 </template>
 
 <script>
 export default {
-    name: 'AdminPage',
-    layout: "admin",
-    // middleware: "admin",
-    computed: {
+  name: 'AdminPage',
+  layout: 'admin',
+  // middleware: "admin",
+  computed: {
     listSaldo() {
       return this.$store.state.saldo.listSaldo
-        },
+    },
     SaldoKeluar() {
       return this.$store.state.transaction.saldoKeluar
     },
-    },
-    mounted() {
-        this.fetchProduct()
-        this.listSaldoKeluar()
-    },
-    methods: {
+  },
+  mounted() {
+    this.fetchProduct()
+    this.listSaldoKeluar()
+  },
+  methods: {
     fetchProduct() {
       this.$store.dispatch('saldo/fetchProduct')
     },
-    listSaldoKeluar(){
-    this.$store.dispatch('transaction/listSaldoKeluar')
-    }
+    listSaldoKeluar() {
+      this.$store.dispatch('transaction/listSaldoKeluar')
+    },
   },
 }
 </script>
 
 <style scoped>
 .card {
-    position: absolute;
-    width: 376px;
-    height: 207px;
-    border-radius: 10px;
+  position: absolute;
+  width: 376px;
+  height: 207px;
+  border-radius: 10px;
 }
-
+.saldo-desc {
+  color: white;
+}
 h1 {
-    /* font-family: 'Poppins'; */
-    font-style: normal;
-    font-weight: 700;
-    font-size: 40px;
-    line-height: 120%;
-    text-align: center;
+  /* font-family: 'Poppins'; */
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 120%;
+  text-align: center;
 }
 
 span {
-    /* font-family: 'Poppins'; */
-    font-style: normal;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 120%;
-    display: flex;
-    align-items: center;
+  /* font-family: 'Poppins'; */
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 120%;
+  display: flex;
+  align-items: center;
 }
 
 .radius-button {
-    border-radius: 0px 0px 10px 10px;
+  border-radius: 0px 0px 10px 10px;
+  text-transform: none !important;
 }
 </style>
