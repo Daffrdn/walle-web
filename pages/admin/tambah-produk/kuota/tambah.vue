@@ -8,6 +8,7 @@ export default {
   name: 'IndexTmabahProdukKuota',
   layout: 'admin',
   components: { TambahKuota },
+  middleware: "admin",
 }
 </script>
 

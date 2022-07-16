@@ -8,6 +8,8 @@ export default {
   name: 'IndexTabelProdukVoucher',
   layout: 'admin',
   components: { TabelVoucher },
+  middleware: ['auth', 'admin'],
+  
 }
 </script>
 

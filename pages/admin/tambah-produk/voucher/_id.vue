@@ -8,6 +8,7 @@ export default {
   name: 'IndexEditProdukVoucher',
   layout: 'admin',
   components: { EditVoucher },
+  middleware: ['auth', 'admin'],
 }
 </script>
 

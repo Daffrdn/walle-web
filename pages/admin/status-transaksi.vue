@@ -71,6 +71,7 @@
 export default {
   name: 'StatusTransaksiPages',
   layout: 'admin',
+  middleware: ['admin', 'auth'],
   data: () => ({
     search: '',
     page: 1,

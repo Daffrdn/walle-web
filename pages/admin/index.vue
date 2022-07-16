@@ -9,8 +9,9 @@
             elevation="0"
             class="card"
             >
-                <v-card-title class="d-flex justify-center">
-                    <h1>Rp. {{listSaldo.saldo[0].saldo+listSaldo.saldo[1].saldo+listSaldo.saldo[2].saldo}}</h1>
+                <v-card-title v-for="item in listSaldo.saldo" :key="item.id" class="d-flex justify-center">
+                    <h1>{{item.saldo}}</h1>
+                    <!-- <h1>Rp. {{listSaldo.saldo[0].saldo+listSaldo.saldo[1].saldo+listSaldo.saldo[2].saldo}}</h1> -->
                 </v-card-title>
                 <v-card-text class="ml-6">
                     <span>Saldo saat ini</span>
@@ -64,14 +65,19 @@
 export default {
     name: 'AdminPage',
     layout: "admin",
-    // middleware: "admin",
+    middleware: ['auth','admin'],
+    data: () => ({
+    //   data1: $store.state.saldo.listSaldo.saldo[0].saldo,
+    //   data2: ,
+    //   data3: ,
+    }),
     computed: {
     listSaldo() {
       return this.$store.state.saldo.listSaldo
         },
     SaldoKeluar() {
       return this.$store.state.transaction.saldoKeluar
-    },
+        },
     },
     mounted() {
         this.fetchProduct()

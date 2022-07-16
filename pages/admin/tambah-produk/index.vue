@@ -59,6 +59,7 @@
 export default {
   name: 'IndexTmabahProdukPages',
   layout: 'admin',
+  middleware: ['auth', 'admin'],
   methods: {
     toPulsa() {
       this.$router.push('tambah-produk/pulsa')

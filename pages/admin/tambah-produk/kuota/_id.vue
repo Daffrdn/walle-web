@@ -8,6 +8,7 @@ export default {
   name: 'IndexEditProdukKuota',
   layout: 'admin',
   components: { EditKuota },
+  middleware: ['auth', 'admin'],
 }
 </script>
 
