@@ -119,7 +119,7 @@ export default {
              } else {
               this.$router.push('/admin')
              }
-          } catch(e) {
+          } catch(e) { 
             this.error = this.message
           }
         },
