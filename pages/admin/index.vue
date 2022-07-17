@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="loggedInUser.role_id == 1">
     <br /><br />
     <v-row class="d-flex justify-center">
       <v-col sm="5">
@@ -70,6 +70,9 @@ export default {
     },
     SaldoKeluar() {
       return this.$store.state.transaction.saldoKeluar
+    },
+    loggedInUser() {
+      return this.$store.state.auth.user
     },
   },
   mounted() {

@@ -1,5 +1,7 @@
 <template>
+<div v-if="$store.state.auth.user.role_id == 1">
   <EditKuota />
+</div>
 </template>
 
 <script>

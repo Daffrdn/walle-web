@@ -1,8 +1,7 @@
 <template>
-  <div>
+  <div v-if="$store.state.auth.user.role_id == 1">
     <br />
     <br />
-
     <v-row class="">
       <v-col cols="12" sm="6" lg="4" class="d-flex justify-center">
         <v-card dark color="#C44E78" elevation="0" class="card">

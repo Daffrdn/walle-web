@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-admin">
+  <div v-if="$store.state.auth.user.role_id == 1" class="bg-admin">
     <br /><br />
     <v-card class="mx-auto title" width="1278px" elevation="1"
       ><br />

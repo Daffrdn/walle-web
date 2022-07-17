@@ -1,5 +1,7 @@
 <template>
-  <EditVoucher />
+  <div v-if="$store.state.auth.user.role_id == 1">
+    <EditVoucher />
+  </div>
 </template>
 
 <script>
