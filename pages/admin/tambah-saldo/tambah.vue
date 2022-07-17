@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-admin">
+  <div v-if="$store.state.auth.user.role_id == 1" class="bg-admin">
     <br /><br />
     <v-card class="mx-auto title" width="1278px" elevation="1"
       ><br />
@@ -147,6 +147,7 @@ export default {
   position: relative;
   background: #ffffff;
   border-radius: 10px;
+  box-shadow: 0px 4px 20px rgba(78, 196, 154, 0.05) !important;
 }
 
 span {

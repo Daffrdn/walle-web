@@ -8,7 +8,7 @@
       dark
       fixed
       app
-      max-width="300"
+      width="280"
     >
       <v-card-title align="center" class="mx-auto d-flex justify-center">
         <img src="../static/2 11.png" />
@@ -17,7 +17,7 @@
       <v-list>
         <v-list-item to="/admin" router exact>
           <v-list-item-action>
-            <v-img src="/home.png" max-width="30"></v-img>
+            <v-icon size="30"> mdi-home-outline</v-icon>
           </v-list-item-action>
           <v-list-item-content>
             <v-list-item-title> Beranda </v-list-item-title>
@@ -26,10 +26,10 @@
         <v-list-group :value="true" no-action>
           <template v-slot:activator>
             <v-list-item-action>
-              <v-img src="/home.png" max-width="30"></v-img>
+              <v-icon size="30"> mdi-file-edit-outline </v-icon>
             </v-list-item-action>
             <v-list-item-content>
-              <v-list-item-title><span>Manage Produk</span></v-list-item-title>
+              <v-list-item-title class="white--text">Manage Produk</v-list-item-title>
             </v-list-item-content>
           </template>
 
@@ -52,7 +52,7 @@
         </v-list-group>
         <v-list-item to="/admin/status-transaksi" router exact>
           <v-list-item-action>
-            <v-img src="/vector.png" max-width="30"></v-img>
+            <v-icon size="30" color="white">mdi-history</v-icon>
           </v-list-item-action>
           <v-list-item-content>
             <v-list-item-title> Status Transaksi </v-list-item-title>
@@ -62,13 +62,6 @@
     </v-navigation-drawer>
     <v-app-bar :clipped-left="clipped" fixed app color="white" elevation="1">
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <v-btn icon @click.stop="miniVariant = !miniVariant">
-        <v-icon>mdi-{{ `chevron-${miniVariant ? 'right' : 'left'}` }}</v-icon>
-      </v-btn>
-      <v-btn icon @click.stop="clipped = !clipped">
-        <v-icon>mdi-application</v-icon>
-      </v-btn>
-      <v-toolbar-title v-text="title" />
       <v-spacer />
     </v-app-bar>
     <v-main>
