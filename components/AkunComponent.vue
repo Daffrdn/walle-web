@@ -32,7 +32,7 @@
           Log out
         </v-btn>
       </div>
-    </v-container>
+    </v-container> 
   </div>
 </template>
 
