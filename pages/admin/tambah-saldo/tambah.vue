@@ -1,5 +1,5 @@
 <template>
-  <div v-if="$store.state.auth.user.role_id === 1" class="bg-admin">
+  <div v-if="loggedInUser === 1" class="bg-admin">
     <br /><br />
     <v-card class="mx-auto title" width="1278px" elevation="1"
       ><br />
@@ -113,6 +113,11 @@ export default {
 
     successful: false,
   }),
+  computed: {
+    loggedInUser() {
+      return this.$store.state.auth.user.role_id
+    },
+  },
   methods: {
     back() {
       this.$router.push('/admin/tambah-saldo')

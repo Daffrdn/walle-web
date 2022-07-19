@@ -1,5 +1,5 @@
 <template>
-  <div v-if="$store.state.auth.user.role_id == 1">
+  <div v-if="loggedInUser == 1">
     <br />
     <br />
     <v-row class="">
@@ -87,6 +87,9 @@ export default {
   computed: {
     listSaldo() {
       return this.$store.state.saldo.listSaldo
+    },
+    loggedInUser() {
+      return this.$store.state.auth.user.role_id
     },
   },
   mounted() {

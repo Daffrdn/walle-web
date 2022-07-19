@@ -1,5 +1,5 @@
 <template>
-  <div v-if="$store.state.auth.user.role_id === 1">
+  <div v-if="loggedInUser === 1">
     <br />
     <br />
     <v-card class="card">
@@ -97,6 +97,9 @@ export default {
     },
     allSaldo() {
       return this.$store.state.saldo.allSaldo
+    },
+    loggedInUser() {
+      return this.$store.state.auth.user.role_id
     },
   },
   mounted() {
