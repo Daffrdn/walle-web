@@ -52,17 +52,12 @@
     </v-card>
     <div class="sisasaldo d-flex justify-end">
       <span class="align-self-center mr-16">
-        Sisa Saldo : Rp
-        {{
-          listSaldo.saldo[0].saldo +
-          listSaldo.saldo[1].saldo +
-          listSaldo.saldo[2].saldo
-        }}
+        Sisa Saldo : Rp {{allSaldo.saldo}}
       </span>
     </div>
     <v-row class="mt-5">
       <v-col class="d-flex justify-end">
-        <v-pagination v-model="page" :length="pageCount"></v-pagination>
+        <v-pagination v-model="page" :length="pageCount" :total-visible="10" color="#D683A1"></v-pagination>
       </v-col>
     </v-row>
   </div>
@@ -101,15 +96,22 @@ export default {
     listSaldo() {
       return this.$store.state.saldo.listSaldo
     },
+    allSaldo() {
+      return this.$store.state.saldo.allSaldo
+    },
   },
   mounted() {
     this.fetchProduct()
+    this.fetchAll()
   },
 
   methods: {
     fetchProduct() {
       this.$store.dispatch('transaction/listAdmin')
       this.$store.dispatch('saldo/fetchProduct')
+    },
+    fetchAll() {
+      this.$store.dispatch('saldo/fetchAll')
     },
     getColor(status) {
       if (status === 'settlement') return '#47A34B'
@@ -150,7 +152,7 @@ span {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  width: 50%;
+  width: 70%;
 }
 
 .v-data-table >>> th {

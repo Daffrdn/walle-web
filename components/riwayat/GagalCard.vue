@@ -2,6 +2,7 @@
   <div>
     <!-- {{listGagal}} -->
     <v-row>
+    
       <v-col
         v-for="item in historyList"
         :key="item.id"

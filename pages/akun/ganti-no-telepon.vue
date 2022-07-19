@@ -1,9 +1,9 @@
 <template>
 <div v-if="$store.state.auth.loggedIn">
   <v-container>
-    <h4>Email Terdaftar</h4>
+    <h4>No Handphone Terdaftar</h4>
     <div class="d-flex justify-space-between mt-4">
-        <span>{{ loggedInUser.email }}</span>
+        <span>{{ loggedInUser.nomor_handphone }}</span>
         <v-btn 
             outlined
             color="#4EC49A"
@@ -11,7 +11,7 @@
             x-large
             @click="changeEmail"
         >
-        Ganti Email
+        Ganti No Handphone
         </v-btn>
     </div>
   </v-container>
@@ -35,7 +35,7 @@ export default {
   },
   methods: {
     changeEmail(){
-        this.$router.push('/akun/new-email')
+        this.$router.push('/akun/no-telepon-baru')
     }
   }
 }

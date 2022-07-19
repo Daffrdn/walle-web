@@ -2,7 +2,6 @@
   <v-app>
     <v-navigation-drawer
       v-model="drawer"
-      :mini-variant="miniVariant"
       :clipped="clipped"
       color="#C44E78"
       dark
@@ -23,10 +22,10 @@
             <v-list-item-title> Beranda </v-list-item-title>
           </v-list-item-content>
         </v-list-item>
-        <v-list-group :value="true" no-action>
+        <v-list-group :value="true" no-action color="white">
           <template v-slot:activator>
             <v-list-item-action>
-              <v-icon size="30"> mdi-file-edit-outline </v-icon>
+              <v-icon size="30" color="white"> mdi-file-edit-outline </v-icon>
             </v-list-item-action>
             <v-list-item-content>
               <v-list-item-title class="white--text">Manage Produk</v-list-item-title>
@@ -38,10 +37,9 @@
             :key="i"
             :to="admin.to"
             router
-            exact
-          >
+            exact>
             <v-list-item-title
-              class="white--text"
+              class="white--text ml-1"
               v-text="admin.title"
             ></v-list-item-title>
 
@@ -59,10 +57,20 @@
           </v-list-item-content>
         </v-list-item>
       </v-list>
+      <template v-slot:append>
+        <v-list-item @click="logout" router exact>
+          <v-list-item-action>
+            <v-icon size="30" color="white">mdi-logout</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title > Log Out </v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+      </template>
     </v-navigation-drawer>
     <v-app-bar :clipped-left="clipped" fixed app color="white" elevation="1">
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <v-spacer />
+      <v-app-bar-title >Admin</v-app-bar-title>
     </v-app-bar>
     <v-main>
       <v-container>
@@ -93,6 +101,11 @@ export default {
       title: 'Beranda',
     }
   },
+  methods: {
+    async logout() {
+      await this.$auth.logout()
+    },
+  }
 }
 </script>
 

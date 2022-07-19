@@ -12,7 +12,7 @@
         <span>Email </span>
         <div>
           <span class="ml-5">{{ loggedInUser.email }}</span>
-          <v-btn icon color="#4EC49A" @click="changeEmail">
+          <v-btn icon color="#4EC49A">
             <v-icon>mdi-chevron-right</v-icon>
           </v-btn>
         </div>
@@ -26,10 +26,10 @@
           </v-btn>
         </div>
       </div>
-      <div class="d-flex justify-end">
+      <div class="d-flex align-end flex-column">
         <v-btn text color="#4EC49A" x-large class="mt-4 btn" @click="logout">
+          <v-icon>mdi-logout </v-icon>
           Log out
-          <v-icon>mdi-user</v-icon>
         </v-btn>
       </div>
     </v-container>
@@ -53,11 +53,8 @@ export default {
     async logout() {
       await this.$auth.logout()
     },
-    changeEmail() {
-      this.$router.push('/akun/ganti-email')
-    },
     changeTelepon() {
-      this.$router.push('/akun/ganti-telepon')
+      this.$router.push('/akun/ganti-no-telepon')
     },
   },
 }

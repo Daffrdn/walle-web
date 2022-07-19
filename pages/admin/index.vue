@@ -1,20 +1,13 @@
 <template>
-  <div v-if="loggedInUser.role_id == 1">
+  <div v-if="$store.state.auth.loggedIn && loggedInUser.role_id == 1">
     <br /><br />
     <v-row class="d-flex justify-center">
       <v-col sm="5">
         <v-card dark color="#C44E78" elevation="0" class="card">
-          <v-card-title class="d-flex justify-start">
-            <h1>
-              Rp.
-              {{
-                listSaldo.saldo[0].saldo +
-                listSaldo.saldo[1].saldo +
-                listSaldo.saldo[2].saldo
-              }}
-            </h1>
+          <v-card-title class="d-flex justify-center">
+            <h1>Rp.{{allSaldo.saldo}}</h1>
           </v-card-title>
-          <v-card-text class="">
+          <v-card-text class="ml-6">
             <span class="saldo-desc">Saldo saat ini</span>
           </v-card-text>
           <br />
@@ -38,7 +31,7 @@
             <h1>Rp. {{ SaldoKeluar.pemasukan }}</h1>
           </v-card-title>
           <v-card-text class="ml-6">
-            <span>Saldo keluar</span>
+            <span class="saldo-desc">Saldo keluar</span>
           </v-card-text>
           <br />
           <v-btn
@@ -63,10 +56,10 @@
 export default {
   name: 'AdminPage',
   layout: 'admin',
-  // middleware: "admin",
+  middleware: "admin",
   computed: {
-    listSaldo() {
-      return this.$store.state.saldo.listSaldo
+    allSaldo() {
+      return this.$store.state.saldo.allSaldo
     },
     SaldoKeluar() {
       return this.$store.state.transaction.saldoKeluar
@@ -76,12 +69,12 @@ export default {
     },
   },
   mounted() {
-    this.fetchProduct()
+    this.fetchAll()
     this.listSaldoKeluar()
   },
   methods: {
-    fetchProduct() {
-      this.$store.dispatch('saldo/fetchProduct')
+    fetchAll() {
+      this.$store.dispatch('saldo/fetchAll')
     },
     listSaldoKeluar() {
       this.$store.dispatch('transaction/listSaldoKeluar')

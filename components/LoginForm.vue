@@ -112,13 +112,12 @@ export default {
               password: this.password
             }
           })
-             console.log(this.$store.state.auth.user.role_id)
-             if(this.$store.state.auth.user.role_id !== 1){
-              // this.$router.push('/beranda');
-              this.$router.push('/beranda')
-             } else {
-              this.$router.push('/admin')
-             }
+            //  console.log(this.$store.state.auth.user.role_id)
+            //  if(this.$store.state.auth.user.role_id === 1){
+            //   this.$router.push('/admin')
+            //  } else {
+            //   this.$router.push('/admin')
+            //  }
           } catch(e) { 
             this.error = this.message
           }
