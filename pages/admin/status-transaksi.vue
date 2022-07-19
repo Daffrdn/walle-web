@@ -1,6 +1,5 @@
-/* eslint-disable vue/valid-v-slot */
 <template>
-  <div v-if="$store.state.auth.user.role_id == 1">
+  <div v-if="$store.state.auth.user.role_id === 1">
     <br />
     <br />
     <v-card class="card">

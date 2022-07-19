@@ -1,5 +1,5 @@
 <template>
-  <div v-if="$store.state.auth.loggedIn && loggedInUser.role_id == 1">
+  <div v-if="loggedInUser === 1">
     <br /><br />
     <v-row class="d-flex justify-center">
       <v-col sm="5">
@@ -56,7 +56,7 @@
 export default {
   name: 'AdminPage',
   layout: 'admin',
-  middleware: "admin",
+  middleware: ["auth","admin"],
   computed: {
     allSaldo() {
       return this.$store.state.saldo.allSaldo
@@ -65,7 +65,7 @@ export default {
       return this.$store.state.transaction.saldoKeluar
     },
     loggedInUser() {
-      return this.$store.state.auth.user
+      return this.$store.state.auth.user.role_id
     },
   },
   mounted() {

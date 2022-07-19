@@ -1,5 +1,5 @@
 <template>
-  <div v-if="$store.state.auth.user.role_id == 1">
+  <div v-if="$store.state.auth.user.role_id === 1"> 
     <v-card class="mx-auto" elevation="0">
       <v-row class="mx-auto mt-5">
         <v-col>
