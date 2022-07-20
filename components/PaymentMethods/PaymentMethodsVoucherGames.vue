@@ -30,7 +30,7 @@
           <form methods="post" class="form mt-3" @submit.prevent="transaksi">
           <span>E-Wallet</span>
             <div class="inputGroup"> 
-              <input id="gopay" name="method" type="radio" />
+              <input id="gopay" v-model="bank" name="method" type="radio" value="gopay"/>
               <label for="gopay">
                 <img src="/payment/gopay.png" width="30px" alt="gopay" />
 
@@ -70,7 +70,7 @@
                   <span class="font-weight-regular total-bayar">Total Bayar</span>
                   <p class="total font-weight-bold ma-0 mt-1">Rp. {{ list.harga }}</p>
                 </span>
-                <v-btn color="#4EC49A" class="pay-button mb-1" x-large type="submit"
+                <v-btn color="#4EC49A" class="pay-button mb-1" x-large type="submit" :disabled="this.bank.length < 2"
                   >Bayar Sekarang</v-btn
                 >
               </v-row>
@@ -101,11 +101,11 @@ export default {
     },
   },
   methods: {
-    back() {
+    back() { 
       this.$router.push('/vouchergame')
     },
     async transaksi(){
-      if(!this.bank) {
+      if(this.bank.length > 4) {
         await this.$axios.post('/transaksi/ewallet',
         {
           "user_id": parseInt(this.$auth.user.id),

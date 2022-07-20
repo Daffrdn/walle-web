@@ -99,13 +99,18 @@ export default {
   background-image: linear-gradient(to right, transparent 50%, #4EC49A 50%);
   transition: background-position .3s cubic-bezier(0.19, 1, 0.22, 1) .1s, color .5s ease 0s, background-color .5s ease;
 }
-
+/* 
 .button-berhasil:hover{
   color:rgba(255, 255, 255, 1);
   background-color:#4EC49A;
   background-position: -100% 100%;
-}
+} */
 
+.button-berhasil:focus{
+  color:rgba(255, 255, 255, 1);
+  background-color:#4EC49A;
+  background-position: -100% 100%;
+}
 .button-tertunda{
   display:inline-block;
   
@@ -130,6 +135,13 @@ export default {
   background-color:#FFC961;
   background-position: -100% 100%;
 }
+
+.button-tertunda:focus{
+  color:rgba(255, 255, 255, 1);
+  background-color:#FFC961;
+  background-position: -100% 100%;
+}
+
 .button-gagal{
   display:inline-block;
   
@@ -150,6 +162,12 @@ export default {
 }
 
 .button-gagal:hover{
+  color:rgba(255, 255, 255, 1);
+  background-color:#FF4D4D;
+  background-position: -100% 100%;
+}
+
+.button-gagal:focus{
   color:rgba(255, 255, 255, 1);
   background-color:#FF4D4D;
   background-position: -100% 100%;
