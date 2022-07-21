@@ -8,7 +8,7 @@
             <v-img width="60" alt="" src="/icon-nomer telepon.png"></v-img>
           </v-list-item-action>
 
-          <v-list-item-content>
+          <v-list-item-content v-if="loggedInUser">
             <h3 class="white--text">Nomor Telepon Utama</h3>
             <v-list-item-title></v-list-item-title>
             <span class="white--text">{{ loggedInUser.nomor_handphone }}</span>

@@ -1,5 +1,5 @@
 <template>
-<div v-if="$store.state.auth.user.role_id == 1">
+<div>
   <TambahVoucher />
 </div>
 </template>
