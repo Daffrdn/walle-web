@@ -13,5 +13,10 @@ export default {
   name: 'BerandaPages',
   layout: "user",
   middleware: ['auth', 'user'],
+  dat() {
+    return {
+      role_id: null,
+    }
+  }
 }
 </script>
