@@ -1,7 +1,7 @@
 <template>
 <div>
   <v-row>
-    <v-col>
+    <v-col v-if="$store.state.auth.user">
       <BerandaComponent/>
     </v-col>
   </v-row>
