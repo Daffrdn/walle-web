@@ -12,7 +12,7 @@
 export default {
   name: 'BerandaPages',
   layout: "user",
-  middleware: ['auth', 'user'],
+  middleware: ['user', 'auth'],
   dat() {
     return {
       role_id: null,
