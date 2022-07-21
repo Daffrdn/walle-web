@@ -1,5 +1,7 @@
 export default function ({redirect, store}) {
-    if (store.state.auth.user.role_id !== 2){
-       return redirect('/admin')
+    if(store.state.auth.user.loggedIn){
+        if (store.state.auth.user.role_id !== 2){
+        return redirect('/admin')
+        }
     }
 } 
