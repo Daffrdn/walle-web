@@ -76,6 +76,7 @@
 <script>
 export default {
   layout: 'user',
+  middleware: ['auth', 'user'],
   data() {
     return {}
   },

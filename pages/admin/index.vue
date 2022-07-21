@@ -56,7 +56,7 @@
 export default {
   name: 'AdminPage',
   layout: 'admin',
-  // middleware: "admin",
+  middleware: "admin",
   computed: {
     allSaldo() {
       return this.$store.state.saldo.allSaldo
