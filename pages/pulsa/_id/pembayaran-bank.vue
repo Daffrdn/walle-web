@@ -12,7 +12,7 @@ export default {
   components: {
     PembayaranBank
   },
-  middleware: 'auth',
+  middleware: ['auth', 'user'],
   data() {
     return {}
   },

@@ -107,12 +107,8 @@ export default {
     fetchBerhasil() {
       this.$store.dispatch('transaction/fetchBerhasil')
     },
-    handleClick(item) {
-      console.log(item.id)
-    },
     detailTransaksi(param) {
       this.parameter = param
-      window.console.log(this.parameter)
       this.$store.commit('transaction/setAll', this.parameter)
       this.$router.push({ path: '/riwayat/' + this.parameter.id })
     },

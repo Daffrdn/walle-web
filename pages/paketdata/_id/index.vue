@@ -12,7 +12,7 @@ export default {
   components: {
     PaymentMethodPaket
   },
-  middleware: 'auth',
+  middleware: ['auth', 'user'],
   validate({ params }) {
     // Must be a number
     return /^\d+$/.test(params.id)

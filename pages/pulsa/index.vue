@@ -13,7 +13,7 @@ export default {
   components: {
     UserPulsa
   },
-  middleware: 'auth',
+  middleware: ['auth', 'user'],
   data() {
     return {}
   },

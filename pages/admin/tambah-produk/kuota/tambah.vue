@@ -1,5 +1,5 @@
 <template>
-<div v-if="loggedInUser == 1">
+<div>
   <TambahKuota />
 </div>
 </template>
@@ -11,11 +11,6 @@ export default {
   layout: 'admin',
   components: { TambahKuota },
   middleware: "admin",
-  computed: {
-    loggedInUser() {
-      return this.$store.state.auth.user.role_id
-    },
-  }
 }
 </script>
 

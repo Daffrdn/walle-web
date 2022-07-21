@@ -1,5 +1,5 @@
 <template>
-<div v-if="$store.state.auth.user.role_id == 1">
+<div>
   <TambahPulsa />
 </div>
 </template>
@@ -10,7 +10,7 @@ export default {
   name: 'IndexTambahProdukPulsa',
   layout: 'admin',
   components: { TambahPulsa },
-  middleware: ['auth', 'admin'],
+  middleware: 'admin'
 }
 </script>
 

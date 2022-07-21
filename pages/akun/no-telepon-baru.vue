@@ -32,7 +32,7 @@
 export default {
   name: "NewEmailPages",
   layout: 'user',
-  middleware: 'auth',
+  middleware: ['auth', 'user'],
   data() {
     return {
       gantiTelp: ""

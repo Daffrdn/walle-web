@@ -1,5 +1,5 @@
 <template>
-  <div v-if="loggedInUser == 1">
+  <div>
     <br />
     <br />
     <v-row class="">
@@ -83,13 +83,10 @@
 export default {
   name: 'AdminTambahSaldoPages',
   layout: 'admin',
-  middleware: ['admin', 'auth'],
+  middleware: 'admin',
   computed: {
     listSaldo() {
       return this.$store.state.saldo.listSaldo
-    },
-    loggedInUser() {
-      return this.$store.state.auth.user.role_id
     },
   },
   mounted() {

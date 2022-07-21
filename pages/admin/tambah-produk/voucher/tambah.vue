@@ -10,7 +10,7 @@ export default {
   name: 'IndexTmabahProdukVoucher',
   layout: 'admin',
   components: { TambahVoucher },
-  middleware: ['auth', 'admin'],
+  middleware: 'admin',
 }
 </script>
 

@@ -12,7 +12,7 @@
 export default {
     name: 'AkunPages',
     layout: "user",
-    middleware: 'auth',
+    middleware: ['auth', 'user'],
     data() {
         return {
 

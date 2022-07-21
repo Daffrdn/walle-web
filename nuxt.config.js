@@ -68,7 +68,13 @@ export default {
           logout: false
         }
       }
-    }
+    },
+    redirect: {
+      login: '/beranda',
+      logout: '/login',
+      home: '/beranda',
+      admin: '/admin'
+    } 
   },
   
 

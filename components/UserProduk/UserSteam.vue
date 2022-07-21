@@ -98,17 +98,12 @@ export default {
     },
     saveParam(param) {
       this.totalShow = true
-      window.console.log(param.id)
       this.parameter = param
       this.total = param.harga
       // console.log(param.harga)
       // this.detail = this.items[index].id
     },
-    handleClick(item) {
-      console.log(item.id)
-    },
     toPayment() {
-      window.console.log(this.parameter)
       this.$store.commit('pulsa/setProduct', this.parameter)
       this.$router.push({ path: '/vouchergame/' + this.parameter.id })
     },

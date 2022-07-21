@@ -1,5 +1,5 @@
 <template>
-  <div v-if="loggedInUser === 1">
+  <div>
     <br />
     <br />
     <v-card class="card">
@@ -66,7 +66,7 @@
 export default {
   name: 'StatusTransaksiPages',
   layout: 'admin',
-  middleware: ['admin', 'auth'],
+  middleware: 'admin',
   data: () => ({
     search: '',
     page: 1,
@@ -76,7 +76,7 @@ export default {
       {
         text: 'Tanggal',
         align: 'center',
-        sortable: false,
+        sortable: true,
         value: 'waktu_transaksi',
       },
       { text: 'Produk', value: 'produk.nama', align: 'center' },

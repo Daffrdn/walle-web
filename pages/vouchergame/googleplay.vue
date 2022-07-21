@@ -13,7 +13,7 @@ export default {
   components: {
     UserGooglePlay
   },
-  middleware: 'auth',
+  middleware: ['auth', 'user'],
   data() {
     return {}
   },

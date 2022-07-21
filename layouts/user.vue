@@ -28,6 +28,16 @@
           </v-list-item-content>
         </v-list-item>
       </v-list>
+      <template v-slot:append>
+        <v-list-item @click="logout" router exact>
+          <v-list-item-action>
+            <v-icon size="30" color="white">mdi-logout</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title > Log Out </v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+      </template>
     </v-navigation-drawer>
     <v-app-bar :clipped-left="clipped" fixed app color="white" elevation="1">
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
@@ -71,6 +81,11 @@ export default {
       ],
     }
   },
+  methods: {
+    async logout() {
+      await this.$auth.logout()
+    },
+  }
 }
 </script>
 

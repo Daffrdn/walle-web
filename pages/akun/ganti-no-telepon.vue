@@ -22,7 +22,7 @@
 export default {
   name: "ChangeEmailPages",
   layout: 'user',
-  middleware: 'auth',
+  middleware: ['auth', 'user'],
   data() {
     return {
 

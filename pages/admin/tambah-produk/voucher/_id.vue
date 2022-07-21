@@ -1,5 +1,5 @@
 <template>
-  <div v-if="$store.state.auth.user.role_id == 1">
+  <div>
     <EditVoucher />
   </div>
 </template>
@@ -10,7 +10,7 @@ export default {
   name: 'IndexEditProdukVoucher',
   layout: 'admin',
   components: { EditVoucher },
-  middleware: ['auth', 'admin'],
+  middleware: 'admin',
 }
 </script>
 

@@ -1,5 +1,5 @@
 <template>
-  <div v-if="loggedInUser === 1" class="bg-admin">
+  <div class="bg-admin">
     <br /><br />
     <v-card class="mx-auto title" width="1278px" elevation="1"
       ><br />
@@ -87,7 +87,7 @@
 <script>
 export default {
   name: 'AdminTambahSaldo',
-  middleware: ['admin', 'auth'],
+  middleware: 'admin',
   data: () => ({
     kategori: [
       { id: 1, name: 'Saldo Pulsa' },

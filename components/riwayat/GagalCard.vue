@@ -118,12 +118,8 @@ export default {
     fetchGagal() {
       this.$store.dispatch('transaction/fetchGagal')
     },
-    handleClick(item) {
-      console.log(item.id)
-    },
     detailTransaksi(param) {
       this.parameter = param
-      window.console.log(this.parameter)
       this.$store.commit('transaction/setAll', this.parameter)
       this.$router.push({ path: '/riwayat/' + this.parameter.id })
     },

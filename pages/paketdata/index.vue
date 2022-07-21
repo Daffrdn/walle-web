@@ -13,7 +13,7 @@ export default {
   components: {
     UserPaketData
   },
-  middleware: 'auth',
+  middleware: ['auth', 'user'],
   data() {
     return {}
   },

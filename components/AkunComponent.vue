@@ -26,12 +26,6 @@
           </v-btn>
         </div>
       </div>
-      <div class="d-flex align-end flex-column">
-        <v-btn text color="#4EC49A" x-large class="mt-4 btn" @click="logout">
-          <v-icon>mdi-logout </v-icon>
-          Log out
-        </v-btn>
-      </div>
     </v-container> 
   </div>
 </template>
@@ -50,9 +44,6 @@ export default {
     },
   },
   methods: {
-    async logout() {
-      await this.$auth.logout()
-    },
     changeTelepon() {
       this.$router.push('/akun/ganti-no-telepon')
     },

@@ -1,5 +1,5 @@
 <template>
-<div v-if="$store.state.auth.user.role_id == 1">
+<div>
   <TabelPulsa />
 </div>
 </template>
@@ -10,7 +10,7 @@ export default {
   name: 'IndexTabelProdukPulsa',
   layout: 'admin',
   components: { TabelPulsa },
-  middleware: ['auth', 'admin'],
+  middleware: 'admin',
 }
 </script>
 

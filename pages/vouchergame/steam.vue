@@ -13,7 +13,7 @@ export default {
   components: {
     UserSteam
   },
-  middleware: 'auth',
+  middleware: ['auth', 'user'],
   data() {
     return {}
   },
