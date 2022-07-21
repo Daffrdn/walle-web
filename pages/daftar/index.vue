@@ -9,7 +9,7 @@
 <script>
 export default{
     name: 'SignupPages',
-    middleware: 'guest',
+    auth: 'guest',
     data(){
         return {
         

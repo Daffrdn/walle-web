@@ -212,7 +212,7 @@
 <script>
 export default {
   name: 'IndexPage',
-  middleware: 'guest',
+  auth: 'guest',
   data() {
     return {}
   },
